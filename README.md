@@ -235,9 +235,6 @@ func main() {
 * [List](docs/sdks/customermeters/README.md#list) - List Customer Meters
 * [Get](docs/sdks/customermeters/README.md#get) - Get Customer Meter
 
-### [CustomerPortal](docs/sdks/customerportal/README.md)
-
-
 #### [CustomerPortal.BenefitGrants](docs/sdks/polarbenefitgrants/README.md)
 
 * [List](docs/sdks/polarbenefitgrants/README.md#list) - List Benefit Grants
@@ -391,7 +388,6 @@ func main() {
 
 * [List](docs/sdks/payments/README.md#list) - List Payments
 * [Get](docs/sdks/payments/README.md#get) - Get Payment
-
 
 ### [Products](docs/sdks/products/README.md)
 

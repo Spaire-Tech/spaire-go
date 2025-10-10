@@ -361,6 +361,8 @@ type CheckoutCreate struct {
 	// Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`.
 	RequireBillingAddress *bool  `default:"false" json:"require_billing_address"`
 	Amount                *int64 `json:"amount,omitempty"`
+	// Number of seats for seat-based pricing. Required for seat-based products.
+	Seats *int64 `json:"seats,omitempty"`
 	// ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer.
 	CustomerID *string `json:"customer_id,omitempty"`
 	// Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name.
@@ -460,6 +462,13 @@ func (c *CheckoutCreate) GetAmount() *int64 {
 		return nil
 	}
 	return c.Amount
+}
+
+func (c *CheckoutCreate) GetSeats() *int64 {
+	if c == nil {
+		return nil
+	}
+	return c.Seats
 }
 
 func (c *CheckoutCreate) GetCustomerID() *string {

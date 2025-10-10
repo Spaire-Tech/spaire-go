@@ -66,7 +66,7 @@ func (s *Subscriptions) List(ctx context.Context, request operations.Subscriptio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "subscriptions:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -374,7 +374,7 @@ func (s *Subscriptions) Export(ctx context.Context, organizationID *operations.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "subscriptions:export",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -611,7 +611,7 @@ func (s *Subscriptions) Get(ctx context.Context, id string, opts ...operations.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "subscriptions:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -866,7 +866,7 @@ func (s *Subscriptions) Update(ctx context.Context, id string, subscriptionUpdat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "subscriptions:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "SubscriptionUpdate", "json", `request:"mediaType=application/json"`)
@@ -1169,7 +1169,7 @@ func (s *Subscriptions) Revoke(ctx context.Context, id string, opts ...operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "subscriptions:revoke",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

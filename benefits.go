@@ -66,7 +66,7 @@ func (s *Benefits) List(ctx context.Context, request operations.BenefitsListRequ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "benefits:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -367,7 +367,7 @@ func (s *Benefits) Create(ctx context.Context, request components.BenefitCreate,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "benefits:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -607,7 +607,7 @@ func (s *Benefits) Get(ctx context.Context, id string, opts ...operations.Option
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "benefits:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -862,7 +862,7 @@ func (s *Benefits) Update(ctx context.Context, id string, requestBody operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "benefits:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -1127,7 +1127,7 @@ func (s *Benefits) Delete(ctx context.Context, id string, opts ...operations.Opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "benefits:delete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1380,7 +1380,7 @@ func (s *Benefits) Grants(ctx context.Context, request operations.BenefitsGrants
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "benefits:grants",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

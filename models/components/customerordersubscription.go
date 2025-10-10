@@ -54,7 +54,7 @@ func (c CustomerOrderSubscription) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CustomerOrderSubscription) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"created_at", "modified_at", "id", "amount", "currency", "recurring_interval", "status", "current_period_start", "current_period_end", "trial_start", "trial_end", "cancel_at_period_end", "canceled_at", "started_at", "ends_at", "ended_at", "customer_id", "product_id", "discount_id", "checkout_id", "customer_cancellation_reason", "customer_cancellation_comment"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"created_at", "id", "amount", "currency", "recurring_interval", "status", "current_period_start", "cancel_at_period_end", "customer_id", "product_id"}); err != nil {
 		return err
 	}
 	return nil

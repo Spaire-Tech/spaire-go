@@ -30,7 +30,7 @@ func (p ProductPriceFree) MarshalJSON() ([]byte, error) {
 }
 
 func (p *ProductPriceFree) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"created_at", "modified_at", "id", "amount_type", "is_archived", "product_id", "type", "recurring_interval"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"created_at", "id", "amount_type", "is_archived", "product_id", "type"}); err != nil {
 		return err
 	}
 	return nil

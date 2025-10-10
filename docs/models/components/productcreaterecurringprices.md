@@ -21,6 +21,12 @@ productCreateRecurringPrices := components.CreateProductCreateRecurringPricesPro
 productCreateRecurringPrices := components.CreateProductCreateRecurringPricesProductPriceFreeCreate(components.ProductPriceFreeCreate{/* values here */})
 ```
 
+### ProductPriceSeatBasedCreate
+
+```go
+productCreateRecurringPrices := components.CreateProductCreateRecurringPricesProductPriceSeatBasedCreate(components.ProductPriceSeatBasedCreate{/* values here */})
+```
+
 ### ProductPriceMeteredUnitCreate
 
 ```go

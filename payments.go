@@ -66,7 +66,7 @@ func (s *Payments) List(ctx context.Context, request operations.PaymentsListRequ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "payments:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -373,7 +373,7 @@ func (s *Payments) Get(ctx context.Context, id string, opts ...operations.Option
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "payments:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

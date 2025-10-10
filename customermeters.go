@@ -66,7 +66,7 @@ func (s *CustomerMeters) List(ctx context.Context, request operations.CustomerMe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customer_meters:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -371,7 +371,7 @@ func (s *CustomerMeters) Get(ctx context.Context, id string, opts ...operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customer_meters:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

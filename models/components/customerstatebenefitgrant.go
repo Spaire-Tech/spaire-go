@@ -268,7 +268,7 @@ func (c CustomerStateBenefitGrant) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CustomerStateBenefitGrant) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "modified_at", "granted_at", "benefit_id", "benefit_type", "benefit_metadata", "properties"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "granted_at", "benefit_id", "benefit_type", "benefit_metadata", "properties"}); err != nil {
 		return err
 	}
 	return nil

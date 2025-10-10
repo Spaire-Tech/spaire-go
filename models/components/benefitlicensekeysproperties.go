@@ -18,7 +18,7 @@ func (b BenefitLicenseKeysProperties) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BenefitLicenseKeysProperties) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"prefix", "expires", "activations", "limit_usage"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
 		return err
 	}
 	return nil

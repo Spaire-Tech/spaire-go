@@ -16,7 +16,7 @@ func (b BenefitCustomSubscriberProperties) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BenefitCustomSubscriberProperties) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"note"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
 		return err
 	}
 	return nil

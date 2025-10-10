@@ -66,7 +66,7 @@ func (s *CustomFields) List(ctx context.Context, request operations.CustomFields
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "custom-fields:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -366,7 +366,7 @@ func (s *CustomFields) Create(ctx context.Context, request components.CustomFiel
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "custom-fields:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -606,7 +606,7 @@ func (s *CustomFields) Get(ctx context.Context, id string, opts ...operations.Op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "custom-fields:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -861,7 +861,7 @@ func (s *CustomFields) Update(ctx context.Context, id string, customFieldUpdate 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "custom-fields:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CustomFieldUpdate", "json", `request:"mediaType=application/json"`)
@@ -1122,7 +1122,7 @@ func (s *CustomFields) Delete(ctx context.Context, id string, opts ...operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "custom-fields:delete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

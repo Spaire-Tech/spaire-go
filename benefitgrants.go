@@ -66,7 +66,7 @@ func (s *BenefitGrants) List(ctx context.Context, request operations.BenefitGran
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "benefit-grants:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

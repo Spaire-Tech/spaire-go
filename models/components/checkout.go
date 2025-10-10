@@ -503,6 +503,8 @@ type Checkout struct {
 	EmbedOrigin *string `json:"embed_origin"`
 	// Amount in cents, before discounts and taxes.
 	Amount int64 `json:"amount"`
+	// Number of seats for seat-based pricing.
+	Seats *int64 `json:"seats,omitempty"`
 	// Discount amount in cents.
 	DiscountAmount int64 `json:"discount_amount"`
 	// Amount in cents, after discounts but before taxes.
@@ -578,7 +580,7 @@ func (c Checkout) MarshalJSON() ([]byte, error) {
 }
 
 func (c *Checkout) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "modified_at", "payment_processor", "status", "client_secret", "url", "expires_at", "success_url", "embed_origin", "amount", "discount_amount", "net_amount", "tax_amount", "total_amount", "currency", "active_trial_interval", "active_trial_interval_count", "trial_end", "product_id", "product_price_id", "discount_id", "allow_discount_codes", "require_billing_address", "is_discount_applicable", "is_free_product_price", "is_payment_required", "is_payment_setup_required", "is_payment_form_required", "customer_id", "is_business_customer", "customer_name", "customer_email", "customer_ip_address", "customer_billing_name", "customer_billing_address", "customer_tax_id", "payment_processor_metadata", "billing_address_fields", "trial_interval", "trial_interval_count", "metadata", "external_customer_id", "customer_external_id", "products", "product", "product_price", "discount", "subscription_id", "attached_custom_fields", "customer_metadata"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "payment_processor", "status", "client_secret", "url", "expires_at", "success_url", "amount", "discount_amount", "net_amount", "total_amount", "currency", "product_id", "product_price_id", "allow_discount_codes", "require_billing_address", "is_discount_applicable", "is_free_product_price", "is_payment_required", "is_payment_setup_required", "is_payment_form_required", "is_business_customer", "payment_processor_metadata", "billing_address_fields", "metadata", "products", "product", "product_price", "attached_custom_fields", "customer_metadata"}); err != nil {
 		return err
 	}
 	return nil
@@ -666,6 +668,13 @@ func (c *Checkout) GetAmount() int64 {
 		return 0
 	}
 	return c.Amount
+}
+
+func (c *Checkout) GetSeats() *int64 {
+	if c == nil {
+		return nil
+	}
+	return c.Seats
 }
 
 func (c *Checkout) GetDiscountAmount() int64 {

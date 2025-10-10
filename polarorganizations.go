@@ -66,7 +66,7 @@ func (s *PolarOrganizations) Get(ctx context.Context, slug string, opts ...opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customer_portal:organizations:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 

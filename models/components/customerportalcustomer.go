@@ -94,7 +94,7 @@ func (c CustomerPortalCustomer) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CustomerPortalCustomer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"created_at", "modified_at", "id", "email", "email_verified", "name", "billing_name", "billing_address", "tax_id", "oauth_accounts"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"created_at", "id", "email", "email_verified", "oauth_accounts"}); err != nil {
 		return err
 	}
 	return nil

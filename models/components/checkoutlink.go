@@ -261,7 +261,7 @@ func (c CheckoutLink) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CheckoutLink) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "modified_at", "trial_interval", "trial_interval_count", "metadata", "payment_processor", "client_secret", "success_url", "label", "allow_discount_codes", "require_billing_address", "discount_id", "organization_id", "products", "discount", "url"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "metadata", "payment_processor", "client_secret", "allow_discount_codes", "require_billing_address", "organization_id", "products", "url"}); err != nil {
 		return err
 	}
 	return nil

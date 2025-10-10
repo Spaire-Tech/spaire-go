@@ -141,7 +141,7 @@ func (r Refund) MarshalJSON() ([]byte, error) {
 }
 
 func (r *Refund) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"created_at", "modified_at", "id", "metadata", "status", "reason", "amount", "tax_amount", "currency", "organization_id", "order_id", "subscription_id", "customer_id", "revoke_benefits"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"created_at", "id", "metadata", "status", "reason", "amount", "tax_amount", "currency", "organization_id", "order_id", "customer_id", "revoke_benefits"}); err != nil {
 		return err
 	}
 	return nil

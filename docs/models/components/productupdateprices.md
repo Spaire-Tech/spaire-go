@@ -27,6 +27,12 @@ productUpdatePrices := components.CreateProductUpdatePricesProductPriceCustomCre
 productUpdatePrices := components.CreateProductUpdatePricesProductPriceFreeCreate(components.ProductPriceFreeCreate{/* values here */})
 ```
 
+### ProductPriceSeatBasedCreate
+
+```go
+productUpdatePrices := components.CreateProductUpdatePricesProductPriceSeatBasedCreate(components.ProductPriceSeatBasedCreate{/* values here */})
+```
+
 ### ProductPriceMeteredUnitCreate
 
 ```go

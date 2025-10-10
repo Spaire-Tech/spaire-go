@@ -66,7 +66,7 @@ func (s *Events) List(ctx context.Context, request operations.EventsListRequest,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "events:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -373,7 +373,7 @@ func (s *Events) ListNames(ctx context.Context, request operations.EventsListNam
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "events:list_names",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -679,7 +679,7 @@ func (s *Events) Get(ctx context.Context, id string, opts ...operations.Option) 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "events:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -929,7 +929,7 @@ func (s *Events) Ingest(ctx context.Context, request components.EventsIngest, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "events:ingest",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

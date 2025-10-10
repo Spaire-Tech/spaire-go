@@ -9,6 +9,8 @@ import (
 type OrganizationFeatureSettings struct {
 	// If this organization has issue funding enabled
 	IssueFundingEnabled *bool `default:"false" json:"issue_funding_enabled"`
+	// If this organization has seat-based pricing enabled
+	SeatBasedPricingEnabled *bool `default:"false" json:"seat_based_pricing_enabled"`
 }
 
 func (o OrganizationFeatureSettings) MarshalJSON() ([]byte, error) {
@@ -27,4 +29,11 @@ func (o *OrganizationFeatureSettings) GetIssueFundingEnabled() *bool {
 		return nil
 	}
 	return o.IssueFundingEnabled
+}
+
+func (o *OrganizationFeatureSettings) GetSeatBasedPricingEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SeatBasedPricingEnabled
 }

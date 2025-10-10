@@ -66,7 +66,7 @@ func (s *CheckoutLinks) List(ctx context.Context, request operations.CheckoutLin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkout-links:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -365,7 +365,7 @@ func (s *CheckoutLinks) Create(ctx context.Context, request components.CheckoutL
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkout-links:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -605,7 +605,7 @@ func (s *CheckoutLinks) Get(ctx context.Context, id string, opts ...operations.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkout-links:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -860,7 +860,7 @@ func (s *CheckoutLinks) Update(ctx context.Context, id string, checkoutLinkUpdat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkout-links:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CheckoutLinkUpdate", "json", `request:"mediaType=application/json"`)
@@ -1121,7 +1121,7 @@ func (s *CheckoutLinks) Delete(ctx context.Context, id string, opts ...operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkout-links:delete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -66,7 +66,7 @@ func (s *Customers) List(ctx context.Context, request operations.CustomersListRe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -367,7 +367,7 @@ func (s *Customers) Create(ctx context.Context, request components.CustomerCreat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -607,7 +607,7 @@ func (s *Customers) Export(ctx context.Context, organizationID *operations.Custo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:export",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -844,7 +844,7 @@ func (s *Customers) Get(ctx context.Context, id string, opts ...operations.Optio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1099,7 +1099,7 @@ func (s *Customers) Update(ctx context.Context, id string, customerUpdate compon
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CustomerUpdate", "json", `request:"mediaType=application/json"`)
@@ -1372,7 +1372,7 @@ func (s *Customers) Delete(ctx context.Context, id string, opts ...operations.Op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:delete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1606,7 +1606,7 @@ func (s *Customers) GetExternal(ctx context.Context, externalID string, opts ...
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:get_external",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1861,7 +1861,7 @@ func (s *Customers) UpdateExternal(ctx context.Context, externalID string, custo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:update_external",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CustomerUpdateExternalID", "json", `request:"mediaType=application/json"`)
@@ -2124,7 +2124,7 @@ func (s *Customers) DeleteExternal(ctx context.Context, externalID string, opts 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:delete_external",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2364,7 +2364,7 @@ func (s *Customers) GetState(ctx context.Context, id string, opts ...operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:get_state",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2624,7 +2624,7 @@ func (s *Customers) GetStateExternal(ctx context.Context, externalID string, opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:get_state_external",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2878,7 +2878,7 @@ func (s *Customers) GetBalance(ctx context.Context, id string, opts ...operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customers:get_balance",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

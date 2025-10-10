@@ -47,7 +47,7 @@ func (b BenefitGrantMeterCreditWebhook) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BenefitGrantMeterCreditWebhook) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"created_at", "modified_at", "id", "is_granted", "is_revoked", "subscription_id", "order_id", "customer_id", "benefit_id", "customer", "benefit", "properties"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"created_at", "id", "is_granted", "is_revoked", "customer_id", "benefit_id", "customer", "benefit", "properties"}); err != nil {
 		return err
 	}
 	return nil

@@ -150,7 +150,7 @@ func (d DiscountFixedRepeatDurationBase) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DiscountFixedRepeatDurationBase) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"duration", "duration_in_months", "type", "amount", "currency", "created_at", "modified_at", "id", "metadata", "name", "code", "starts_at", "ends_at", "max_redemptions", "redemptions_count", "organization_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"duration", "duration_in_months", "type", "amount", "currency", "created_at", "id", "metadata", "name", "redemptions_count", "organization_id"}); err != nil {
 		return err
 	}
 	return nil

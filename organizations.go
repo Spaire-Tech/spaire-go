@@ -73,7 +73,7 @@ func (s *Organizations) List(ctx context.Context, slug *string, page *int64, lim
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "organizations:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -369,7 +369,7 @@ func (s *Organizations) Create(ctx context.Context, request components.Organizat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "organizations:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -609,7 +609,7 @@ func (s *Organizations) Get(ctx context.Context, id string, opts ...operations.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "organizations:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -864,7 +864,7 @@ func (s *Organizations) Update(ctx context.Context, id string, organizationUpdat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "organizations:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "OrganizationUpdate", "json", `request:"mediaType=application/json"`)

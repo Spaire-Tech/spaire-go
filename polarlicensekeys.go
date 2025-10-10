@@ -667,7 +667,7 @@ func (s *PolarLicenseKeys) Validate(ctx context.Context, request components.Lice
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customer_portal:license_keys:validate",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -923,7 +923,7 @@ func (s *PolarLicenseKeys) Activate(ctx context.Context, request components.Lice
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customer_portal:license_keys:activate",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -1200,7 +1200,7 @@ func (s *PolarLicenseKeys) Deactivate(ctx context.Context, request components.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customer_portal:license_keys:deactivate",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
