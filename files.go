@@ -73,7 +73,7 @@ func (s *Files) List(ctx context.Context, organizationID *operations.FilesListQu
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "files:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -369,7 +369,7 @@ func (s *Files) Create(ctx context.Context, request components.FileCreate, opts 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "files:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -610,7 +610,7 @@ func (s *Files) Uploaded(ctx context.Context, id string, fileUploadCompleted com
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "files:uploaded",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "FileUploadCompleted", "json", `request:"mediaType=application/json"`)
@@ -893,7 +893,7 @@ func (s *Files) Update(ctx context.Context, id string, filePatch components.File
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "files:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "FilePatch", "json", `request:"mediaType=application/json"`)
@@ -1175,7 +1175,7 @@ func (s *Files) Delete(ctx context.Context, id string, opts ...operations.Option
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "files:delete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

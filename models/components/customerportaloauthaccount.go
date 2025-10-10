@@ -16,7 +16,7 @@ func (c CustomerPortalOAuthAccount) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CustomerPortalOAuthAccount) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"account_id", "account_username"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"account_id"}); err != nil {
 		return err
 	}
 	return nil

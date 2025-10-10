@@ -66,7 +66,7 @@ func (s *Refunds) List(ctx context.Context, request operations.RefundsListReques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "refunds:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -369,7 +369,7 @@ func (s *Refunds) Create(ctx context.Context, request components.RefundCreate, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "refunds:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

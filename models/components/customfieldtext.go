@@ -140,7 +140,7 @@ func (c CustomFieldText) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CustomFieldText) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"created_at", "modified_at", "id", "metadata", "type", "slug", "name", "organization_id", "properties"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"created_at", "id", "metadata", "type", "slug", "name", "organization_id", "properties"}); err != nil {
 		return err
 	}
 	return nil

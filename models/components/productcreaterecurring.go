@@ -121,6 +121,7 @@ const (
 	ProductCreateRecurringPricesTypeProductPriceFixedCreate       ProductCreateRecurringPricesType = "ProductPriceFixedCreate"
 	ProductCreateRecurringPricesTypeProductPriceCustomCreate      ProductCreateRecurringPricesType = "ProductPriceCustomCreate"
 	ProductCreateRecurringPricesTypeProductPriceFreeCreate        ProductCreateRecurringPricesType = "ProductPriceFreeCreate"
+	ProductCreateRecurringPricesTypeProductPriceSeatBasedCreate   ProductCreateRecurringPricesType = "ProductPriceSeatBasedCreate"
 	ProductCreateRecurringPricesTypeProductPriceMeteredUnitCreate ProductCreateRecurringPricesType = "ProductPriceMeteredUnitCreate"
 )
 
@@ -128,6 +129,7 @@ type ProductCreateRecurringPrices struct {
 	ProductPriceFixedCreate       *ProductPriceFixedCreate       `queryParam:"inline,name=prices"`
 	ProductPriceCustomCreate      *ProductPriceCustomCreate      `queryParam:"inline,name=prices"`
 	ProductPriceFreeCreate        *ProductPriceFreeCreate        `queryParam:"inline,name=prices"`
+	ProductPriceSeatBasedCreate   *ProductPriceSeatBasedCreate   `queryParam:"inline,name=prices"`
 	ProductPriceMeteredUnitCreate *ProductPriceMeteredUnitCreate `queryParam:"inline,name=prices"`
 
 	Type ProductCreateRecurringPricesType
@@ -160,6 +162,15 @@ func CreateProductCreateRecurringPricesProductPriceFreeCreate(productPriceFreeCr
 	}
 }
 
+func CreateProductCreateRecurringPricesProductPriceSeatBasedCreate(productPriceSeatBasedCreate ProductPriceSeatBasedCreate) ProductCreateRecurringPrices {
+	typ := ProductCreateRecurringPricesTypeProductPriceSeatBasedCreate
+
+	return ProductCreateRecurringPrices{
+		ProductPriceSeatBasedCreate: &productPriceSeatBasedCreate,
+		Type:                        typ,
+	}
+}
+
 func CreateProductCreateRecurringPricesProductPriceMeteredUnitCreate(productPriceMeteredUnitCreate ProductPriceMeteredUnitCreate) ProductCreateRecurringPrices {
 	typ := ProductCreateRecurringPricesTypeProductPriceMeteredUnitCreate
 
@@ -182,6 +193,13 @@ func (u *ProductCreateRecurringPrices) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &productPriceFixedCreate, "", true, nil); err == nil {
 		u.ProductPriceFixedCreate = &productPriceFixedCreate
 		u.Type = ProductCreateRecurringPricesTypeProductPriceFixedCreate
+		return nil
+	}
+
+	var productPriceSeatBasedCreate ProductPriceSeatBasedCreate = ProductPriceSeatBasedCreate{}
+	if err := utils.UnmarshalJSON(data, &productPriceSeatBasedCreate, "", true, nil); err == nil {
+		u.ProductPriceSeatBasedCreate = &productPriceSeatBasedCreate
+		u.Type = ProductCreateRecurringPricesTypeProductPriceSeatBasedCreate
 		return nil
 	}
 
@@ -213,6 +231,10 @@ func (u ProductCreateRecurringPrices) MarshalJSON() ([]byte, error) {
 
 	if u.ProductPriceFreeCreate != nil {
 		return utils.MarshalJSON(u.ProductPriceFreeCreate, "", true)
+	}
+
+	if u.ProductPriceSeatBasedCreate != nil {
+		return utils.MarshalJSON(u.ProductPriceSeatBasedCreate, "", true)
 	}
 
 	if u.ProductPriceMeteredUnitCreate != nil {

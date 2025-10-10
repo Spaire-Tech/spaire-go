@@ -66,7 +66,7 @@ func (s *Meters) List(ctx context.Context, request operations.MetersListRequest,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "meters:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -367,7 +367,7 @@ func (s *Meters) Create(ctx context.Context, request components.MeterCreate, opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "meters:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -607,7 +607,7 @@ func (s *Meters) Get(ctx context.Context, id string, opts ...operations.Option) 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "meters:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -862,7 +862,7 @@ func (s *Meters) Update(ctx context.Context, id string, meterUpdate components.M
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "meters:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MeterUpdate", "json", `request:"mediaType=application/json"`)
@@ -1119,7 +1119,7 @@ func (s *Meters) Quantities(ctx context.Context, request operations.MetersQuanti
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "meters:quantities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

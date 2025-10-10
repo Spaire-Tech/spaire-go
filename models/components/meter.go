@@ -314,7 +314,7 @@ func (m Meter) MarshalJSON() ([]byte, error) {
 }
 
 func (m *Meter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"metadata", "created_at", "modified_at", "id", "name", "filter", "aggregation", "organization_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"metadata", "created_at", "id", "name", "filter", "aggregation", "organization_id"}); err != nil {
 		return err
 	}
 	return nil

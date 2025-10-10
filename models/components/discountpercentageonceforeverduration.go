@@ -150,7 +150,7 @@ func (d DiscountPercentageOnceForeverDuration) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DiscountPercentageOnceForeverDuration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"duration", "type", "basis_points", "created_at", "modified_at", "id", "metadata", "name", "code", "starts_at", "ends_at", "max_redemptions", "redemptions_count", "organization_id", "products"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"duration", "type", "basis_points", "created_at", "id", "metadata", "name", "redemptions_count", "organization_id", "products"}); err != nil {
 		return err
 	}
 	return nil

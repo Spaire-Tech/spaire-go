@@ -16,12 +16,14 @@ const (
 	ProductPriceUnionTypeFixed       ProductPriceUnionType = "fixed"
 	ProductPriceUnionTypeFree        ProductPriceUnionType = "free"
 	ProductPriceUnionTypeMeteredUnit ProductPriceUnionType = "metered_unit"
+	ProductPriceUnionTypeSeatBased   ProductPriceUnionType = "seat_based"
 )
 
 type ProductPrice struct {
 	ProductPriceFixed       *ProductPriceFixed       `queryParam:"inline,name=ProductPrice"`
 	ProductPriceCustom      *ProductPriceCustom      `queryParam:"inline,name=ProductPrice"`
 	ProductPriceFree        *ProductPriceFree        `queryParam:"inline,name=ProductPrice"`
+	ProductPriceSeatBased   *ProductPriceSeatBased   `queryParam:"inline,name=ProductPrice"`
 	ProductPriceMeteredUnit *ProductPriceMeteredUnit `queryParam:"inline,name=ProductPrice"`
 
 	Type ProductPriceUnionType
@@ -60,6 +62,15 @@ func CreateProductPriceMeteredUnit(meteredUnit ProductPriceMeteredUnit) ProductP
 	return ProductPrice{
 		ProductPriceMeteredUnit: &meteredUnit,
 		Type:                    typ,
+	}
+}
+
+func CreateProductPriceSeatBased(seatBased ProductPriceSeatBased) ProductPrice {
+	typ := ProductPriceUnionTypeSeatBased
+
+	return ProductPrice{
+		ProductPriceSeatBased: &seatBased,
+		Type:                  typ,
 	}
 }
 
@@ -111,6 +122,15 @@ func (u *ProductPrice) UnmarshalJSON(data []byte) error {
 		u.ProductPriceMeteredUnit = productPriceMeteredUnit
 		u.Type = ProductPriceUnionTypeMeteredUnit
 		return nil
+	case "seat_based":
+		productPriceSeatBased := new(ProductPriceSeatBased)
+		if err := utils.UnmarshalJSON(data, &productPriceSeatBased, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (AmountType == seat_based) type ProductPriceSeatBased within ProductPrice: %w", string(data), err)
+		}
+
+		u.ProductPriceSeatBased = productPriceSeatBased
+		u.Type = ProductPriceUnionTypeSeatBased
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ProductPrice", string(data))
@@ -127,6 +147,10 @@ func (u ProductPrice) MarshalJSON() ([]byte, error) {
 
 	if u.ProductPriceFree != nil {
 		return utils.MarshalJSON(u.ProductPriceFree, "", true)
+	}
+
+	if u.ProductPriceSeatBased != nil {
+		return utils.MarshalJSON(u.ProductPriceSeatBased, "", true)
 	}
 
 	if u.ProductPriceMeteredUnit != nil {

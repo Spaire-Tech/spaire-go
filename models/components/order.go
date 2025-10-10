@@ -350,8 +350,10 @@ type Order struct {
 	TaxAmount int64 `json:"tax_amount"`
 	// Amount in cents, after discounts and taxes.
 	TotalAmount int64 `json:"total_amount"`
-	// How much of this invoice was paid using the customer's balance. Amount in cents.
-	FromBalanceAmount int64 `json:"from_balance_amount"`
+	// Customer's balance amount applied to this invoice. Can increase the total amount paid, if the customer has a negative balance,  or decrease it, if the customer has a positive balance.Amount in cents.
+	AppliedBalanceAmount int64 `json:"applied_balance_amount"`
+	// Amount in cents that is due for this order.
+	DueAmount int64 `json:"due_amount"`
 	// Amount refunded in cents.
 	RefundedAmount int64 `json:"refunded_amount"`
 	// Sales tax refunded in cents.
@@ -388,7 +390,7 @@ func (o Order) MarshalJSON() ([]byte, error) {
 }
 
 func (o *Order) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"id", "created_at", "modified_at", "status", "paid", "subtotal_amount", "discount_amount", "net_amount", "tax_amount", "total_amount", "from_balance_amount", "refunded_amount", "refunded_tax_amount", "currency", "billing_reason", "billing_name", "billing_address", "invoice_number", "is_invoice_generated", "customer_id", "product_id", "discount_id", "subscription_id", "checkout_id", "metadata", "customer", "user_id", "product", "discount", "subscription", "items"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"id", "created_at", "status", "paid", "subtotal_amount", "discount_amount", "net_amount", "tax_amount", "total_amount", "applied_balance_amount", "due_amount", "refunded_amount", "refunded_tax_amount", "currency", "billing_reason", "invoice_number", "is_invoice_generated", "customer_id", "product_id", "metadata", "customer", "user_id", "product", "items"}); err != nil {
 		return err
 	}
 	return nil
@@ -464,11 +466,18 @@ func (o *Order) GetTotalAmount() int64 {
 	return o.TotalAmount
 }
 
-func (o *Order) GetFromBalanceAmount() int64 {
+func (o *Order) GetAppliedBalanceAmount() int64 {
 	if o == nil {
 		return 0
 	}
-	return o.FromBalanceAmount
+	return o.AppliedBalanceAmount
+}
+
+func (o *Order) GetDueAmount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.DueAmount
 }
 
 func (o *Order) GetRefundedAmount() int64 {

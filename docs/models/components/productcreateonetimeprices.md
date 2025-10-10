@@ -21,6 +21,12 @@ productCreateOneTimePrices := components.CreateProductCreateOneTimePricesProduct
 productCreateOneTimePrices := components.CreateProductCreateOneTimePricesProductPriceFreeCreate(components.ProductPriceFreeCreate{/* values here */})
 ```
 
+### ProductPriceSeatBasedCreate
+
+```go
+productCreateOneTimePrices := components.CreateProductCreateOneTimePricesProductPriceSeatBasedCreate(components.ProductPriceSeatBasedCreate{/* values here */})
+```
+
 ### ProductPriceMeteredUnitCreate
 
 ```go

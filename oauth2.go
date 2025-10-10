@@ -62,7 +62,7 @@ func (s *Oauth2) Authorize(ctx context.Context, opts ...operations.Option) (*ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "oauth2:authorize",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -268,7 +268,7 @@ func (s *Oauth2) Token(ctx context.Context, request operations.Oauth2RequestToke
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "oauth2:request_token",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
@@ -477,7 +477,7 @@ func (s *Oauth2) Revoke(ctx context.Context, request components.RevokeTokenReque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "oauth2:revoke_token",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
@@ -686,7 +686,7 @@ func (s *Oauth2) Introspect(ctx context.Context, request components.IntrospectTo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "oauth2:introspect_token",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
@@ -895,7 +895,7 @@ func (s *Oauth2) Userinfo(ctx context.Context, opts ...operations.Option) (*oper
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "oauth2:userinfo",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -141,7 +141,7 @@ func (b BenefitDownloadables) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BenefitDownloadables) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "created_at", "modified_at", "type", "description", "selectable", "deletable", "organization_id", "metadata", "properties"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "created_at", "type", "description", "selectable", "deletable", "organization_id", "metadata", "properties"}); err != nil {
 		return err
 	}
 	return nil

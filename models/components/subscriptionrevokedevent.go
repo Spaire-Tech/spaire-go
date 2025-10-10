@@ -33,7 +33,7 @@ func (s SubscriptionRevokedEvent) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubscriptionRevokedEvent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "timestamp", "organization_id", "customer_id", "customer", "external_customer_id", "source", "name", "metadata"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "timestamp", "organization_id", "source", "name", "metadata"}); err != nil {
 		return err
 	}
 	return nil

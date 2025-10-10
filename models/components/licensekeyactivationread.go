@@ -131,7 +131,7 @@ func (l LicenseKeyActivationRead) MarshalJSON() ([]byte, error) {
 }
 
 func (l *LicenseKeyActivationRead) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"id", "license_key_id", "label", "meta", "created_at", "modified_at", "license_key"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"id", "license_key_id", "label", "meta", "created_at", "license_key"}); err != nil {
 		return err
 	}
 	return nil

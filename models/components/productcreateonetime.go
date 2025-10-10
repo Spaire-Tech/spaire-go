@@ -121,6 +121,7 @@ const (
 	ProductCreateOneTimePricesTypeProductPriceFixedCreate       ProductCreateOneTimePricesType = "ProductPriceFixedCreate"
 	ProductCreateOneTimePricesTypeProductPriceCustomCreate      ProductCreateOneTimePricesType = "ProductPriceCustomCreate"
 	ProductCreateOneTimePricesTypeProductPriceFreeCreate        ProductCreateOneTimePricesType = "ProductPriceFreeCreate"
+	ProductCreateOneTimePricesTypeProductPriceSeatBasedCreate   ProductCreateOneTimePricesType = "ProductPriceSeatBasedCreate"
 	ProductCreateOneTimePricesTypeProductPriceMeteredUnitCreate ProductCreateOneTimePricesType = "ProductPriceMeteredUnitCreate"
 )
 
@@ -128,6 +129,7 @@ type ProductCreateOneTimePrices struct {
 	ProductPriceFixedCreate       *ProductPriceFixedCreate       `queryParam:"inline,name=prices"`
 	ProductPriceCustomCreate      *ProductPriceCustomCreate      `queryParam:"inline,name=prices"`
 	ProductPriceFreeCreate        *ProductPriceFreeCreate        `queryParam:"inline,name=prices"`
+	ProductPriceSeatBasedCreate   *ProductPriceSeatBasedCreate   `queryParam:"inline,name=prices"`
 	ProductPriceMeteredUnitCreate *ProductPriceMeteredUnitCreate `queryParam:"inline,name=prices"`
 
 	Type ProductCreateOneTimePricesType
@@ -160,6 +162,15 @@ func CreateProductCreateOneTimePricesProductPriceFreeCreate(productPriceFreeCrea
 	}
 }
 
+func CreateProductCreateOneTimePricesProductPriceSeatBasedCreate(productPriceSeatBasedCreate ProductPriceSeatBasedCreate) ProductCreateOneTimePrices {
+	typ := ProductCreateOneTimePricesTypeProductPriceSeatBasedCreate
+
+	return ProductCreateOneTimePrices{
+		ProductPriceSeatBasedCreate: &productPriceSeatBasedCreate,
+		Type:                        typ,
+	}
+}
+
 func CreateProductCreateOneTimePricesProductPriceMeteredUnitCreate(productPriceMeteredUnitCreate ProductPriceMeteredUnitCreate) ProductCreateOneTimePrices {
 	typ := ProductCreateOneTimePricesTypeProductPriceMeteredUnitCreate
 
@@ -182,6 +193,13 @@ func (u *ProductCreateOneTimePrices) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &productPriceFixedCreate, "", true, nil); err == nil {
 		u.ProductPriceFixedCreate = &productPriceFixedCreate
 		u.Type = ProductCreateOneTimePricesTypeProductPriceFixedCreate
+		return nil
+	}
+
+	var productPriceSeatBasedCreate ProductPriceSeatBasedCreate = ProductPriceSeatBasedCreate{}
+	if err := utils.UnmarshalJSON(data, &productPriceSeatBasedCreate, "", true, nil); err == nil {
+		u.ProductPriceSeatBasedCreate = &productPriceSeatBasedCreate
+		u.Type = ProductCreateOneTimePricesTypeProductPriceSeatBasedCreate
 		return nil
 	}
 
@@ -213,6 +231,10 @@ func (u ProductCreateOneTimePrices) MarshalJSON() ([]byte, error) {
 
 	if u.ProductPriceFreeCreate != nil {
 		return utils.MarshalJSON(u.ProductPriceFreeCreate, "", true)
+	}
+
+	if u.ProductPriceSeatBasedCreate != nil {
+		return utils.MarshalJSON(u.ProductPriceSeatBasedCreate, "", true)
 	}
 
 	if u.ProductPriceMeteredUnitCreate != nil {

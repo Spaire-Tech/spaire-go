@@ -142,7 +142,7 @@ func (u UserEvent) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserEvent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"metadata", "id", "timestamp", "organization_id", "customer_id", "customer", "external_customer_id", "name", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"metadata", "id", "timestamp", "organization_id", "name", "source"}); err != nil {
 		return err
 	}
 	return nil

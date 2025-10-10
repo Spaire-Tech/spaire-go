@@ -7,15 +7,15 @@ import (
 	"time"
 )
 
-// ProductPriceFixed - A fixed price for a product.
-type ProductPriceFixed struct {
+// ProductPriceSeatBased - A seat-based price for a product.
+type ProductPriceSeatBased struct {
 	// Creation timestamp of the object.
 	CreatedAt time.Time `json:"created_at"`
 	// Last modification timestamp of the object.
 	ModifiedAt *time.Time `json:"modified_at"`
 	// The ID of the price.
 	ID         string `json:"id"`
-	amountType string `const:"fixed" json:"amount_type"`
+	amountType string `const:"seat_based" json:"amount_type"`
 	// Whether the price is archived and no longer available.
 	IsArchived bool `json:"is_archived"`
 	// The ID of the product owning the price.
@@ -25,84 +25,84 @@ type ProductPriceFixed struct {
 	RecurringInterval *SubscriptionRecurringInterval `json:"recurring_interval"`
 	// The currency.
 	PriceCurrency string `json:"price_currency"`
-	// The price in cents.
-	PriceAmount int64 `json:"price_amount"`
+	// The price per seat in cents.
+	PricePerSeat int64 `json:"price_per_seat"`
 }
 
-func (p ProductPriceFixed) MarshalJSON() ([]byte, error) {
+func (p ProductPriceSeatBased) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *ProductPriceFixed) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"created_at", "id", "amount_type", "is_archived", "product_id", "type", "price_currency", "price_amount"}); err != nil {
+func (p *ProductPriceSeatBased) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"created_at", "id", "amount_type", "is_archived", "product_id", "type", "price_currency", "price_per_seat"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (p *ProductPriceFixed) GetCreatedAt() time.Time {
+func (p *ProductPriceSeatBased) GetCreatedAt() time.Time {
 	if p == nil {
 		return time.Time{}
 	}
 	return p.CreatedAt
 }
 
-func (p *ProductPriceFixed) GetModifiedAt() *time.Time {
+func (p *ProductPriceSeatBased) GetModifiedAt() *time.Time {
 	if p == nil {
 		return nil
 	}
 	return p.ModifiedAt
 }
 
-func (p *ProductPriceFixed) GetID() string {
+func (p *ProductPriceSeatBased) GetID() string {
 	if p == nil {
 		return ""
 	}
 	return p.ID
 }
 
-func (p *ProductPriceFixed) GetAmountType() string {
-	return "fixed"
+func (p *ProductPriceSeatBased) GetAmountType() string {
+	return "seat_based"
 }
 
-func (p *ProductPriceFixed) GetIsArchived() bool {
+func (p *ProductPriceSeatBased) GetIsArchived() bool {
 	if p == nil {
 		return false
 	}
 	return p.IsArchived
 }
 
-func (p *ProductPriceFixed) GetProductID() string {
+func (p *ProductPriceSeatBased) GetProductID() string {
 	if p == nil {
 		return ""
 	}
 	return p.ProductID
 }
 
-func (p *ProductPriceFixed) GetType() ProductPriceType {
+func (p *ProductPriceSeatBased) GetType() ProductPriceType {
 	if p == nil {
 		return ProductPriceType("")
 	}
 	return p.Type
 }
 
-func (p *ProductPriceFixed) GetRecurringInterval() *SubscriptionRecurringInterval {
+func (p *ProductPriceSeatBased) GetRecurringInterval() *SubscriptionRecurringInterval {
 	if p == nil {
 		return nil
 	}
 	return p.RecurringInterval
 }
 
-func (p *ProductPriceFixed) GetPriceCurrency() string {
+func (p *ProductPriceSeatBased) GetPriceCurrency() string {
 	if p == nil {
 		return ""
 	}
 	return p.PriceCurrency
 }
 
-func (p *ProductPriceFixed) GetPriceAmount() int64 {
+func (p *ProductPriceSeatBased) GetPricePerSeat() int64 {
 	if p == nil {
 		return 0
 	}
-	return p.PriceAmount
+	return p.PricePerSeat
 }

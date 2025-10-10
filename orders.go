@@ -66,7 +66,7 @@ func (s *Orders) List(ctx context.Context, request operations.OrdersListRequest,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "orders:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -374,7 +374,7 @@ func (s *Orders) Get(ctx context.Context, id string, opts ...operations.Option) 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "orders:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -629,7 +629,7 @@ func (s *Orders) Update(ctx context.Context, id string, orderUpdate components.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "orders:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "OrderUpdate", "json", `request:"mediaType=application/json"`)
@@ -890,7 +890,7 @@ func (s *Orders) GenerateInvoice(ctx context.Context, id string, opts ...operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "orders:generate_invoice",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1144,7 +1144,7 @@ func (s *Orders) Invoice(ctx context.Context, id string, opts ...operations.Opti
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "orders:invoice",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

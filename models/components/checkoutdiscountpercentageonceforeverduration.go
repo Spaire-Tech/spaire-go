@@ -22,7 +22,7 @@ func (c CheckoutDiscountPercentageOnceForeverDuration) MarshalJSON() ([]byte, er
 }
 
 func (c *CheckoutDiscountPercentageOnceForeverDuration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"duration", "type", "basis_points", "id", "name", "code"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"duration", "type", "basis_points", "id", "name"}); err != nil {
 		return err
 	}
 	return nil

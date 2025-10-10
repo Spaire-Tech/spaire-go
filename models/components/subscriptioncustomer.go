@@ -209,7 +209,7 @@ func (s SubscriptionCustomer) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubscriptionCustomer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "created_at", "modified_at", "metadata", "external_id", "email", "email_verified", "name", "billing_address", "tax_id", "organization_id", "deleted_at", "avatar_url"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "created_at", "metadata", "email", "email_verified", "organization_id", "avatar_url"}); err != nil {
 		return err
 	}
 	return nil

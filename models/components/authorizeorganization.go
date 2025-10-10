@@ -17,7 +17,7 @@ func (a AuthorizeOrganization) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AuthorizeOrganization) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "slug", "avatar_url"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "slug"}); err != nil {
 		return err
 	}
 	return nil

@@ -219,7 +219,7 @@ func (p Product) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Product) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "created_at", "modified_at", "trial_interval", "trial_interval_count", "name", "description", "recurring_interval", "is_recurring", "is_archived", "organization_id", "metadata", "prices", "benefits", "medias", "attached_custom_fields"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "created_at", "name", "is_recurring", "is_archived", "organization_id", "metadata", "prices", "benefits", "medias", "attached_custom_fields"}); err != nil {
 		return err
 	}
 	return nil

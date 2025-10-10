@@ -67,7 +67,7 @@ func (s *Metrics) Get(ctx context.Context, request operations.MetricsGetRequest,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "metrics:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -300,7 +300,7 @@ func (s *Metrics) Limits(ctx context.Context, opts ...operations.Option) (*opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "metrics:limits",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

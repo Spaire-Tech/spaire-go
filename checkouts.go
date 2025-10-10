@@ -66,7 +66,7 @@ func (s *Checkouts) List(ctx context.Context, request operations.CheckoutsListRe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkouts:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -368,7 +368,7 @@ func (s *Checkouts) Create(ctx context.Context, request components.CheckoutCreat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkouts:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -608,7 +608,7 @@ func (s *Checkouts) Get(ctx context.Context, id string, opts ...operations.Optio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkouts:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -863,7 +863,7 @@ func (s *Checkouts) Update(ctx context.Context, id string, checkoutUpdate compon
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkouts:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CheckoutUpdate", "json", `request:"mediaType=application/json"`)
@@ -1143,7 +1143,7 @@ func (s *Checkouts) ClientGet(ctx context.Context, clientSecret string, opts ...
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkouts:client_get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 
@@ -1413,7 +1413,7 @@ func (s *Checkouts) ClientUpdate(ctx context.Context, clientSecret string, check
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkouts:client_update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CheckoutUpdatePublic", "json", `request:"mediaType=application/json"`)
@@ -1713,7 +1713,7 @@ func (s *Checkouts) ClientConfirm(ctx context.Context, clientSecret string, chec
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "checkouts:client_confirm",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CheckoutConfirmStripe", "json", `request:"mediaType=application/json"`)

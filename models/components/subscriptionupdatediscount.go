@@ -16,7 +16,7 @@ func (s SubscriptionUpdateDiscount) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubscriptionUpdateDiscount) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"discount_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil

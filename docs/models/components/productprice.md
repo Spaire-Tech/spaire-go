@@ -27,3 +27,9 @@ productPrice := components.CreateProductPriceFree(components.ProductPriceFree{/*
 productPrice := components.CreateProductPriceMeteredUnit(components.ProductPriceMeteredUnit{/* values here */})
 ```
 
+### ProductPriceSeatBased
+
+```go
+productPrice := components.CreateProductPriceSeatBased(components.ProductPriceSeatBased{/* values here */})
+```
+

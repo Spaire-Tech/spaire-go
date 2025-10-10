@@ -339,8 +339,10 @@ type CheckoutUpdate struct {
 	// ID of the product price to checkout. Must correspond to a price present in the checkout's product list.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	ProductPriceID         *string       `json:"product_price_id,omitempty"`
-	Amount                 *int64        `json:"amount,omitempty"`
+	ProductPriceID *string `json:"product_price_id,omitempty"`
+	Amount         *int64  `json:"amount,omitempty"`
+	// Number of seats for seat-based pricing.
+	Seats                  *int64        `json:"seats,omitempty"`
 	IsBusinessCustomer     *bool         `json:"is_business_customer,omitempty"`
 	CustomerName           *string       `json:"customer_name,omitempty"`
 	CustomerEmail          *string       `json:"customer_email,omitempty"`
@@ -414,6 +416,13 @@ func (c *CheckoutUpdate) GetAmount() *int64 {
 		return nil
 	}
 	return c.Amount
+}
+
+func (c *CheckoutUpdate) GetSeats() *int64 {
+	if c == nil {
+		return nil
+	}
+	return c.Seats
 }
 
 func (c *CheckoutUpdate) GetIsBusinessCustomer() *bool {

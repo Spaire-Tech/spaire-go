@@ -65,7 +65,7 @@ func (s *CustomerSessions) Create(ctx context.Context, request operations.Custom
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "customer-sessions:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

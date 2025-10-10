@@ -66,7 +66,7 @@ func (s *Discounts) List(ctx context.Context, request operations.DiscountsListRe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "discounts:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -365,7 +365,7 @@ func (s *Discounts) Create(ctx context.Context, request components.DiscountCreat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "discounts:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -605,7 +605,7 @@ func (s *Discounts) Get(ctx context.Context, id string, opts ...operations.Optio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "discounts:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -860,7 +860,7 @@ func (s *Discounts) Update(ctx context.Context, id string, discountUpdate compon
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "discounts:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DiscountUpdate", "json", `request:"mediaType=application/json"`)
@@ -1121,7 +1121,7 @@ func (s *Discounts) Delete(ctx context.Context, id string, opts ...operations.Op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "discounts:delete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

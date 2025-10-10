@@ -73,7 +73,7 @@ func (s *LicenseKeys) List(ctx context.Context, organizationID *operations.Licen
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "license_keys:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -415,7 +415,7 @@ func (s *LicenseKeys) Get(ctx context.Context, id string, opts ...operations.Opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "license_keys:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -691,7 +691,7 @@ func (s *LicenseKeys) Update(ctx context.Context, id string, licenseKeyUpdate co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "license_keys:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "LicenseKeyUpdate", "json", `request:"mediaType=application/json"`)
@@ -974,7 +974,7 @@ func (s *LicenseKeys) GetActivation(ctx context.Context, id string, activationID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "license_keys:get_activation",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1245,7 +1245,7 @@ func (s *LicenseKeys) Validate(ctx context.Context, request components.LicenseKe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "license_keys:validate",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -1502,7 +1502,7 @@ func (s *LicenseKeys) Activate(ctx context.Context, request components.LicenseKe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "license_keys:activate",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -1780,7 +1780,7 @@ func (s *LicenseKeys) Deactivate(ctx context.Context, request components.License
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "license_keys:deactivate",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

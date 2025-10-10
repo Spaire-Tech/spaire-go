@@ -72,7 +72,7 @@ func (s *Webhooks) ListWebhookEndpoints(ctx context.Context, organizationID *ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:list_webhook_endpoints",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -367,7 +367,7 @@ func (s *Webhooks) CreateWebhookEndpoint(ctx context.Context, request components
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:create_webhook_endpoint",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -607,7 +607,7 @@ func (s *Webhooks) GetWebhookEndpoint(ctx context.Context, id string, opts ...op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:get_webhook_endpoint",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -862,7 +862,7 @@ func (s *Webhooks) UpdateWebhookEndpoint(ctx context.Context, id string, webhook
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:update_webhook_endpoint",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "WebhookEndpointUpdate", "json", `request:"mediaType=application/json"`)
@@ -1123,7 +1123,7 @@ func (s *Webhooks) DeleteWebhookEndpoint(ctx context.Context, id string, opts ..
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:delete_webhook_endpoint",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1357,7 +1357,7 @@ func (s *Webhooks) ResetWebhookEndpointSecret(ctx context.Context, id string, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:reset_webhook_endpoint_secret",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1609,7 +1609,7 @@ func (s *Webhooks) ListWebhookDeliveries(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:list_webhook_deliveries",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1912,7 +1912,7 @@ func (s *Webhooks) RedeliverWebhookEvent(ctx context.Context, id string, opts ..
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "webhooks:redeliver_webhook_event",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

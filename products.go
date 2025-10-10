@@ -66,7 +66,7 @@ func (s *Products) List(ctx context.Context, request operations.ProductsListRequ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "products:list",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -370,7 +370,7 @@ func (s *Products) Create(ctx context.Context, request components.ProductCreate,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "products:create",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -610,7 +610,7 @@ func (s *Products) Get(ctx context.Context, id string, opts ...operations.Option
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "products:get",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -865,7 +865,7 @@ func (s *Products) Update(ctx context.Context, id string, productUpdate componen
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "products:update",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ProductUpdate", "json", `request:"mediaType=application/json"`)
@@ -1148,7 +1148,7 @@ func (s *Products) UpdateBenefits(ctx context.Context, id string, productBenefit
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "products:update_benefits",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ProductBenefitsUpdate", "json", `request:"mediaType=application/json"`)
