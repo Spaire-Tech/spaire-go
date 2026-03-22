@@ -24,18 +24,18 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
-    res, err := s.CustomerPortal.Members.ListMembers(ctx, polargo.Pointer[int64](1), polargo.Pointer[int64](10))
+    res, err := s.CustomerPortal.Members.ListMembers(ctx, spairego.Pointer[int64](1), spairego.Pointer[int64](10))
     if err != nil {
         log.Fatal(err)
     }
@@ -96,16 +96,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.CustomerPortal.Members.AddMember(ctx, components.CustomerPortalMemberCreate{
@@ -158,15 +158,15 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.CustomerPortal.Members.RemoveMember(ctx, "b61c5e87-cda5-4b14-93ee-71a695f42d9d")
@@ -217,16 +217,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.CustomerPortal.Members.UpdateMember(ctx, "8319ae11-ed5f-4642-81e4-4b40731df195", components.CustomerPortalMemberUpdate{})

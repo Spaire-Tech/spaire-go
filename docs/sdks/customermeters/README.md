@@ -22,20 +22,20 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/operations"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.CustomerMeters.List(ctx, operations.CustomerMetersListRequest{
-        OrganizationID: polargo.Pointer(operations.CreateCustomerMetersListQueryParamOrganizationIDFilterStr(
+        OrganizationID: spairego.Pointer(operations.CreateCustomerMetersListQueryParamOrganizationIDFilterStr(
             "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         )),
     })
@@ -94,15 +94,15 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.CustomerMeters.Get(ctx, "<value>")

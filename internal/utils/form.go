@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/polarsource/polar-go/optionalnullable"
-	"github.com/polarsource/polar-go/types"
+	"github.com/Spaire-Tech/spaire-go/optionalnullable"
+	"github.com/Spaire-Tech/spaire-go/types"
 )
 
 func populateForm(paramName string, explode bool, objType reflect.Type, objValue reflect.Value, delimiter string, defaultValue *string, allowEmptyValue map[string]struct{}, getFieldName func(reflect.StructField) string) url.Values {

@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 // CheckoutDiscountFixedOnceForeverDuration - Schema for a fixed amount discount that is applied once or forever.

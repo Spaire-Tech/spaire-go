@@ -24,8 +24,8 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/operations"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"os"
 	"log"
 )
@@ -33,10 +33,10 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Orders.List(ctx, operations.CustomerPortalOrdersListRequest{}, operations.CustomerPortalOrdersListSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     })
     if err != nil {
         log.Fatal(err)
@@ -91,19 +91,19 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Orders.Get(ctx, operations.CustomerPortalOrdersGetSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>")
     if err != nil {
         log.Fatal(err)
@@ -147,20 +147,20 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Orders.Update(ctx, operations.CustomerPortalOrdersUpdateSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>", components.CustomerOrderUpdate{
         BillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
@@ -209,19 +209,19 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Orders.Invoice(ctx, operations.CustomerPortalOrdersInvoiceSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>")
     if err != nil {
         log.Fatal(err)
@@ -265,19 +265,19 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Orders.GenerateInvoice(ctx, operations.CustomerPortalOrdersGenerateInvoiceSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>")
     if err != nil {
         log.Fatal(err)
@@ -320,19 +320,19 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Orders.GetPaymentStatus(ctx, operations.CustomerPortalOrdersGetPaymentStatusSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>")
     if err != nil {
         log.Fatal(err)
@@ -376,20 +376,20 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Orders.ConfirmRetryPayment(ctx, operations.CustomerPortalOrdersConfirmRetryPaymentSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>", components.CustomerOrderConfirmPayment{})
     if err != nil {
         log.Fatal(err)

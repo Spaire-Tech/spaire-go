@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 // ProductPriceSeatTiersInput - List of pricing tiers for seat-based pricing.

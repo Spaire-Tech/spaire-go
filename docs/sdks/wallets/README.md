@@ -19,20 +19,20 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Wallets.List(ctx, operations.CustomerPortalWalletsListSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
-    }, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
+    }, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -88,19 +88,19 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Wallets.Get(ctx, operations.CustomerPortalWalletsGetSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>")
     if err != nil {
         log.Fatal(err)

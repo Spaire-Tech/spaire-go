@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/polarsource/polar-go/optionalnullable"
-	"github.com/polarsource/polar-go/types"
+	"github.com/Spaire-Tech/spaire-go/optionalnullable"
+	"github.com/Spaire-Tech/spaire-go/types"
 )
 
 func GenerateURL(_ context.Context, serverURL, path string, pathParams interface{}, globals interface{}) (string, error) {

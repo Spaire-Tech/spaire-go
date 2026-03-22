@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 // CheckoutDiscountPercentageRepeatDuration - Schema for a percentage discount that is applied on every invoice

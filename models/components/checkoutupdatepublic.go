@@ -5,8 +5,8 @@ package components
 import (
 	"errors"
 	"fmt"
-	"github.com/polarsource/polar-go/internal/utils"
-	"github.com/polarsource/polar-go/types"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/types"
 	"time"
 )
 

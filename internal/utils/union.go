@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/polarsource/polar-go/types"
+	"github.com/Spaire-Tech/spaire-go/types"
 )
 
 // UnionCandidate represents a candidate type during union deserialization

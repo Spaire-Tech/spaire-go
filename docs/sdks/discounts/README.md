@@ -25,20 +25,20 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/operations"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Discounts.List(ctx, operations.DiscountsListRequest{
-        OrganizationID: polargo.Pointer(operations.CreateDiscountsListQueryParamOrganizationIDFilterStr(
+        OrganizationID: spairego.Pointer(operations.CreateDiscountsListQueryParamOrganizationIDFilterStr(
             "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         )),
     })
@@ -97,16 +97,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Discounts.Create(ctx, components.CreateDiscountCreateDiscountPercentageOnceForeverDurationCreate(
@@ -115,7 +115,7 @@ func main() {
             Type: components.DiscountTypeFixed,
             BasisPoints: 449604,
             Name: "<value>",
-            OrganizationID: polargo.Pointer("1dbfc517-0bbf-4301-9ba8-555ca42b9737"),
+            OrganizationID: spairego.Pointer("1dbfc517-0bbf-4301-9ba8-555ca42b9737"),
         },
     ))
     if err != nil {
@@ -171,16 +171,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Discounts.Get(ctx, "<value>")
@@ -238,15 +238,15 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Discounts.Delete(ctx, "<value>")
@@ -294,16 +294,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Discounts.Update(ctx, "<value>", components.DiscountUpdate{})

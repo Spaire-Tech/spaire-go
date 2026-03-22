@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 // CheckoutDiscountFixedRepeatDuration - Schema for a fixed amount discount that is applied on every invoice

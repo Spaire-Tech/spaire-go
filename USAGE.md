@@ -4,7 +4,7 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 	"os"
 )
@@ -12,11 +12,11 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 		log.Fatal(err)
 	}

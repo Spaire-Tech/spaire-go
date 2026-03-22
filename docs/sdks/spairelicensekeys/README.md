@@ -22,20 +22,20 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.LicenseKeys.List(ctx, operations.CustomerPortalLicenseKeysListSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
-    }, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10))
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
+    }, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10))
     if err != nil {
         log.Fatal(err)
     }
@@ -95,19 +95,19 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.LicenseKeys.Get(ctx, operations.CustomerPortalLicenseKeysGetSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
     }, "<value>")
     if err != nil {
         log.Fatal(err)
@@ -156,15 +156,15 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.LicenseKeys.Validate(ctx, components.LicenseKeyValidate{
         Key: "<key>",
@@ -216,15 +216,15 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.LicenseKeys.Activate(ctx, components.LicenseKeyActivate{
         Key: "<key>",
@@ -278,15 +278,15 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.LicenseKeys.Deactivate(ctx, components.LicenseKeyDeactivate{
         Key: "<key>",

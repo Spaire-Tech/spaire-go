@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 // BenefitMeterCreditCreateProperties - Properties for creating a benefit of type `meter_unit`.

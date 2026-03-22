@@ -3,11 +3,11 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 	"time"
 )
 
-// SubscriptionCreatedEvent - An event created by Polar when a subscription is created.
+// SubscriptionCreatedEvent - An event created by Spaire when a subscription is created.
 type SubscriptionCreatedEvent struct {
 	// The ID of the object.
 	ID string `json:"id"`
@@ -15,7 +15,7 @@ type SubscriptionCreatedEvent struct {
 	Timestamp time.Time `json:"timestamp"`
 	// The ID of the organization owning the event.
 	OrganizationID string `json:"organization_id"`
-	// ID of the customer in your Polar organization associated with the event.
+	// ID of the customer in your Spaire organization associated with the event.
 	CustomerID *string `json:"customer_id"`
 	// The customer associated with the event.
 	Customer *Customer `json:"customer"`
@@ -31,7 +31,7 @@ type SubscriptionCreatedEvent struct {
 	ParentID *string `json:"parent_id,omitempty"`
 	// Human readable label of the event type.
 	Label string `json:"label"`
-	// The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API.
+	// The source of the event. `system` events are created by Spaire. `user` events are the one you create through our ingestion API.
 	source string `const:"system" json:"source"`
 	// The name of the event.
 	name     string                      `const:"subscription.created" json:"name"`

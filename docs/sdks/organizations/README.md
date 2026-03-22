@@ -24,18 +24,18 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
-    res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+    res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -94,16 +94,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Organizations.Create(ctx, components.OrganizationCreate{
@@ -153,15 +153,15 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Organizations.Get(ctx, "1dbfc517-0bbf-4301-9ba8-555ca42b9737")
@@ -209,16 +209,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Organizations.Update(ctx, "1dbfc517-0bbf-4301-9ba8-555ca42b9737", components.OrganizationUpdate{})

@@ -15,7 +15,7 @@ import (
 	"reflect"
 	"regexp"
 
-	"github.com/polarsource/polar-go/optionalnullable"
+	"github.com/Spaire-Tech/spaire-go/optionalnullable"
 )
 
 const (

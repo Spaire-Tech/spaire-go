@@ -24,20 +24,20 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/operations"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Events.List(ctx, operations.EventsListRequest{
-        OrganizationID: polargo.Pointer(operations.CreateEventsListQueryParamOrganizationIDFilterStr(
+        OrganizationID: spairego.Pointer(operations.CreateEventsListQueryParamOrganizationIDFilterStr(
             "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         )),
     })
@@ -90,20 +90,20 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/operations"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Events.ListNames(ctx, operations.EventsListNamesRequest{
-        OrganizationID: polargo.Pointer(operations.CreateEventsListNamesQueryParamOrganizationIDFilterStr(
+        OrganizationID: spairego.Pointer(operations.CreateEventsListNamesQueryParamOrganizationIDFilterStr(
             "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         )),
     })
@@ -162,16 +162,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Events.Get(ctx, "<value>")
@@ -225,16 +225,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Events.Ingest(ctx, components.EventsIngest{

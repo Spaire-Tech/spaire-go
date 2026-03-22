@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/polarsource/polar-go/optionalnullable"
+	"github.com/Spaire-Tech/spaire-go/optionalnullable"
 )
 
 func PopulateHeaders(_ context.Context, req *http.Request, headers interface{}, globals interface{}) {

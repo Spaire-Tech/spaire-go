@@ -4,7 +4,7 @@ package config
 
 import (
 	"context"
-	"github.com/polarsource/polar-go/retry"
+	"github.com/Spaire-Tech/spaire-go/retry"
 	"net/http"
 	"time"
 )

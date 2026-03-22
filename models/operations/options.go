@@ -4,8 +4,8 @@ package operations
 
 import (
 	"errors"
-	"github.com/polarsource/polar-go/internal/utils"
-	"github.com/polarsource/polar-go/retry"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/retry"
 	"time"
 )
 

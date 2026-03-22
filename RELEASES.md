@@ -8,7 +8,7 @@ Based on:
 ### Generated
 - [go v0.0.2] .
 ### Releases
-- [Go v0.0.2] https://github.com/polarsource/polar-go/releases/tag/v0.0.2 - .
+- [Go v0.0.2] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.0.2 - .
 
 ## 2024-12-18 13:32:26
 ### Changes
@@ -18,7 +18,7 @@ Based on:
 ### Generated
 - [go v0.0.3] .
 ### Releases
-- [Go v0.0.3] https://github.com/polarsource/polar-go/releases/tag/v0.0.3 - .
+- [Go v0.0.3] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.0.3 - .
 
 ## 2024-12-20 00:24:16
 ### Changes
@@ -28,7 +28,7 @@ Based on:
 ### Generated
 - [go v0.0.4] .
 ### Releases
-- [Go v0.0.4] https://github.com/polarsource/polar-go/releases/tag/v0.0.4 - .
+- [Go v0.0.4] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.0.4 - .
 
 ## 2025-01-02 12:13:29
 ### Changes
@@ -38,7 +38,7 @@ Based on:
 ### Generated
 - [go v0.1.0] .
 ### Releases
-- [Go v0.1.0] https://github.com/polarsource/polar-go/releases/tag/v0.1.0 - .
+- [Go v0.1.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.0 - .
 
 ## 2025-01-06 00:25:42
 ### Changes
@@ -48,7 +48,7 @@ Based on:
 ### Generated
 - [go v0.1.1] .
 ### Releases
-- [Go v0.1.1] https://github.com/polarsource/polar-go/releases/tag/v0.1.1 - .
+- [Go v0.1.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.1 - .
 
 ## 2025-01-07 00:24:50
 ### Changes
@@ -58,7 +58,7 @@ Based on:
 ### Generated
 - [go v0.1.2] .
 ### Releases
-- [Go v0.1.2] https://github.com/polarsource/polar-go/releases/tag/v0.1.2 - .
+- [Go v0.1.2] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.2 - .
 
 ## 2025-01-14 00:23:12
 ### Changes
@@ -68,7 +68,7 @@ Based on:
 ### Generated
 - [go v0.1.3] .
 ### Releases
-- [Go v0.1.3] https://github.com/polarsource/polar-go/releases/tag/v0.1.3 - .
+- [Go v0.1.3] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.3 - .
 
 ## 2025-01-16 09:53:19
 ### Changes
@@ -78,7 +78,7 @@ Based on:
 ### Generated
 - [go v0.1.4] .
 ### Releases
-- [Go v0.1.4] https://github.com/polarsource/polar-go/releases/tag/v0.1.4 - .
+- [Go v0.1.4] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.4 - .
 
 ## 2025-01-24 12:34:53
 ### Changes
@@ -88,7 +88,7 @@ Based on:
 ### Generated
 - [go v0.1.5] .
 ### Releases
-- [Go v0.1.5] https://github.com/polarsource/polar-go/releases/tag/v0.1.5 - .
+- [Go v0.1.5] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.5 - .
 
 ## 2025-01-27 00:24:38
 ### Changes
@@ -98,7 +98,7 @@ Based on:
 ### Generated
 - [go v0.1.6] .
 ### Releases
-- [Go v0.1.6] https://github.com/polarsource/polar-go/releases/tag/v0.1.6 - .
+- [Go v0.1.6] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.6 - .
 
 ## 2025-01-30 00:23:13
 ### Changes
@@ -108,7 +108,7 @@ Based on:
 ### Generated
 - [go v0.1.7] .
 ### Releases
-- [Go v0.1.7] https://github.com/polarsource/polar-go/releases/tag/v0.1.7 - .
+- [Go v0.1.7] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.7 - .
 
 ## 2025-02-05 14:24:37
 ### Changes
@@ -118,7 +118,7 @@ Based on:
 ### Generated
 - [go v0.1.8] .
 ### Releases
-- [Go v0.1.8] https://github.com/polarsource/polar-go/releases/tag/v0.1.8 - .
+- [Go v0.1.8] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.1.8 - .
 
 ## 2025-02-05 16:31:53
 ### Changes
@@ -128,7 +128,7 @@ Based on:
 ### Generated
 - [go v0.2.0] .
 ### Releases
-- [Go v0.2.0] https://github.com/polarsource/polar-go/releases/tag/v0.2.0 - .
+- [Go v0.2.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.2.0 - .
 
 ## 2025-02-20 00:24:31
 ### Changes
@@ -138,7 +138,7 @@ Based on:
 ### Generated
 - [go v0.3.0] .
 ### Releases
-- [Go v0.3.0] https://github.com/polarsource/polar-go/releases/tag/v0.3.0 - .
+- [Go v0.3.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.3.0 - .
 
 ## 2025-02-25 17:50:34
 ### Changes
@@ -148,7 +148,7 @@ Based on:
 ### Generated
 - [go v0.4.0] .
 ### Releases
-- [Go v0.4.0] https://github.com/polarsource/polar-go/releases/tag/v0.4.0 - .
+- [Go v0.4.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.0 - .
 
 ## 2025-02-27 15:50:04
 ### Changes
@@ -158,7 +158,7 @@ Based on:
 ### Generated
 - [go v0.4.1] .
 ### Releases
-- [Go v0.4.1] https://github.com/polarsource/polar-go/releases/tag/v0.4.1 - .
+- [Go v0.4.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.1 - .
 
 ## 2025-03-04 16:44:09
 ### Changes
@@ -168,7 +168,7 @@ Based on:
 ### Generated
 - [go v0.4.2] .
 ### Releases
-- [Go v0.4.2] https://github.com/polarsource/polar-go/releases/tag/v0.4.2 - .
+- [Go v0.4.2] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.2 - .
 
 ## 2025-03-05 15:54:59
 ### Changes
@@ -178,7 +178,7 @@ Based on:
 ### Generated
 - [go v0.4.3] .
 ### Releases
-- [Go v0.4.3] https://github.com/polarsource/polar-go/releases/tag/v0.4.3 - .
+- [Go v0.4.3] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.3 - .
 
 ## 2025-03-06 09:55:27
 ### Changes
@@ -188,7 +188,7 @@ Based on:
 ### Generated
 - [go v0.4.4] .
 ### Releases
-- [Go v0.4.4] https://github.com/polarsource/polar-go/releases/tag/v0.4.4 - .
+- [Go v0.4.4] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.4 - .
 
 ## 2025-03-07 00:25:15
 ### Changes
@@ -198,7 +198,7 @@ Based on:
 ### Generated
 - [go v0.4.5] .
 ### Releases
-- [Go v0.4.5] https://github.com/polarsource/polar-go/releases/tag/v0.4.5 - .
+- [Go v0.4.5] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.5 - .
 
 ## 2025-03-14 16:09:32
 ### Changes
@@ -208,7 +208,7 @@ Based on:
 ### Generated
 - [go v0.4.6] .
 ### Releases
-- [Go v0.4.6] https://github.com/polarsource/polar-go/releases/tag/v0.4.6 - .
+- [Go v0.4.6] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.6 - .
 
 ## 2025-03-20 11:04:08
 ### Changes
@@ -218,7 +218,7 @@ Based on:
 ### Generated
 - [go v0.4.7] .
 ### Releases
-- [Go v0.4.7] https://github.com/polarsource/polar-go/releases/tag/v0.4.7 - .
+- [Go v0.4.7] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.7 - .
 
 ## 2025-03-25 15:34:42
 ### Changes
@@ -228,7 +228,7 @@ Based on:
 ### Generated
 - [go v0.4.8] .
 ### Releases
-- [Go v0.4.8] https://github.com/polarsource/polar-go/releases/tag/v0.4.8 - .
+- [Go v0.4.8] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.8 - .
 
 ## 2025-04-02 08:02:21
 ### Changes
@@ -238,7 +238,7 @@ Based on:
 ### Generated
 - [go v0.4.9] .
 ### Releases
-- [Go v0.4.9] https://github.com/polarsource/polar-go/releases/tag/v0.4.9 - .
+- [Go v0.4.9] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.9 - .
 
 ## 2025-04-11 11:57:13
 ### Changes
@@ -248,7 +248,7 @@ Based on:
 ### Generated
 - [go v0.4.10] .
 ### Releases
-- [Go v0.4.10] https://github.com/polarsource/polar-go/releases/tag/v0.4.10 - .
+- [Go v0.4.10] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.10 - .
 
 ## 2025-04-16 00:27:06
 ### Changes
@@ -258,7 +258,7 @@ Based on:
 ### Generated
 - [go v0.4.11] .
 ### Releases
-- [Go v0.4.11] https://github.com/polarsource/polar-go/releases/tag/v0.4.11 - .
+- [Go v0.4.11] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.11 - .
 
 ## 2025-04-16 09:18:16
 ### Changes
@@ -268,7 +268,7 @@ Based on:
 ### Generated
 - [go v0.4.12] .
 ### Releases
-- [Go v0.4.12] https://github.com/polarsource/polar-go/releases/tag/v0.4.12 - .
+- [Go v0.4.12] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.12 - .
 
 ## 2025-04-17 14:18:08
 ### Changes
@@ -278,7 +278,7 @@ Based on:
 ### Generated
 - [go v0.4.13] .
 ### Releases
-- [Go v0.4.13] https://github.com/polarsource/polar-go/releases/tag/v0.4.13 - .
+- [Go v0.4.13] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.13 - .
 
 ## 2025-04-18 13:07:49
 ### Changes
@@ -288,7 +288,7 @@ Based on:
 ### Generated
 - [go v0.4.14] .
 ### Releases
-- [Go v0.4.14] https://github.com/polarsource/polar-go/releases/tag/v0.4.14 - .
+- [Go v0.4.14] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.14 - .
 
 ## 2025-04-30 09:17:37
 ### Changes
@@ -298,7 +298,7 @@ Based on:
 ### Generated
 - [go v0.4.15] .
 ### Releases
-- [Go v0.4.15] https://github.com/polarsource/polar-go/releases/tag/v0.4.15 - .
+- [Go v0.4.15] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.15 - .
 
 ## 2025-04-30 14:16:29
 ### Changes
@@ -308,7 +308,7 @@ Based on:
 ### Generated
 - [go v0.4.16] .
 ### Releases
-- [Go v0.4.16] https://github.com/polarsource/polar-go/releases/tag/v0.4.16 - .
+- [Go v0.4.16] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.16 - .
 
 ## 2025-05-15 11:34:34
 ### Changes
@@ -318,7 +318,7 @@ Based on:
 ### Generated
 - [go v0.4.17] .
 ### Releases
-- [Go v0.4.17] https://github.com/polarsource/polar-go/releases/tag/v0.4.17 - .
+- [Go v0.4.17] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.17 - .
 
 ## 2025-05-16 09:38:30
 ### Changes
@@ -328,7 +328,7 @@ Based on:
 ### Generated
 - [go v0.4.18] .
 ### Releases
-- [Go v0.4.18] https://github.com/polarsource/polar-go/releases/tag/v0.4.18 - .
+- [Go v0.4.18] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.18 - .
 
 ## 2025-05-16 12:58:34
 ### Changes
@@ -338,7 +338,7 @@ Based on:
 ### Generated
 - [go v0.4.19] .
 ### Releases
-- [Go v0.4.19] https://github.com/polarsource/polar-go/releases/tag/v0.4.19 - .
+- [Go v0.4.19] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.19 - .
 
 ## 2025-05-22 00:27:31
 ### Changes
@@ -348,7 +348,7 @@ Based on:
 ### Generated
 - [go v0.4.20] .
 ### Releases
-- [Go v0.4.20] https://github.com/polarsource/polar-go/releases/tag/v0.4.20 - .
+- [Go v0.4.20] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.4.20 - .
 
 ## 2025-06-02 00:29:40
 ### Changes
@@ -358,7 +358,7 @@ Based on:
 ### Generated
 - [go v0.5.0] .
 ### Releases
-- [Go v0.5.0] https://github.com/polarsource/polar-go/releases/tag/v0.5.0 - .
+- [Go v0.5.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.5.0 - .
 
 ## 2025-06-12 08:33:04
 ### Changes
@@ -368,7 +368,7 @@ Based on:
 ### Generated
 - [go v0.6.0] .
 ### Releases
-- [Go v0.6.0] https://github.com/polarsource/polar-go/releases/tag/v0.6.0 - .
+- [Go v0.6.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.6.0 - .
 
 ## 2025-06-17 12:13:32
 ### Changes
@@ -378,7 +378,7 @@ Based on:
 ### Generated
 - [go v0.6.1] .
 ### Releases
-- [Go v0.6.1] https://github.com/polarsource/polar-go/releases/tag/v0.6.1 - .
+- [Go v0.6.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.6.1 - .
 
 ## 2025-06-18 12:45:49
 ### Changes
@@ -388,7 +388,7 @@ Based on:
 ### Generated
 - [go v0.7.0] .
 ### Releases
-- [Go v0.7.0] https://github.com/polarsource/polar-go/releases/tag/v0.7.0 - .
+- [Go v0.7.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.7.0 - .
 
 ## 2025-06-19 11:37:17
 ### Changes
@@ -398,7 +398,7 @@ Based on:
 ### Generated
 - [go v0.7.1] .
 ### Releases
-- [Go v0.7.1] https://github.com/polarsource/polar-go/releases/tag/v0.7.1 - .
+- [Go v0.7.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.7.1 - .
 
 ## 2025-07-15 00:30:09
 ### Changes
@@ -408,7 +408,7 @@ Based on:
 ### Generated
 - [go v0.7.2] .
 ### Releases
-- [Go v0.7.2] https://github.com/polarsource/polar-go/releases/tag/v0.7.2 - .
+- [Go v0.7.2] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.7.2 - .
 
 ## 2025-07-21 13:43:27
 ### Changes
@@ -418,7 +418,7 @@ Based on:
 ### Generated
 - [go v0.7.3] .
 ### Releases
-- [Go v0.7.3] https://github.com/polarsource/polar-go/releases/tag/v0.7.3 - .
+- [Go v0.7.3] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.7.3 - .
 
 ## 2025-08-11 00:31:56
 ### Changes
@@ -428,7 +428,7 @@ Based on:
 ### Generated
 - [go v0.8.0] .
 ### Releases
-- [Go v0.8.0] https://github.com/polarsource/polar-go/releases/tag/v0.8.0 - .
+- [Go v0.8.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.8.0 - .
 
 ## 2025-08-12 11:29:02
 ### Changes
@@ -438,7 +438,7 @@ Based on:
 ### Generated
 - [go v0.8.1] .
 ### Releases
-- [Go v0.8.1] https://github.com/polarsource/polar-go/releases/tag/v0.8.1 - .
+- [Go v0.8.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.8.1 - .
 
 ## 2025-08-20 00:27:08
 ### Changes
@@ -448,7 +448,7 @@ Based on:
 ### Generated
 - [go v0.8.2] .
 ### Releases
-- [Go v0.8.2] https://github.com/polarsource/polar-go/releases/tag/v0.8.2 - .
+- [Go v0.8.2] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.8.2 - .
 
 ## 2025-08-22 12:35:32
 ### Changes
@@ -458,7 +458,7 @@ Based on:
 ### Generated
 - [go v0.8.3] .
 ### Releases
-- [Go v0.8.3] https://github.com/polarsource/polar-go/releases/tag/v0.8.3 - .
+- [Go v0.8.3] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.8.3 - .
 
 ## 2025-09-05 00:26:33
 ### Changes
@@ -468,7 +468,7 @@ Based on:
 ### Generated
 - [go v0.8.4] .
 ### Releases
-- [Go v0.8.4] https://github.com/polarsource/polar-go/releases/tag/v0.8.4 - .
+- [Go v0.8.4] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.8.4 - .
 
 ## 2025-09-16 00:25:43
 ### Changes
@@ -478,7 +478,7 @@ Based on:
 ### Generated
 - [go v0.8.5] .
 ### Releases
-- [Go v0.8.5] https://github.com/polarsource/polar-go/releases/tag/v0.8.5 - .
+- [Go v0.8.5] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.8.5 - .
 
 ## 2025-09-22 10:13:23
 ### Changes
@@ -488,7 +488,7 @@ Based on:
 ### Generated
 - [go v0.9.0] .
 ### Releases
-- [Go v0.9.0] https://github.com/polarsource/polar-go/releases/tag/v0.9.0 - .
+- [Go v0.9.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.9.0 - .
 
 ## 2025-09-23 10:21:19
 ### Changes
@@ -498,7 +498,7 @@ Based on:
 ### Generated
 - [go v0.9.1] .
 ### Releases
-- [Go v0.9.1] https://github.com/polarsource/polar-go/releases/tag/v0.9.1 - .
+- [Go v0.9.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.9.1 - .
 
 ## 2025-09-29 00:27:32
 ### Changes
@@ -508,7 +508,7 @@ Based on:
 ### Generated
 - [go v0.9.2] .
 ### Releases
-- [Go v0.9.2] https://github.com/polarsource/polar-go/releases/tag/v0.9.2 - .
+- [Go v0.9.2] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.9.2 - .
 
 ## 2025-10-10 00:26:30
 ### Changes
@@ -518,7 +518,7 @@ Based on:
 ### Generated
 - [go v0.10.0] .
 ### Releases
-- [Go v0.10.0] https://github.com/polarsource/polar-go/releases/tag/v0.10.0 - .
+- [Go v0.10.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.10.0 - .
 
 ## 2025-10-16 00:27:34
 ### Changes
@@ -528,7 +528,7 @@ Based on:
 ### Generated
 - [go v0.10.1] .
 ### Releases
-- [Go v0.10.1] https://github.com/polarsource/polar-go/releases/tag/v0.10.1 - .
+- [Go v0.10.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.10.1 - .
 
 ## 2025-10-21 00:27:19
 ### Changes
@@ -538,7 +538,7 @@ Based on:
 ### Generated
 - [go v0.11.0] .
 ### Releases
-- [Go v0.11.0] https://github.com/polarsource/polar-go/releases/tag/v0.11.0 - .
+- [Go v0.11.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.11.0 - .
 
 ## 2025-10-21 13:13:56
 ### Changes
@@ -548,7 +548,7 @@ Based on:
 ### Generated
 - [go v0.11.1] .
 ### Releases
-- [Go v0.11.1] https://github.com/polarsource/polar-go/releases/tag/v0.11.1 - .
+- [Go v0.11.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.11.1 - .
 
 ## 2025-11-04 00:27:37
 ### Changes
@@ -558,7 +558,7 @@ Based on:
 ### Generated
 - [go v0.12.0] .
 ### Releases
-- [Go v0.12.0] https://github.com/polarsource/polar-go/releases/tag/v0.12.0 - .
+- [Go v0.12.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.12.0 - .
 
 ## 2026-02-23 00:38:54
 ### Changes
@@ -568,7 +568,7 @@ Based on:
 ### Generated
 - [go v0.13.0] .
 ### Releases
-- [Go v0.13.0] https://github.com/polarsource/polar-go/releases/tag/v0.13.0 - .
+- [Go v0.13.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.13.0 - .
 
 ## 2026-02-25 00:40:46
 ### Changes
@@ -578,7 +578,7 @@ Based on:
 ### Generated
 - [go v0.14.0] .
 ### Releases
-- [Go v0.14.0] https://github.com/polarsource/polar-go/releases/tag/v0.14.0 - .
+- [Go v0.14.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.14.0 - .
 
 ## 2026-03-10 00:34:45
 ### Changes
@@ -588,4 +588,4 @@ Based on:
 ### Generated
 - [go v0.15.0] .
 ### Releases
-- [Go v0.15.0] https://github.com/polarsource/polar-go/releases/tag/v0.15.0 - .
+- [Go v0.15.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.15.0 - .

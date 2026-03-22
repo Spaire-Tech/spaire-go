@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 // BenefitGitHubRepositorySubscriberProperties - Properties available to subscribers for a benefit of type `github_repository`.

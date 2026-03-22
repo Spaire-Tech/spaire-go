@@ -3,8 +3,8 @@
 package operations
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 type CustomersDeleteExternalRequest struct {

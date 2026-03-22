@@ -1,9 +1,9 @@
-# github.com/polarsource/polar-go
+# github.com/Spaire-Tech/spaire-go
 
-Developer-friendly & type-safe Go SDK specifically catered to leverage *github.com/polarsource/polar-go* API.
+Developer-friendly & type-safe Go SDK specifically catered to leverage *github.com/Spaire-Tech/spaire-go* API.
 
 <div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=github-com/polarsource/polar-go&utm_campaign=go"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
+    <a href="https://www.speakeasy.com/?utm_source=github-com/Spaire-Tech/spaire-go&utm_campaign=go"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
@@ -12,15 +12,15 @@ Developer-friendly & type-safe Go SDK specifically catered to leverage *github.c
 <!-- Start Summary [summary] -->
 ## Summary
 
-Polar API: Polar HTTP and Webhooks API
+Spaire API: Spaire HTTP and Webhooks API
 
-Read the docs at https://polar.sh/docs/api-reference
+Read the docs at https://spairehq.com/docs/api-reference
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [github.com/polarsource/polar-go](#githubcompolarsourcepolar-go)
+* [github.com/Spaire-Tech/spaire-go](#githubcomSpaire-Techspaire-go)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
@@ -42,7 +42,7 @@ Read the docs at https://polar.sh/docs/api-reference
 
 To add the SDK as a dependency to your project:
 ```bash
-go get github.com/polarsource/polar-go
+go get github.com/Spaire-Tech/spaire-go
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -56,7 +56,7 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 	"os"
 )
@@ -64,11 +64,11 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -101,7 +101,7 @@ This SDK supports the following security scheme globally:
 
 | Name          | Type | Scheme      | Environment Variable |
 | ------------- | ---- | ----------- | -------------------- |
-| `AccessToken` | http | HTTP Bearer | `POLAR_ACCESS_TOKEN` |
+| `AccessToken` | http | HTTP Bearer | `SPAIRE_ACCESS_TOKEN` |
 
 You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
 ```go
@@ -109,7 +109,7 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 	"os"
 )
@@ -117,11 +117,11 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -152,15 +152,15 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/operations"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New()
+	s := spairego.New()
 
 	res, err := s.CustomerPortal.BenefitGrants.List(ctx, operations.CustomerPortalBenefitGrantsListRequest{}, operations.CustomerPortalBenefitGrantsListSecurity{})
 	if err != nil {
@@ -236,63 +236,63 @@ func main() {
 * [List](docs/sdks/customermeters/README.md#list) - List Customer Meters
 * [Get](docs/sdks/customermeters/README.md#get) - Get Customer Meter
 
-### [CustomerPortal.BenefitGrants](docs/sdks/polarbenefitgrants/README.md)
+### [CustomerPortal.BenefitGrants](docs/sdks/spairebenefitgrants/README.md)
 
-* [List](docs/sdks/polarbenefitgrants/README.md#list) - List Benefit Grants
-* [Get](docs/sdks/polarbenefitgrants/README.md#get) - Get Benefit Grant
-* [Update](docs/sdks/polarbenefitgrants/README.md#update) - Update Benefit Grant
+* [List](docs/sdks/spairebenefitgrants/README.md#list) - List Benefit Grants
+* [Get](docs/sdks/spairebenefitgrants/README.md#get) - Get Benefit Grant
+* [Update](docs/sdks/spairebenefitgrants/README.md#update) - Update Benefit Grant
 
-### [CustomerPortal.CustomerMeters](docs/sdks/polarcustomermeters/README.md)
+### [CustomerPortal.CustomerMeters](docs/sdks/spairecustomermeters/README.md)
 
-* [List](docs/sdks/polarcustomermeters/README.md#list) - List Meters
-* [Get](docs/sdks/polarcustomermeters/README.md#get) - Get Customer Meter
+* [List](docs/sdks/spairecustomermeters/README.md#list) - List Meters
+* [Get](docs/sdks/spairecustomermeters/README.md#get) - Get Customer Meter
 
 ### [CustomerPortal.CustomerSession](docs/sdks/customersession/README.md)
 
 * [Introspect](docs/sdks/customersession/README.md#introspect) - Introspect Customer Session
 * [GetAuthenticatedUser](docs/sdks/customersession/README.md#getauthenticateduser) - Get Authenticated Portal User
 
-### [CustomerPortal.Customers](docs/sdks/polarcustomers/README.md)
+### [CustomerPortal.Customers](docs/sdks/spairecustomers/README.md)
 
-* [Get](docs/sdks/polarcustomers/README.md#get) - Get Customer
-* [Update](docs/sdks/polarcustomers/README.md#update) - Update Customer
-* [ListPaymentMethods](docs/sdks/polarcustomers/README.md#listpaymentmethods) - List Customer Payment Methods
-* [AddPaymentMethod](docs/sdks/polarcustomers/README.md#addpaymentmethod) - Add Customer Payment Method
-* [ConfirmPaymentMethod](docs/sdks/polarcustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
-* [DeletePaymentMethod](docs/sdks/polarcustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
+* [Get](docs/sdks/spairecustomers/README.md#get) - Get Customer
+* [Update](docs/sdks/spairecustomers/README.md#update) - Update Customer
+* [ListPaymentMethods](docs/sdks/spairecustomers/README.md#listpaymentmethods) - List Customer Payment Methods
+* [AddPaymentMethod](docs/sdks/spairecustomers/README.md#addpaymentmethod) - Add Customer Payment Method
+* [ConfirmPaymentMethod](docs/sdks/spairecustomers/README.md#confirmpaymentmethod) - Confirm Customer Payment Method
+* [DeletePaymentMethod](docs/sdks/spairecustomers/README.md#deletepaymentmethod) - Delete Customer Payment Method
 
 ### [CustomerPortal.Downloadables](docs/sdks/downloadables/README.md)
 
 * [List](docs/sdks/downloadables/README.md#list) - List Downloadables
 
-### [CustomerPortal.LicenseKeys](docs/sdks/polarlicensekeys/README.md)
+### [CustomerPortal.LicenseKeys](docs/sdks/spairelicensekeys/README.md)
 
-* [List](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
-* [Get](docs/sdks/polarlicensekeys/README.md#get) - Get License Key
-* [Validate](docs/sdks/polarlicensekeys/README.md#validate) - Validate License Key
-* [Activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
-* [Deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
+* [List](docs/sdks/spairelicensekeys/README.md#list) - List License Keys
+* [Get](docs/sdks/spairelicensekeys/README.md#get) - Get License Key
+* [Validate](docs/sdks/spairelicensekeys/README.md#validate) - Validate License Key
+* [Activate](docs/sdks/spairelicensekeys/README.md#activate) - Activate License Key
+* [Deactivate](docs/sdks/spairelicensekeys/README.md#deactivate) - Deactivate License Key
 
-### [CustomerPortal.Members](docs/sdks/polarmembers/README.md)
+### [CustomerPortal.Members](docs/sdks/spairemembers/README.md)
 
-* [ListMembers](docs/sdks/polarmembers/README.md#listmembers) - List Members
-* [AddMember](docs/sdks/polarmembers/README.md#addmember) - Add Member
-* [RemoveMember](docs/sdks/polarmembers/README.md#removemember) - Remove Member
-* [UpdateMember](docs/sdks/polarmembers/README.md#updatemember) - Update Member
+* [ListMembers](docs/sdks/spairemembers/README.md#listmembers) - List Members
+* [AddMember](docs/sdks/spairemembers/README.md#addmember) - Add Member
+* [RemoveMember](docs/sdks/spairemembers/README.md#removemember) - Remove Member
+* [UpdateMember](docs/sdks/spairemembers/README.md#updatemember) - Update Member
 
-### [CustomerPortal.Orders](docs/sdks/polarorders/README.md)
+### [CustomerPortal.Orders](docs/sdks/spaireorders/README.md)
 
-* [List](docs/sdks/polarorders/README.md#list) - List Orders
-* [Get](docs/sdks/polarorders/README.md#get) - Get Order
-* [Update](docs/sdks/polarorders/README.md#update) - Update Order
-* [Invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
-* [GenerateInvoice](docs/sdks/polarorders/README.md#generateinvoice) - Generate Order Invoice
-* [GetPaymentStatus](docs/sdks/polarorders/README.md#getpaymentstatus) - Get Order Payment Status
-* [ConfirmRetryPayment](docs/sdks/polarorders/README.md#confirmretrypayment) - Confirm Retry Payment
+* [List](docs/sdks/spaireorders/README.md#list) - List Orders
+* [Get](docs/sdks/spaireorders/README.md#get) - Get Order
+* [Update](docs/sdks/spaireorders/README.md#update) - Update Order
+* [Invoice](docs/sdks/spaireorders/README.md#invoice) - Get Order Invoice
+* [GenerateInvoice](docs/sdks/spaireorders/README.md#generateinvoice) - Generate Order Invoice
+* [GetPaymentStatus](docs/sdks/spaireorders/README.md#getpaymentstatus) - Get Order Payment Status
+* [ConfirmRetryPayment](docs/sdks/spaireorders/README.md#confirmretrypayment) - Confirm Retry Payment
 
-### [CustomerPortal.Organizations](docs/sdks/polarorganizations/README.md)
+### [CustomerPortal.Organizations](docs/sdks/spaireorganizations/README.md)
 
-* [Get](docs/sdks/polarorganizations/README.md#get) - Get Organization
+* [Get](docs/sdks/spaireorganizations/README.md#get) - Get Organization
 
 ### [CustomerPortal.Seats](docs/sdks/seats/README.md)
 
@@ -302,12 +302,12 @@ func main() {
 * [ResendInvitation](docs/sdks/seats/README.md#resendinvitation) - Resend Invitation
 * [ListClaimedSubscriptions](docs/sdks/seats/README.md#listclaimedsubscriptions) - List Claimed Subscriptions
 
-### [CustomerPortal.Subscriptions](docs/sdks/polarsubscriptions/README.md)
+### [CustomerPortal.Subscriptions](docs/sdks/spairesubscriptions/README.md)
 
-* [List](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
-* [Get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
-* [Cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
-* [Update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
+* [List](docs/sdks/spairesubscriptions/README.md#list) - List Subscriptions
+* [Get](docs/sdks/spairesubscriptions/README.md#get) - Get Subscription
+* [Cancel](docs/sdks/spairesubscriptions/README.md#cancel) - Cancel Subscription
+* [Update](docs/sdks/spairesubscriptions/README.md#update) - Update Subscription
 
 ### [CustomerPortal.Wallets](docs/sdks/wallets/README.md)
 
@@ -497,7 +497,7 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 	"os"
 )
@@ -505,11 +505,11 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -544,8 +544,8 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/retry"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/retry"
 	"log"
 	"models/operations"
 	"os"
@@ -554,11 +554,11 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil, operations.WithRetries(
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -597,8 +597,8 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/retry"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/retry"
 	"log"
 	"os"
 )
@@ -606,8 +606,8 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithRetryConfig(
+	s := spairego.New(
+		spairego.WithRetryConfig(
 			retry.Config{
 				Strategy: "backoff",
 				Backoff: &retry.BackoffStrategy{
@@ -618,10 +618,10 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -667,8 +667,8 @@ package main
 import (
 	"context"
 	"errors"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/apierrors"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/apierrors"
 	"log"
 	"os"
 )
@@ -676,11 +676,11 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 
 		var e *apierrors.HTTPValidationError
@@ -709,8 +709,8 @@ You can override the default server globally using the `WithServer(server string
 
 | Name         | Server                         | Description            |
 | ------------ | ------------------------------ | ---------------------- |
-| `production` | `https://api.polar.sh`         | Production environment |
-| `sandbox`    | `https://sandbox-api.polar.sh` | Sandbox environment    |
+| `production` | `https://api.spairehq.com`         | Production environment |
+| `sandbox`    | `https://sandbox-api.spairehq.com` | Sandbox environment    |
 
 #### Example
 
@@ -719,7 +719,7 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 	"os"
 )
@@ -727,12 +727,12 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithServer("production"),
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithServer("production"),
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -763,7 +763,7 @@ package main
 
 import (
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 	"os"
 )
@@ -771,12 +771,12 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := polargo.New(
-		polargo.WithServerURL("https://api.polar.sh"),
-		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	s := spairego.New(
+		spairego.WithServerURL("https://api.spairehq.com"),
+		spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
 	)
 
-	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	res, err := s.Organizations.List(ctx, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -818,12 +818,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/polarsource/polar-go"
+	"github.com/Spaire-Tech/spaire-go"
 )
 
 var (
 	httpClient = &http.Client{Timeout: 30 * time.Second}
-	sdkClient  = polargo.New(polargo.WithClient(httpClient))
+	sdkClient  = spairego.New(spairego.WithClient(httpClient))
 )
 ```
 
@@ -871,4 +871,4 @@ looking for the latest version.
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=github-com/polarsource/polar-go&utm_campaign=go)
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=github-com/Spaire-Tech/spaire-go&utm_campaign=go)

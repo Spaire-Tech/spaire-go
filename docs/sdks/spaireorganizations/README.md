@@ -18,14 +18,14 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Organizations.Get(ctx, "<value>")
     if err != nil {

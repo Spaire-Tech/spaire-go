@@ -5,7 +5,7 @@ package hooks
 import (
 	"context"
 	"errors"
-	"github.com/polarsource/polar-go/internal/config"
+	"github.com/Spaire-Tech/spaire-go/internal/config"
 	"net/http"
 )
 
