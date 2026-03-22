@@ -5,21 +5,13 @@ sources:
         inputs:
             - location: https://api.spairehq.com/openapi.json
         overlays:
-            - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/security.yml
-            - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/type_parameter.yml
-            - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/read_only.yml
-            - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/event_discriminator.yml
-            - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/timezone_enum.yml
-            - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/event_metadata.yml
-        registry:
-            location: registry.speakeasyapi.dev/spaire/spaire/spaire-oas
+            - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/security.yml
+            - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/type_parameter.yml
+            - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/read_only.yml
+            - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/event_discriminator.yml
+            - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/timezone_enum.yml
+            - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/event_metadata.yml
 targets:
     spaire:
         target: go
         source: Spaire-OAS
-        codeSamples:
-            output: codeSamples.yaml
-            registry:
-                location: registry.speakeasyapi.dev/spaire/spaire/spaire-oas-code-samples-go
-            labelOverride:
-                fixedValue: Go (SDK)
