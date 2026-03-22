@@ -7,11 +7,11 @@ package spairego
 import (
 	"context"
 	"fmt"
-	"github.com/Spaire-Tech/spaire-go/internal/config"
-	"github.com/Spaire-Tech/spaire-go/internal/hooks"
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
-	"github.com/Spaire-Tech/spaire-go/models/components"
-	"github.com/Spaire-Tech/spaire-go/retry"
+	"app.spairehq.com/go/internal/config"
+	"app.spairehq.com/go/internal/hooks"
+	"app.spairehq.com/go/internal/utils"
+	"app.spairehq.com/go/models/components"
+	"app.spairehq.com/go/retry"
 	"net/http"
 	"time"
 )
@@ -166,7 +166,7 @@ func New(opts ...SDKOption) *Spaire {
 	sdk := &Spaire{
 		SDKVersion: "0.15.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.15.0 2.856.1 0.1.0 github.com/Spaire-Tech/spaire-go",
+			UserAgent:  "speakeasy-sdk/go 0.15.0 2.856.1 0.1.0 app.spairehq.com/go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),

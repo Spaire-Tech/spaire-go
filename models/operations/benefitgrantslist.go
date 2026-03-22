@@ -5,8 +5,8 @@ package operations
 import (
 	"errors"
 	"fmt"
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
-	"github.com/Spaire-Tech/spaire-go/models/components"
+	"app.spairehq.com/go/internal/utils"
+	"app.spairehq.com/go/models/components"
 )
 
 type BenefitGrantsListQueryParamOrganizationIDFilterType string

@@ -15,7 +15,7 @@ import (
 	"reflect"
 	"regexp"
 
-	"github.com/Spaire-Tech/spaire-go/optionalnullable"
+	"app.spairehq.com/go/optionalnullable"
 )
 
 const (

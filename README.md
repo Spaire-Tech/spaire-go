@@ -1,9 +1,9 @@
-# github.com/Spaire-Tech/spaire-go
+# app.spairehq.com/go
 
-Developer-friendly & type-safe Go SDK specifically catered to leverage *github.com/Spaire-Tech/spaire-go* API.
+Developer-friendly & type-safe Go SDK specifically catered to leverage *app.spairehq.com/go* API.
 
 <div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=github-com/Spaire-Tech/spaire-go&utm_campaign=go"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
+    <a href="https://www.speakeasy.com/?utm_source=app.spairehq.com/go&utm_campaign=go"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
@@ -20,7 +20,7 @@ Read the docs at https://spairehq.com/docs/api-reference
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [github.com/Spaire-Tech/spaire-go](#githubcomSpaire-Techspaire-go)
+* [app.spairehq.com/go](#githubcomSpaire-Techspaire-go)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
@@ -42,7 +42,7 @@ Read the docs at https://spairehq.com/docs/api-reference
 
 To add the SDK as a dependency to your project:
 ```bash
-go get github.com/Spaire-Tech/spaire-go
+go get app.spairehq.com/go
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -56,7 +56,7 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
+	spairego "app.spairehq.com/go"
 	"log"
 	"os"
 )
@@ -109,7 +109,7 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
+	spairego "app.spairehq.com/go"
 	"log"
 	"os"
 )
@@ -152,8 +152,8 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
-	"github.com/Spaire-Tech/spaire-go/models/operations"
+	spairego "app.spairehq.com/go"
+	"app.spairehq.com/go/models/operations"
 	"log"
 )
 
@@ -497,7 +497,7 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
+	spairego "app.spairehq.com/go"
 	"log"
 	"os"
 )
@@ -544,8 +544,8 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
-	"github.com/Spaire-Tech/spaire-go/retry"
+	spairego "app.spairehq.com/go"
+	"app.spairehq.com/go/retry"
 	"log"
 	"models/operations"
 	"os"
@@ -597,8 +597,8 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
-	"github.com/Spaire-Tech/spaire-go/retry"
+	spairego "app.spairehq.com/go"
+	"app.spairehq.com/go/retry"
 	"log"
 	"os"
 )
@@ -667,8 +667,8 @@ package main
 import (
 	"context"
 	"errors"
-	spairego "github.com/Spaire-Tech/spaire-go"
-	"github.com/Spaire-Tech/spaire-go/models/apierrors"
+	spairego "app.spairehq.com/go"
+	"app.spairehq.com/go/models/apierrors"
 	"log"
 	"os"
 )
@@ -719,7 +719,7 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
+	spairego "app.spairehq.com/go"
 	"log"
 	"os"
 )
@@ -763,7 +763,7 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
+	spairego "app.spairehq.com/go"
 	"log"
 	"os"
 )
@@ -818,7 +818,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Spaire-Tech/spaire-go"
+	"app.spairehq.com/go"
 )
 
 var (
@@ -871,4 +871,4 @@ looking for the latest version.
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=github-com/Spaire-Tech/spaire-go&utm_campaign=go)
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=app.spairehq.com/go&utm_campaign=go)

@@ -6,7 +6,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/Spaire-Tech/spaire-go/retry"
+	"app.spairehq.com/go/retry"
 	"io"
 	"math"
 	"math/rand"

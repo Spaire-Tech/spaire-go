@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"app.spairehq.com/go/internal/utils"
 )
 
 // CheckoutDiscountPercentageRepeatDuration - Schema for a percentage discount that is applied on every invoice

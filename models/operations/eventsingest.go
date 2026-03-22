@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/Spaire-Tech/spaire-go/models/components"
+	"app.spairehq.com/go/models/components"
 )
 
 type EventsIngestResponse struct {

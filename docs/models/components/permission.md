@@ -6,7 +6,7 @@ The permission level to grant. Read more about roles and their permissions on [G
 
 ```go
 import (
-	"github.com/Spaire-Tech/spaire-go/models/components"
+	"app.spairehq.com/go/models/components"
 )
 
 value := components.PermissionPull

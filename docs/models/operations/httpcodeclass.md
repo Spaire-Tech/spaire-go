@@ -6,7 +6,7 @@ Filter by HTTP response code class (2xx, 3xx, 4xx, 5xx).
 
 ```go
 import (
-	"github.com/Spaire-Tech/spaire-go/models/operations"
+	"app.spairehq.com/go/models/operations"
 )
 
 value := operations.HTTPCodeClassTwoxx

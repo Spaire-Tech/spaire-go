@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"app.spairehq.com/go/internal/utils"
 )
 
 // BenefitMeterCreditSubscriberProperties - Properties available to subscribers for a benefit of type `meter_unit`.

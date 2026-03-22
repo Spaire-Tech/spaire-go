@@ -1,4 +1,4 @@
-module github.com/Spaire-Tech/spaire-go
+module app.spairehq.com/go
 
 go 1.22
 

@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"app.spairehq.com/go/internal/utils"
 )
 
 // CheckoutDiscountFixedOnceForeverDuration - Schema for a fixed amount discount that is applied once or forever.

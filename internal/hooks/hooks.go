@@ -5,7 +5,7 @@ package hooks
 import (
 	"context"
 	"errors"
-	"github.com/Spaire-Tech/spaire-go/internal/config"
+	"app.spairehq.com/go/internal/config"
 	"net/http"
 )
 

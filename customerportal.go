@@ -3,8 +3,8 @@
 package spairego
 
 import (
-	"github.com/Spaire-Tech/spaire-go/internal/config"
-	"github.com/Spaire-Tech/spaire-go/internal/hooks"
+	"app.spairehq.com/go/internal/config"
+	"app.spairehq.com/go/internal/hooks"
 )
 
 type CustomerPortal struct {

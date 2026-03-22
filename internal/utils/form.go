@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Spaire-Tech/spaire-go/optionalnullable"
-	"github.com/Spaire-Tech/spaire-go/types"
+	"app.spairehq.com/go/optionalnullable"
+	"app.spairehq.com/go/types"
 )
 
 func populateForm(paramName string, explode bool, objType reflect.Type, objValue reflect.Value, delimiter string, defaultValue *string, allowEmptyValue map[string]struct{}, getFieldName func(reflect.StructField) string) url.Values {

@@ -3,8 +3,8 @@
 package components
 
 import (
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
-	"github.com/Spaire-Tech/spaire-go/types"
+	"app.spairehq.com/go/internal/utils"
+	"app.spairehq.com/go/types"
 )
 
 // MetricsLimits - Date limits to get metrics.

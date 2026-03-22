@@ -4,7 +4,7 @@ package main
 
 import (
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
+	spairego "app.spairehq.com/go"
 	"log"
 	"os"
 )

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Spaire-Tech/spaire-go/types"
+	"app.spairehq.com/go/types"
 )
 
 // UnionCandidate represents a candidate type during union deserialization

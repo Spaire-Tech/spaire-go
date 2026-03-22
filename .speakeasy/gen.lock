@@ -8,7 +8,7 @@ management:
   releaseVersion: 0.15.0
   configChecksum: f17cd814e553716e85668da0dfccb96a
   repoURL: https://github.com/Spaire-Tech/spaire-go.git
-  installationURL: https://github.com/Spaire-Tech/spaire-go
+  installationURL: https://app.spairehq.com/go
 persistentEdits:
   generation_id: f34c9e6f-0e0c-4e81-a197-c351eb86b590
   pristine_commit_hash: 52330bdefd283f191647a19da70f7b4e3d6cb73d

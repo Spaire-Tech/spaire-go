@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"app.spairehq.com/go/internal/utils"
 )
 
 // CheckoutDiscountFixedRepeatDuration - Schema for a fixed amount discount that is applied on every invoice

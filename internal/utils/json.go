@@ -14,7 +14,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/Spaire-Tech/spaire-go/types"
+	"app.spairehq.com/go/types"
 )
 
 func MarshalJSON(v interface{}, tag reflect.StructTag, topLevel bool) ([]byte, error) {

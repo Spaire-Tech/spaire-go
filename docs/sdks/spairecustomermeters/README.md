@@ -21,8 +21,8 @@ package main
 
 import(
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
-	"github.com/Spaire-Tech/spaire-go/models/operations"
+	spairego "app.spairehq.com/go"
+	"app.spairehq.com/go/models/operations"
 	"os"
 	"log"
 )
@@ -90,9 +90,9 @@ package main
 
 import(
 	"context"
-	spairego "github.com/Spaire-Tech/spaire-go"
+	spairego "app.spairehq.com/go"
 	"os"
-	"github.com/Spaire-Tech/spaire-go/models/operations"
+	"app.spairehq.com/go/models/operations"
 	"log"
 )
 

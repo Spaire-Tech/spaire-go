@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"app.spairehq.com/go/internal/utils"
 )
 
 // ProductPriceSeatBasedCreate - Schema to create a seat-based price with volume-based tiers.

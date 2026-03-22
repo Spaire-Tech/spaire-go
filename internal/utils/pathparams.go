@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Spaire-Tech/spaire-go/optionalnullable"
-	"github.com/Spaire-Tech/spaire-go/types"
+	"app.spairehq.com/go/optionalnullable"
+	"app.spairehq.com/go/types"
 )
 
 func GenerateURL(_ context.Context, serverURL, path string, pathParams interface{}, globals interface{}) (string, error) {

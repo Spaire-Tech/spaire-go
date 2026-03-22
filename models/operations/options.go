@@ -4,8 +4,8 @@ package operations
 
 import (
 	"errors"
-	"github.com/Spaire-Tech/spaire-go/internal/utils"
-	"github.com/Spaire-Tech/spaire-go/retry"
+	"app.spairehq.com/go/internal/utils"
+	"app.spairehq.com/go/retry"
 	"time"
 )
 

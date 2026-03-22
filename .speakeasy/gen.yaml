@@ -59,7 +59,7 @@ go:
   multipartArrayFormat: legacy
   nullableOptionalWrapper: false
   outputModelSuffix: output
-  packageName: github.com/Spaire-Tech/spaire-go
+  packageName: app.spairehq.com/go
   respectRequiredFields: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http

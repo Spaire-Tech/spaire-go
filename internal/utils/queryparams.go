@@ -12,8 +12,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/Spaire-Tech/spaire-go/optionalnullable"
-	"github.com/Spaire-Tech/spaire-go/types"
+	"app.spairehq.com/go/optionalnullable"
+	"app.spairehq.com/go/types"
 )
 
 func PopulateQueryParams(_ context.Context, req *http.Request, queryParams interface{}, globals interface{}, allowEmptyValue map[string]struct{}) error {

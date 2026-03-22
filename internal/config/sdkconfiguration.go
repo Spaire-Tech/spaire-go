@@ -4,7 +4,7 @@ package config
 
 import (
 	"context"
-	"github.com/Spaire-Tech/spaire-go/retry"
+	"app.spairehq.com/go/retry"
 	"net/http"
 	"time"
 )
