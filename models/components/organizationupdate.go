@@ -11,7 +11,7 @@ type OrganizationUpdate struct {
 	Website *string `json:"website,omitempty"`
 	// Links to social profiles.
 	Socials []OrganizationSocialLink `json:"socials,omitempty"`
-	// Additional, private, business details Polar needs about active organizations for compliance (KYC).
+	// Additional, private, business details Spaire needs about active organizations for compliance (KYC).
 	Details                *OrganizationDetails                `json:"details,omitempty"`
 	FeatureSettings        *OrganizationFeatureSettings        `json:"feature_settings,omitempty"`
 	SubscriptionSettings   *OrganizationSubscriptionSettings   `json:"subscription_settings,omitempty"`

@@ -6,7 +6,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/polarsource/polar-go/retry"
+	"github.com/Spaire-Tech/spaire-go/retry"
 	"io"
 	"math"
 	"math/rand"

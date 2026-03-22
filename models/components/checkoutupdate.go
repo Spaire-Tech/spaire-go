@@ -5,7 +5,7 @@ package components
 import (
 	"errors"
 	"fmt"
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 	"time"
 )
 
@@ -392,7 +392,7 @@ type CheckoutUpdate struct {
 	SuccessURL *string `json:"success_url,omitempty"`
 	// When set, a back button will be shown in the checkout to return to this URL.
 	ReturnURL *string `json:"return_url,omitempty"`
-	// If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page.
+	// If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Spaire iframe to communicate with the parent page.
 	EmbedOrigin *string `json:"embed_origin,omitempty"`
 }
 

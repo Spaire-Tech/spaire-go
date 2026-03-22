@@ -5,7 +5,7 @@ package components
 import (
 	"errors"
 	"fmt"
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 type SubscriptionCreateExternalCustomerMetadataType string
@@ -131,7 +131,7 @@ type SubscriptionCreateExternalCustomer struct {
 	Metadata map[string]SubscriptionCreateExternalCustomerMetadata `json:"metadata,omitempty"`
 	// The ID of the recurring product to subscribe to. Must be a free product, otherwise the customer should go through a checkout flow.
 	ProductID string `json:"product_id"`
-	// The ID of the customer in your system to create the subscription for. It must already exist in Polar.
+	// The ID of the customer in your system to create the subscription for. It must already exist in Spaire.
 	ExternalCustomerID string `json:"external_customer_id"`
 }
 

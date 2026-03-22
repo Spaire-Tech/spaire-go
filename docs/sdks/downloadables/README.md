@@ -18,20 +18,20 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"os"
-	"github.com/polarsource/polar-go/models/operations"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.CustomerPortal.Downloadables.List(ctx, operations.CustomerPortalDownloadablesListSecurity{
-        CustomerSession: polargo.Pointer(os.Getenv("POLAR_CUSTOMER_SESSION")),
-    }, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10))
+        CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
+    }, nil, spairego.Pointer[int64](1), spairego.Pointer[int64](10))
     if err != nil {
         log.Fatal(err)
     }

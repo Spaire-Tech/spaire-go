@@ -3,7 +3,7 @@
 package components
 
 type Security struct {
-	AccessToken *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=polar_access_token"`
+	AccessToken *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=spaire_access_token"`
 }
 
 func (s *Security) GetAccessToken() *string {

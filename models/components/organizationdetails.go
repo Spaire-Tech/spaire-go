@@ -5,7 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 )
 
 type SwitchingFrom string
@@ -48,7 +48,7 @@ type OrganizationDetails struct {
 	About string `json:"about"`
 	// Description of digital products being sold.
 	ProductDescription string `json:"product_description"`
-	// How the organization will integrate and use Polar.
+	// How the organization will integrate and use Spaire.
 	IntendedUse string `json:"intended_use"`
 	// Main customer acquisition channels.
 	CustomerAcquisition []string `json:"customer_acquisition"`

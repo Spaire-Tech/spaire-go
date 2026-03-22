@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 	"time"
 )
 
@@ -525,7 +525,7 @@ type CheckoutCreate struct {
 	CustomerID *string `json:"customer_id,omitempty"`
 	// Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name.
 	IsBusinessCustomer *bool `default:"false" json:"is_business_customer"`
-	// ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
+	// ID of the customer in your system. If a matching customer exists on Spaire, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
 	ExternalCustomerID     *string       `json:"external_customer_id,omitempty"`
 	CustomerName           *string       `json:"customer_name,omitempty"`
 	CustomerEmail          *string       `json:"customer_email,omitempty"`
@@ -551,7 +551,7 @@ type CheckoutCreate struct {
 	SuccessURL *string `json:"success_url,omitempty"`
 	// When set, a back button will be shown in the checkout to return to this URL.
 	ReturnURL *string `json:"return_url,omitempty"`
-	// If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page.
+	// If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Spaire iframe to communicate with the parent page.
 	EmbedOrigin *string              `json:"embed_origin,omitempty"`
 	Locale      *string              `json:"locale,omitempty"`
 	Currency    *PresentmentCurrency `json:"currency,omitempty"`

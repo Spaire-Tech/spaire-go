@@ -27,20 +27,20 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/operations"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Checkouts.List(ctx, operations.CheckoutsListRequest{
-        OrganizationID: polargo.Pointer(operations.CreateCheckoutsListQueryParamOrganizationIDFilterStr(
+        OrganizationID: spairego.Pointer(operations.CreateCheckoutsListQueryParamOrganizationIDFilterStr(
             "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         )),
     })
@@ -99,24 +99,24 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Checkouts.Create(ctx, components.CheckoutCreate{
-        CustomerName: polargo.Pointer("John Doe"),
+        CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: polargo.Pointer("en"),
+        Locale: spairego.Pointer("en"),
         Products: []string{
             "<value 1>",
             "<value 2>",
@@ -172,16 +172,16 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Checkouts.Get(ctx, "<value>")
@@ -235,24 +235,24 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Checkouts.Update(ctx, "<value>", components.CheckoutUpdate{
-        CustomerName: polargo.Pointer("John Doe"),
+        CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: polargo.Pointer("en"),
+        Locale: spairego.Pointer("en"),
     })
     if err != nil {
         log.Fatal(err)
@@ -303,15 +303,15 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
+	spairego "github.com/Spaire-Tech/spaire-go"
 	"log"
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.Checkouts.ClientGet(ctx, "<value>")
     if err != nil {
@@ -362,22 +362,22 @@ package main
 
 import(
 	"context"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New()
+    s := spairego.New()
 
     res, err := s.Checkouts.ClientUpdate(ctx, "<value>", components.CheckoutUpdatePublic{
-        CustomerName: polargo.Pointer("John Doe"),
+        CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: polargo.Pointer("en"),
+        Locale: spairego.Pointer("en"),
     })
     if err != nil {
         log.Fatal(err)
@@ -432,24 +432,24 @@ package main
 import(
 	"context"
 	"os"
-	polargo "github.com/polarsource/polar-go"
-	"github.com/polarsource/polar-go/models/components"
+	spairego "github.com/Spaire-Tech/spaire-go"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := polargo.New(
-        polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+    s := spairego.New(
+        spairego.WithSecurity(os.Getenv("SPAIRE_ACCESS_TOKEN")),
     )
 
     res, err := s.Checkouts.ClientConfirm(ctx, "<value>", components.CheckoutConfirmStripe{
-        CustomerName: polargo.Pointer("John Doe"),
+        CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: polargo.Pointer("en"),
+        Locale: spairego.Pointer("en"),
     })
     if err != nil {
         log.Fatal(err)

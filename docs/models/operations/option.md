@@ -9,7 +9,7 @@ Global options are passed when initializing the SDK client and apply to all oper
 WithServerURL allows providing an alternative server URL.
 
 ```go
-polargo.WithServerURL("https://api.example.com")
+spairego.WithServerURL("https://api.example.com")
 ```
 
 ### WithTemplatedServerURL
@@ -17,7 +17,7 @@ polargo.WithServerURL("https://api.example.com")
 WithTemplatedServerURL allows providing an alternative server URL with templated parameters.
 
 ```go
-polargo.WithTemplatedServerURL("https://{host}:{port}", map[string]string{
+spairego.WithTemplatedServerURL("https://{host}:{port}", map[string]string{
     "host": "api.example.com",
     "port": "8080",
 })
@@ -28,7 +28,7 @@ polargo.WithTemplatedServerURL("https://{host}:{port}", map[string]string{
 WithServer allows the overriding of the default server by name.
 
 ```go
-polargo.WithServer("my-server")
+spairego.WithServer("my-server")
 ```
 
 ### WithClient
@@ -36,7 +36,7 @@ polargo.WithServer("my-server")
 WithClient allows the overriding of the default HTTP client used by the SDK.
 
 ```go
-polargo.WithClient(httpClient)
+spairego.WithClient(httpClient)
 ```
 
 ### WithSecurity
@@ -44,7 +44,7 @@ polargo.WithClient(httpClient)
 WithSecurity configures the SDK to use the provided security details.
 
 ```go
-polargo.WithSecurity(/* ... */)
+spairego.WithSecurity(/* ... */)
 ```
 
 ### WithSecuritySource
@@ -52,7 +52,7 @@ polargo.WithSecurity(/* ... */)
 WithSecuritySource configures the SDK to invoke the provided function on each method call to determine authentication.
 
 ```go
-polargo.WithSecuritySource(/* ... */)
+spairego.WithSecuritySource(/* ... */)
 ```
 
 ### WithRetryConfig
@@ -60,7 +60,7 @@ polargo.WithSecuritySource(/* ... */)
 WithRetryConfig allows setting the default retry configuration used by the SDK for all supported operations.
 
 ```go
-polargo.WithRetryConfig(retry.Config{
+spairego.WithRetryConfig(retry.Config{
     Strategy: "backoff",
     Backoff: retry.BackoffStrategy{
         InitialInterval: 500 * time.Millisecond,
@@ -77,7 +77,7 @@ polargo.WithRetryConfig(retry.Config{
 WithTimeout sets the default request timeout for all operations.
 
 ```go
-polargo.WithTimeout(30 * time.Second)
+spairego.WithTimeout(30 * time.Second)
 ```
 
 ## Per-Method Options

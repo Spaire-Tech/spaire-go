@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 	"time"
 )
 
@@ -16,10 +16,10 @@ type EventCreateCustomer struct {
 	OrganizationID *string `json:"organization_id,omitempty"`
 	// Your unique identifier for this event. Useful for deduplication and parent-child relationships.
 	ExternalID *string `json:"external_id,omitempty"`
-	// The ID of the parent event. Can be either a Polar event ID (UUID) or an external event ID.
+	// The ID of the parent event. Can be either a Spaire event ID (UUID) or an external event ID.
 	ParentID *string                       `json:"parent_id,omitempty"`
 	Metadata map[string]EventMetadataInput `json:"metadata,omitempty"`
-	// ID of the customer in your Polar organization associated with the event.
+	// ID of the customer in your Spaire organization associated with the event.
 	CustomerID string `json:"customer_id"`
 	// ID of the member within the customer's organization who performed the action. Used for member-level attribution in B2B.
 	MemberID *string `json:"member_id,omitempty"`

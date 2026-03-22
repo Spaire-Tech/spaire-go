@@ -3,12 +3,12 @@
 package operations
 
 import (
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 type CustomerPortalCustomerMetersGetSecurity struct {
-	CustomerSession *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=polar_customer_session"`
-	MemberSession   *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=polar_member_session"`
+	CustomerSession *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=spaire_customer_session"`
+	MemberSession   *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=spaire_member_session"`
 }
 
 func (c *CustomerPortalCustomerMetersGetSecurity) GetCustomerSession() *string {

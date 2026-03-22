@@ -14,7 +14,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/polarsource/polar-go/types"
+	"github.com/Spaire-Tech/spaire-go/types"
 )
 
 func MarshalJSON(v interface{}, tag reflect.StructTag, topLevel bool) ([]byte, error) {

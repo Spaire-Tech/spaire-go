@@ -2,8 +2,8 @@ configVersion: 2.0.0
 generation:
   devContainers:
     enabled: true
-    schemaPath: https://api.polar.sh/openapi.json
-  sdkClassName: Polar
+    schemaPath: https://api.spairehq.com/openapi.json
+  sdkClassName: Spaire
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -35,10 +35,10 @@ go:
   version: 0.15.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: true
-  baseErrorName: PolarError
+  baseErrorName: SpaireError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIError
-  envVarPrefix: POLAR
+  envVarPrefix: SPAIRE
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false
   forwardCompatibleUnionsByDefault: "false"
@@ -59,7 +59,7 @@ go:
   multipartArrayFormat: legacy
   nullableOptionalWrapper: false
   outputModelSuffix: output
-  packageName: github.com/polarsource/polar-go
+  packageName: github.com/Spaire-Tech/spaire-go
   respectRequiredFields: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http

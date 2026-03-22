@@ -1,4 +1,4 @@
-module github.com/polarsource/polar-go
+module github.com/Spaire-Tech/spaire-go
 
 go 1.22
 

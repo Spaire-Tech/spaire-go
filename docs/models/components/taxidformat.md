@@ -8,7 +8,7 @@ Ref: https://docs.stripe.com/billing/customer/tax-ids#supported-tax-id
 
 ```go
 import (
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 value := components.TaxIDFormatAdNrt

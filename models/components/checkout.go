@@ -5,7 +5,7 @@ package components
 import (
 	"errors"
 	"fmt"
-	"github.com/polarsource/polar-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
 	"time"
 )
 
@@ -529,7 +529,7 @@ type Checkout struct {
 	// The number of interval units for the trial period.
 	TrialIntervalCount *int64                        `json:"trial_interval_count"`
 	Metadata           map[string]MetadataOutputType `json:"metadata"`
-	// ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
+	// ID of the customer in your system. If a matching customer exists on Spaire, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
 	ExternalCustomerID *string `json:"external_customer_id"`
 	// List of products available to select.
 	Products []CheckoutProduct `json:"products"`

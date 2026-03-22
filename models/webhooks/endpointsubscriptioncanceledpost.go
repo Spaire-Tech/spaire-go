@@ -3,7 +3,7 @@
 package webhooks
 
 import (
-	"github.com/polarsource/polar-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/models/components"
 )
 
 type EndpointsubscriptionCanceledPostResponse struct {

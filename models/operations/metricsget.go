@@ -5,9 +5,9 @@ package operations
 import (
 	"errors"
 	"fmt"
-	"github.com/polarsource/polar-go/internal/utils"
-	"github.com/polarsource/polar-go/models/components"
-	"github.com/polarsource/polar-go/types"
+	"github.com/Spaire-Tech/spaire-go/internal/utils"
+	"github.com/Spaire-Tech/spaire-go/models/components"
+	"github.com/Spaire-Tech/spaire-go/types"
 )
 
 type MetricsGetQueryParamOrganizationIDFilterType string
