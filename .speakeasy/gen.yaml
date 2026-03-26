@@ -63,5 +63,5 @@ go:
   respectRequiredFields: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
-  sdkPackageName: ""
+  sdkPackageName: spairego
   unionStrategy: left-to-right
