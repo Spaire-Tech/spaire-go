@@ -13,7 +13,7 @@ sources:
             - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/event_metadata.yml
             - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/rebrand.yml
         registry:
-            location: registry.speakeasyapi.dev/spaire/spaire/spaire-oas
+            location: registry.speakeasyapi.dev/spaire/spaire-workspace/spaire-oas
 targets:
     spaire:
         target: go
@@ -21,6 +21,6 @@ targets:
         codeSamples:
             output: codeSamples.yaml
             registry:
-                location: registry.speakeasyapi.dev/spaire/spaire/spaire-oas-go-code-samples
+                location: registry.speakeasyapi.dev/spaire/spaire-workspace/spaire-oas-go-code-samples
             labelOverride:
                 fixedValue: Go (SDK)
