@@ -8,6 +8,7 @@ import (
 
 // ProductPriceFreeCreate - Schema to create a free price.
 type ProductPriceFreeCreate struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string               `const:"free" json:"amount_type"`
 	PriceCurrency *PresentmentCurrency `json:"price_currency,omitempty"`
 }

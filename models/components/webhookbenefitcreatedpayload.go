@@ -11,6 +11,7 @@ import (
 //
 // **Discord & Slack support:** Basic
 type WebhookBenefitCreatedPayload struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_     string    `const:"benefit.created" json:"type"`
 	Timestamp time.Time `json:"timestamp"`
 	Data      Benefit   `json:"data"`
@@ -43,32 +44,4 @@ func (w *WebhookBenefitCreatedPayload) GetData() Benefit {
 		return Benefit{}
 	}
 	return w.Data
-}
-
-func (w *WebhookBenefitCreatedPayload) GetDataCustom() *BenefitCustom {
-	return w.GetData().BenefitCustom
-}
-
-func (w *WebhookBenefitCreatedPayload) GetDataDiscord() *BenefitDiscord {
-	return w.GetData().BenefitDiscord
-}
-
-func (w *WebhookBenefitCreatedPayload) GetDataDownloadables() *BenefitDownloadables {
-	return w.GetData().BenefitDownloadables
-}
-
-func (w *WebhookBenefitCreatedPayload) GetDataFeatureFlag() *BenefitFeatureFlag {
-	return w.GetData().BenefitFeatureFlag
-}
-
-func (w *WebhookBenefitCreatedPayload) GetDataGithubRepository() *BenefitGitHubRepository {
-	return w.GetData().BenefitGitHubRepository
-}
-
-func (w *WebhookBenefitCreatedPayload) GetDataLicenseKeys() *BenefitLicenseKeys {
-	return w.GetData().BenefitLicenseKeys
-}
-
-func (w *WebhookBenefitCreatedPayload) GetDataMeterCredit() *BenefitMeterCredit {
-	return w.GetData().BenefitMeterCredit
 }

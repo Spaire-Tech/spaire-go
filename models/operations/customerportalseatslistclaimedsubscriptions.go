@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
 )
 
@@ -26,44 +25,10 @@ func (c *CustomerPortalSeatsListClaimedSubscriptionsSecurity) GetMemberSession()
 	return c.MemberSession
 }
 
-type CustomerPortalSeatsListClaimedSubscriptionsRequest struct {
-	// Page number, defaults to 1.
-	Page *int64 `default:"1" queryParam:"style=form,explode=true,name=page"`
-	// Size of a page, defaults to 10. Maximum is 100.
-	Limit *int64 `default:"10" queryParam:"style=form,explode=true,name=limit"`
-}
-
-func (c CustomerPortalSeatsListClaimedSubscriptionsRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CustomerPortalSeatsListClaimedSubscriptionsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c *CustomerPortalSeatsListClaimedSubscriptionsRequest) GetPage() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.Page
-}
-
-func (c *CustomerPortalSeatsListClaimedSubscriptionsRequest) GetLimit() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.Limit
-}
-
 type CustomerPortalSeatsListClaimedSubscriptionsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful Response
-	ListResourceCustomerSubscription *components.ListResourceCustomerSubscription
-
-	Next func() (*CustomerPortalSeatsListClaimedSubscriptionsResponse, error)
+	ResponseCustomerPortalSeatsListClaimedSubscriptions []components.CustomerSubscription
 }
 
 func (c *CustomerPortalSeatsListClaimedSubscriptionsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -73,9 +38,9 @@ func (c *CustomerPortalSeatsListClaimedSubscriptionsResponse) GetHTTPMeta() comp
 	return c.HTTPMeta
 }
 
-func (c *CustomerPortalSeatsListClaimedSubscriptionsResponse) GetListResourceCustomerSubscription() *components.ListResourceCustomerSubscription {
+func (c *CustomerPortalSeatsListClaimedSubscriptionsResponse) GetResponseCustomerPortalSeatsListClaimedSubscriptions() []components.CustomerSubscription {
 	if c == nil {
 		return nil
 	}
-	return c.ListResourceCustomerSubscription
+	return c.ResponseCustomerPortalSeatsListClaimedSubscriptions
 }

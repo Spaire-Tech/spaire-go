@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type CustomFieldUpdateCheckboxMetadataType string
@@ -128,11 +128,12 @@ type CustomFieldUpdateCheckbox struct {
 	// * A boolean
 	//
 	// You can store up to **50 key-value pairs**.
-	Metadata   map[string]CustomFieldUpdateCheckboxMetadata `json:"metadata,omitempty"`
-	Name       *string                                      `json:"name,omitempty"`
-	Slug       *string                                      `json:"slug,omitempty"`
-	type_      string                                       `const:"checkbox" json:"type"`
-	Properties *CustomFieldCheckboxProperties               `json:"properties,omitempty"`
+	Metadata map[string]CustomFieldUpdateCheckboxMetadata `json:"metadata,omitempty"`
+	Name     *string                                      `json:"name,omitempty"`
+	Slug     *string                                      `json:"slug,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_      string                         `const:"checkbox" json:"type"`
+	Properties *CustomFieldCheckboxProperties `json:"properties,omitempty"`
 }
 
 func (c CustomFieldUpdateCheckbox) MarshalJSON() ([]byte, error) {

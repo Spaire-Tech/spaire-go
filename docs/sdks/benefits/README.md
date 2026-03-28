@@ -122,19 +122,17 @@ func main() {
     }
     if res.Benefit != nil {
         switch res.Benefit.Type {
-            case components.BenefitUnionTypeCustom:
+            case components.BenefitUnionTypeBenefitCustom:
                 // res.Benefit.BenefitCustom is populated
-            case components.BenefitUnionTypeDiscord:
+            case components.BenefitUnionTypeBenefitDiscord:
                 // res.Benefit.BenefitDiscord is populated
-            case components.BenefitUnionTypeDownloadables:
-                // res.Benefit.BenefitDownloadables is populated
-            case components.BenefitUnionTypeFeatureFlag:
-                // res.Benefit.BenefitFeatureFlag is populated
-            case components.BenefitUnionTypeGithubRepository:
+            case components.BenefitUnionTypeBenefitGitHubRepository:
                 // res.Benefit.BenefitGitHubRepository is populated
-            case components.BenefitUnionTypeLicenseKeys:
+            case components.BenefitUnionTypeBenefitDownloadables:
+                // res.Benefit.BenefitDownloadables is populated
+            case components.BenefitUnionTypeBenefitLicenseKeys:
                 // res.Benefit.BenefitLicenseKeys is populated
-            case components.BenefitUnionTypeMeterCredit:
+            case components.BenefitUnionTypeBenefitMeterCredit:
                 // res.Benefit.BenefitMeterCredit is populated
         }
 
@@ -194,19 +192,17 @@ func main() {
     }
     if res.Benefit != nil {
         switch res.Benefit.Type {
-            case components.BenefitUnionTypeCustom:
+            case components.BenefitUnionTypeBenefitCustom:
                 // res.Benefit.BenefitCustom is populated
-            case components.BenefitUnionTypeDiscord:
+            case components.BenefitUnionTypeBenefitDiscord:
                 // res.Benefit.BenefitDiscord is populated
-            case components.BenefitUnionTypeDownloadables:
-                // res.Benefit.BenefitDownloadables is populated
-            case components.BenefitUnionTypeFeatureFlag:
-                // res.Benefit.BenefitFeatureFlag is populated
-            case components.BenefitUnionTypeGithubRepository:
+            case components.BenefitUnionTypeBenefitGitHubRepository:
                 // res.Benefit.BenefitGitHubRepository is populated
-            case components.BenefitUnionTypeLicenseKeys:
+            case components.BenefitUnionTypeBenefitDownloadables:
+                // res.Benefit.BenefitDownloadables is populated
+            case components.BenefitUnionTypeBenefitLicenseKeys:
                 // res.Benefit.BenefitLicenseKeys is populated
-            case components.BenefitUnionTypeMeterCredit:
+            case components.BenefitUnionTypeBenefitMeterCredit:
                 // res.Benefit.BenefitMeterCredit is populated
         }
 
@@ -331,19 +327,17 @@ func main() {
     }
     if res.Benefit != nil {
         switch res.Benefit.Type {
-            case components.BenefitUnionTypeCustom:
+            case components.BenefitUnionTypeBenefitCustom:
                 // res.Benefit.BenefitCustom is populated
-            case components.BenefitUnionTypeDiscord:
+            case components.BenefitUnionTypeBenefitDiscord:
                 // res.Benefit.BenefitDiscord is populated
-            case components.BenefitUnionTypeDownloadables:
-                // res.Benefit.BenefitDownloadables is populated
-            case components.BenefitUnionTypeFeatureFlag:
-                // res.Benefit.BenefitFeatureFlag is populated
-            case components.BenefitUnionTypeGithubRepository:
+            case components.BenefitUnionTypeBenefitGitHubRepository:
                 // res.Benefit.BenefitGitHubRepository is populated
-            case components.BenefitUnionTypeLicenseKeys:
+            case components.BenefitUnionTypeBenefitDownloadables:
+                // res.Benefit.BenefitDownloadables is populated
+            case components.BenefitUnionTypeBenefitLicenseKeys:
                 // res.Benefit.BenefitLicenseKeys is populated
-            case components.BenefitUnionTypeMeterCredit:
+            case components.BenefitUnionTypeBenefitMeterCredit:
                 // res.Benefit.BenefitMeterCredit is populated
         }
 

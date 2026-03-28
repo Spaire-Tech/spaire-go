@@ -3,8 +3,8 @@
 package config
 
 import (
-	"context"
 	"app.spairehq.com/go/retry"
+	"context"
 	"net/http"
 	"time"
 )

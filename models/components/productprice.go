@@ -3,20 +3,20 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
-type ProductPriceType string
+type ProductPriceUnionType string
 
 const (
-	ProductPriceTypeCustom      ProductPriceType = "custom"
-	ProductPriceTypeFixed       ProductPriceType = "fixed"
-	ProductPriceTypeFree        ProductPriceType = "free"
-	ProductPriceTypeMeteredUnit ProductPriceType = "metered_unit"
-	ProductPriceTypeSeatBased   ProductPriceType = "seat_based"
+	ProductPriceUnionTypeCustom      ProductPriceUnionType = "custom"
+	ProductPriceUnionTypeFixed       ProductPriceUnionType = "fixed"
+	ProductPriceUnionTypeFree        ProductPriceUnionType = "free"
+	ProductPriceUnionTypeMeteredUnit ProductPriceUnionType = "metered_unit"
+	ProductPriceUnionTypeSeatBased   ProductPriceUnionType = "seat_based"
 )
 
 type ProductPrice struct {
@@ -26,11 +26,11 @@ type ProductPrice struct {
 	ProductPriceSeatBased   *ProductPriceSeatBased   `queryParam:"inline" union:"member"`
 	ProductPriceMeteredUnit *ProductPriceMeteredUnit `queryParam:"inline" union:"member"`
 
-	Type ProductPriceType
+	Type ProductPriceUnionType
 }
 
 func CreateProductPriceCustom(custom ProductPriceCustom) ProductPrice {
-	typ := ProductPriceTypeCustom
+	typ := ProductPriceUnionTypeCustom
 
 	return ProductPrice{
 		ProductPriceCustom: &custom,
@@ -39,7 +39,7 @@ func CreateProductPriceCustom(custom ProductPriceCustom) ProductPrice {
 }
 
 func CreateProductPriceFixed(fixed ProductPriceFixed) ProductPrice {
-	typ := ProductPriceTypeFixed
+	typ := ProductPriceUnionTypeFixed
 
 	return ProductPrice{
 		ProductPriceFixed: &fixed,
@@ -48,7 +48,7 @@ func CreateProductPriceFixed(fixed ProductPriceFixed) ProductPrice {
 }
 
 func CreateProductPriceFree(free ProductPriceFree) ProductPrice {
-	typ := ProductPriceTypeFree
+	typ := ProductPriceUnionTypeFree
 
 	return ProductPrice{
 		ProductPriceFree: &free,
@@ -57,7 +57,7 @@ func CreateProductPriceFree(free ProductPriceFree) ProductPrice {
 }
 
 func CreateProductPriceMeteredUnit(meteredUnit ProductPriceMeteredUnit) ProductPrice {
-	typ := ProductPriceTypeMeteredUnit
+	typ := ProductPriceUnionTypeMeteredUnit
 
 	return ProductPrice{
 		ProductPriceMeteredUnit: &meteredUnit,
@@ -66,7 +66,7 @@ func CreateProductPriceMeteredUnit(meteredUnit ProductPriceMeteredUnit) ProductP
 }
 
 func CreateProductPriceSeatBased(seatBased ProductPriceSeatBased) ProductPrice {
-	typ := ProductPriceTypeSeatBased
+	typ := ProductPriceUnionTypeSeatBased
 
 	return ProductPrice{
 		ProductPriceSeatBased: &seatBased,
@@ -93,7 +93,7 @@ func (u *ProductPrice) UnmarshalJSON(data []byte) error {
 		}
 
 		u.ProductPriceCustom = productPriceCustom
-		u.Type = ProductPriceTypeCustom
+		u.Type = ProductPriceUnionTypeCustom
 		return nil
 	case "fixed":
 		productPriceFixed := new(ProductPriceFixed)
@@ -102,7 +102,7 @@ func (u *ProductPrice) UnmarshalJSON(data []byte) error {
 		}
 
 		u.ProductPriceFixed = productPriceFixed
-		u.Type = ProductPriceTypeFixed
+		u.Type = ProductPriceUnionTypeFixed
 		return nil
 	case "free":
 		productPriceFree := new(ProductPriceFree)
@@ -111,7 +111,7 @@ func (u *ProductPrice) UnmarshalJSON(data []byte) error {
 		}
 
 		u.ProductPriceFree = productPriceFree
-		u.Type = ProductPriceTypeFree
+		u.Type = ProductPriceUnionTypeFree
 		return nil
 	case "metered_unit":
 		productPriceMeteredUnit := new(ProductPriceMeteredUnit)
@@ -120,7 +120,7 @@ func (u *ProductPrice) UnmarshalJSON(data []byte) error {
 		}
 
 		u.ProductPriceMeteredUnit = productPriceMeteredUnit
-		u.Type = ProductPriceTypeMeteredUnit
+		u.Type = ProductPriceUnionTypeMeteredUnit
 		return nil
 	case "seat_based":
 		productPriceSeatBased := new(ProductPriceSeatBased)
@@ -129,7 +129,7 @@ func (u *ProductPrice) UnmarshalJSON(data []byte) error {
 		}
 
 		u.ProductPriceSeatBased = productPriceSeatBased
-		u.Type = ProductPriceTypeSeatBased
+		u.Type = ProductPriceUnionTypeSeatBased
 		return nil
 	}
 

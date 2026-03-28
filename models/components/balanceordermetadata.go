@@ -7,20 +7,19 @@ import (
 )
 
 type BalanceOrderMetadata struct {
-	TransactionID       string   `json:"transaction_id"`
-	OrderID             string   `json:"order_id"`
-	ProductID           *string  `json:"product_id,omitempty"`
-	SubscriptionID      *string  `json:"subscription_id,omitempty"`
-	Amount              int64    `json:"amount"`
-	NetAmount           *int64   `json:"net_amount,omitempty"`
-	Currency            string   `json:"currency"`
-	PresentmentAmount   int64    `json:"presentment_amount"`
-	PresentmentCurrency string   `json:"presentment_currency"`
-	TaxAmount           int64    `json:"tax_amount"`
-	TaxState            *string  `json:"tax_state,omitempty"`
-	TaxCountry          *string  `json:"tax_country,omitempty"`
-	Fee                 int64    `json:"fee"`
-	ExchangeRate        *float64 `json:"exchange_rate,omitempty"`
+	TransactionID       string  `json:"transaction_id"`
+	OrderID             string  `json:"order_id"`
+	ProductID           *string `json:"product_id,omitempty"`
+	SubscriptionID      *string `json:"subscription_id,omitempty"`
+	Amount              int64   `json:"amount"`
+	NetAmount           *int64  `json:"net_amount,omitempty"`
+	Currency            string  `json:"currency"`
+	PresentmentAmount   int64   `json:"presentment_amount"`
+	PresentmentCurrency string  `json:"presentment_currency"`
+	TaxAmount           int64   `json:"tax_amount"`
+	TaxState            *string `json:"tax_state,omitempty"`
+	TaxCountry          *string `json:"tax_country,omitempty"`
+	Fee                 int64   `json:"fee"`
 }
 
 func (b BalanceOrderMetadata) MarshalJSON() ([]byte, error) {
@@ -123,11 +122,4 @@ func (b *BalanceOrderMetadata) GetFee() int64 {
 		return 0
 	}
 	return b.Fee
-}
-
-func (b *BalanceOrderMetadata) GetExchangeRate() *float64 {
-	if b == nil {
-		return nil
-	}
-	return b.ExchangeRate
 }

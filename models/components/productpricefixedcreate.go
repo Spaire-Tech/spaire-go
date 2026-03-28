@@ -8,6 +8,7 @@ import (
 
 // ProductPriceFixedCreate - Schema to create a fixed price.
 type ProductPriceFixedCreate struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string               `const:"fixed" json:"amount_type"`
 	PriceCurrency *PresentmentCurrency `json:"price_currency,omitempty"`
 	// The price in cents.

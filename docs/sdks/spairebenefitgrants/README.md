@@ -123,8 +123,6 @@ func main() {
                 // res.CustomerBenefitGrant.CustomerBenefitGrantCustom is populated
             case components.CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit:
                 // res.CustomerBenefitGrant.CustomerBenefitGrantMeterCredit is populated
-            case components.CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag:
-                // res.CustomerBenefitGrant.CustomerBenefitGrantFeatureFlag is populated
         }
 
     }
@@ -200,8 +198,6 @@ func main() {
                 // res.CustomerBenefitGrant.CustomerBenefitGrantCustom is populated
             case components.CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit:
                 // res.CustomerBenefitGrant.CustomerBenefitGrantMeterCredit is populated
-            case components.CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag:
-                // res.CustomerBenefitGrant.CustomerBenefitGrantFeatureFlag is populated
         }
 
     }

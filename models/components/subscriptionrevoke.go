@@ -28,14 +28,16 @@ type SubscriptionRevoke struct {
 	//
 	// **IMPORTANT:**
 	// Do not use this to store internal notes! It's intended to be input
-	// from the customer and is therefore also available in their Spaire
+	// from the customer and is therefore also available in their
 	// purchases library.
 	//
 	// Only set this in case your own service is requesting the reason from the
 	// customer. Or you copy a message directly from a customer
 	// conversation, i.e support.
+	//
 	CustomerCancellationComment *string `json:"customer_cancellation_comment,omitempty"`
 	// Cancel and revoke an active subscription immediately
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	revoke bool `const:"true" json:"revoke"`
 }
 

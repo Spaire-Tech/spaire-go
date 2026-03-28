@@ -3,22 +3,20 @@
 package components
 
 import (
-	"encoding/json"
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type BenefitUnionType string
 
 const (
-	BenefitUnionTypeCustom           BenefitUnionType = "custom"
-	BenefitUnionTypeDiscord          BenefitUnionType = "discord"
-	BenefitUnionTypeDownloadables    BenefitUnionType = "downloadables"
-	BenefitUnionTypeFeatureFlag      BenefitUnionType = "feature_flag"
-	BenefitUnionTypeGithubRepository BenefitUnionType = "github_repository"
-	BenefitUnionTypeLicenseKeys      BenefitUnionType = "license_keys"
-	BenefitUnionTypeMeterCredit      BenefitUnionType = "meter_credit"
+	BenefitUnionTypeBenefitCustom           BenefitUnionType = "BenefitCustom"
+	BenefitUnionTypeBenefitDiscord          BenefitUnionType = "BenefitDiscord"
+	BenefitUnionTypeBenefitGitHubRepository BenefitUnionType = "BenefitGitHubRepository"
+	BenefitUnionTypeBenefitDownloadables    BenefitUnionType = "BenefitDownloadables"
+	BenefitUnionTypeBenefitLicenseKeys      BenefitUnionType = "BenefitLicenseKeys"
+	BenefitUnionTypeBenefitMeterCredit      BenefitUnionType = "BenefitMeterCredit"
 )
 
 type Benefit struct {
@@ -28,148 +26,105 @@ type Benefit struct {
 	BenefitDownloadables    *BenefitDownloadables    `queryParam:"inline" union:"member"`
 	BenefitLicenseKeys      *BenefitLicenseKeys      `queryParam:"inline" union:"member"`
 	BenefitMeterCredit      *BenefitMeterCredit      `queryParam:"inline" union:"member"`
-	BenefitFeatureFlag      *BenefitFeatureFlag      `queryParam:"inline" union:"member"`
 
 	Type BenefitUnionType
 }
 
-func CreateBenefitCustom(custom BenefitCustom) Benefit {
-	typ := BenefitUnionTypeCustom
+func CreateBenefitBenefitCustom(benefitCustom BenefitCustom) Benefit {
+	typ := BenefitUnionTypeBenefitCustom
 
 	return Benefit{
-		BenefitCustom: &custom,
+		BenefitCustom: &benefitCustom,
 		Type:          typ,
 	}
 }
 
-func CreateBenefitDiscord(discord BenefitDiscord) Benefit {
-	typ := BenefitUnionTypeDiscord
+func CreateBenefitBenefitDiscord(benefitDiscord BenefitDiscord) Benefit {
+	typ := BenefitUnionTypeBenefitDiscord
 
 	return Benefit{
-		BenefitDiscord: &discord,
+		BenefitDiscord: &benefitDiscord,
 		Type:           typ,
 	}
 }
 
-func CreateBenefitDownloadables(downloadables BenefitDownloadables) Benefit {
-	typ := BenefitUnionTypeDownloadables
+func CreateBenefitBenefitGitHubRepository(benefitGitHubRepository BenefitGitHubRepository) Benefit {
+	typ := BenefitUnionTypeBenefitGitHubRepository
 
 	return Benefit{
-		BenefitDownloadables: &downloadables,
-		Type:                 typ,
-	}
-}
-
-func CreateBenefitFeatureFlag(featureFlag BenefitFeatureFlag) Benefit {
-	typ := BenefitUnionTypeFeatureFlag
-
-	return Benefit{
-		BenefitFeatureFlag: &featureFlag,
-		Type:               typ,
-	}
-}
-
-func CreateBenefitGithubRepository(githubRepository BenefitGitHubRepository) Benefit {
-	typ := BenefitUnionTypeGithubRepository
-
-	return Benefit{
-		BenefitGitHubRepository: &githubRepository,
+		BenefitGitHubRepository: &benefitGitHubRepository,
 		Type:                    typ,
 	}
 }
 
-func CreateBenefitLicenseKeys(licenseKeys BenefitLicenseKeys) Benefit {
-	typ := BenefitUnionTypeLicenseKeys
+func CreateBenefitBenefitDownloadables(benefitDownloadables BenefitDownloadables) Benefit {
+	typ := BenefitUnionTypeBenefitDownloadables
 
 	return Benefit{
-		BenefitLicenseKeys: &licenseKeys,
+		BenefitDownloadables: &benefitDownloadables,
+		Type:                 typ,
+	}
+}
+
+func CreateBenefitBenefitLicenseKeys(benefitLicenseKeys BenefitLicenseKeys) Benefit {
+	typ := BenefitUnionTypeBenefitLicenseKeys
+
+	return Benefit{
+		BenefitLicenseKeys: &benefitLicenseKeys,
 		Type:               typ,
 	}
 }
 
-func CreateBenefitMeterCredit(meterCredit BenefitMeterCredit) Benefit {
-	typ := BenefitUnionTypeMeterCredit
+func CreateBenefitBenefitMeterCredit(benefitMeterCredit BenefitMeterCredit) Benefit {
+	typ := BenefitUnionTypeBenefitMeterCredit
 
 	return Benefit{
-		BenefitMeterCredit: &meterCredit,
+		BenefitMeterCredit: &benefitMeterCredit,
 		Type:               typ,
 	}
 }
 
 func (u *Benefit) UnmarshalJSON(data []byte) error {
 
-	type discriminator struct {
-		Type string `json:"type"`
+	var benefitCustom BenefitCustom = BenefitCustom{}
+	if err := utils.UnmarshalJSON(data, &benefitCustom, "", true, nil); err == nil {
+		u.BenefitCustom = &benefitCustom
+		u.Type = BenefitUnionTypeBenefitCustom
+		return nil
 	}
 
-	dis := new(discriminator)
-	if err := json.Unmarshal(data, &dis); err != nil {
-		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	var benefitDiscord BenefitDiscord = BenefitDiscord{}
+	if err := utils.UnmarshalJSON(data, &benefitDiscord, "", true, nil); err == nil {
+		u.BenefitDiscord = &benefitDiscord
+		u.Type = BenefitUnionTypeBenefitDiscord
+		return nil
 	}
 
-	switch dis.Type {
-	case "custom":
-		benefitCustom := new(BenefitCustom)
-		if err := utils.UnmarshalJSON(data, &benefitCustom, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == custom) type BenefitCustom within Benefit: %w", string(data), err)
-		}
-
-		u.BenefitCustom = benefitCustom
-		u.Type = BenefitUnionTypeCustom
+	var benefitGitHubRepository BenefitGitHubRepository = BenefitGitHubRepository{}
+	if err := utils.UnmarshalJSON(data, &benefitGitHubRepository, "", true, nil); err == nil {
+		u.BenefitGitHubRepository = &benefitGitHubRepository
+		u.Type = BenefitUnionTypeBenefitGitHubRepository
 		return nil
-	case "discord":
-		benefitDiscord := new(BenefitDiscord)
-		if err := utils.UnmarshalJSON(data, &benefitDiscord, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == discord) type BenefitDiscord within Benefit: %w", string(data), err)
-		}
+	}
 
-		u.BenefitDiscord = benefitDiscord
-		u.Type = BenefitUnionTypeDiscord
+	var benefitDownloadables BenefitDownloadables = BenefitDownloadables{}
+	if err := utils.UnmarshalJSON(data, &benefitDownloadables, "", true, nil); err == nil {
+		u.BenefitDownloadables = &benefitDownloadables
+		u.Type = BenefitUnionTypeBenefitDownloadables
 		return nil
-	case "downloadables":
-		benefitDownloadables := new(BenefitDownloadables)
-		if err := utils.UnmarshalJSON(data, &benefitDownloadables, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == downloadables) type BenefitDownloadables within Benefit: %w", string(data), err)
-		}
+	}
 
-		u.BenefitDownloadables = benefitDownloadables
-		u.Type = BenefitUnionTypeDownloadables
+	var benefitLicenseKeys BenefitLicenseKeys = BenefitLicenseKeys{}
+	if err := utils.UnmarshalJSON(data, &benefitLicenseKeys, "", true, nil); err == nil {
+		u.BenefitLicenseKeys = &benefitLicenseKeys
+		u.Type = BenefitUnionTypeBenefitLicenseKeys
 		return nil
-	case "feature_flag":
-		benefitFeatureFlag := new(BenefitFeatureFlag)
-		if err := utils.UnmarshalJSON(data, &benefitFeatureFlag, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == feature_flag) type BenefitFeatureFlag within Benefit: %w", string(data), err)
-		}
+	}
 
-		u.BenefitFeatureFlag = benefitFeatureFlag
-		u.Type = BenefitUnionTypeFeatureFlag
-		return nil
-	case "github_repository":
-		benefitGitHubRepository := new(BenefitGitHubRepository)
-		if err := utils.UnmarshalJSON(data, &benefitGitHubRepository, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github_repository) type BenefitGitHubRepository within Benefit: %w", string(data), err)
-		}
-
-		u.BenefitGitHubRepository = benefitGitHubRepository
-		u.Type = BenefitUnionTypeGithubRepository
-		return nil
-	case "license_keys":
-		benefitLicenseKeys := new(BenefitLicenseKeys)
-		if err := utils.UnmarshalJSON(data, &benefitLicenseKeys, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == license_keys) type BenefitLicenseKeys within Benefit: %w", string(data), err)
-		}
-
-		u.BenefitLicenseKeys = benefitLicenseKeys
-		u.Type = BenefitUnionTypeLicenseKeys
-		return nil
-	case "meter_credit":
-		benefitMeterCredit := new(BenefitMeterCredit)
-		if err := utils.UnmarshalJSON(data, &benefitMeterCredit, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == meter_credit) type BenefitMeterCredit within Benefit: %w", string(data), err)
-		}
-
-		u.BenefitMeterCredit = benefitMeterCredit
-		u.Type = BenefitUnionTypeMeterCredit
+	var benefitMeterCredit BenefitMeterCredit = BenefitMeterCredit{}
+	if err := utils.UnmarshalJSON(data, &benefitMeterCredit, "", true, nil); err == nil {
+		u.BenefitMeterCredit = &benefitMeterCredit
+		u.Type = BenefitUnionTypeBenefitMeterCredit
 		return nil
 	}
 
@@ -199,10 +154,6 @@ func (u Benefit) MarshalJSON() ([]byte, error) {
 
 	if u.BenefitMeterCredit != nil {
 		return utils.MarshalJSON(u.BenefitMeterCredit, "", true)
-	}
-
-	if u.BenefitFeatureFlag != nil {
-		return utils.MarshalJSON(u.BenefitFeatureFlag, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type Benefit: all fields are null")

@@ -33,12 +33,6 @@ properties := components.CreatePropertiesBenefitGrantLicenseKeysProperties(compo
 properties := components.CreatePropertiesBenefitGrantCustomProperties(components.BenefitGrantCustomProperties{/* values here */})
 ```
 
-### BenefitGrantFeatureFlagProperties
-
-```go
-properties := components.CreatePropertiesBenefitGrantFeatureFlagProperties(components.BenefitGrantFeatureFlagProperties{/* values here */})
-```
-
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -55,7 +49,5 @@ switch properties.Type {
 		// properties.BenefitGrantLicenseKeysProperties is populated
 	case components.PropertiesTypeBenefitGrantCustomProperties:
 		// properties.BenefitGrantCustomProperties is populated
-	case components.PropertiesTypeBenefitGrantFeatureFlagProperties:
-		// properties.BenefitGrantFeatureFlagProperties is populated
 }
 ```

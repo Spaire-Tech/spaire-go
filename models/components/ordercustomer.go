@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -81,7 +81,7 @@ type OrderCustomer struct {
 	ModifiedAt *time.Time                    `json:"modified_at"`
 	Metadata   map[string]MetadataOutputType `json:"metadata"`
 	// The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
-	ExternalID *string `json:"external_id,omitempty"`
+	ExternalID *string `json:"external_id"`
 	// The email address of the customer. This must be unique within the organization.
 	Email string `json:"email"`
 	// Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address.
@@ -92,7 +92,6 @@ type OrderCustomer struct {
 	Name           *string               `json:"name"`
 	BillingAddress *Address              `json:"billing_address"`
 	TaxID          []*OrderCustomerTaxID `json:"tax_id"`
-	Locale         *string               `json:"locale,omitempty"`
 	// The ID of the organization owning the customer.
 	OrganizationID string `json:"organization_id"`
 	// Timestamp for when the customer was soft deleted.
@@ -186,13 +185,6 @@ func (o *OrderCustomer) GetTaxID() []*OrderCustomerTaxID {
 		return nil
 	}
 	return o.TaxID
-}
-
-func (o *OrderCustomer) GetLocale() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Locale
 }
 
 func (o *OrderCustomer) GetOrganizationID() string {

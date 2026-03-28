@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -142,14 +142,10 @@ type DiscountUpdate struct {
 	Duration         *DiscountDuration `json:"duration,omitempty"`
 	DurationInMonths *int64            `json:"duration_in_months,omitempty"`
 	Type             *DiscountType     `json:"type,omitempty"`
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Amount *int64 `json:"amount,omitempty"`
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Currency *PresentmentCurrency `json:"currency,omitempty"`
-	// Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies.
-	Amounts     map[string]int64 `json:"amounts,omitempty"`
-	BasisPoints *int64           `json:"basis_points,omitempty"`
-	Products    []string         `json:"products,omitempty"`
+	Amount           *int64            `json:"amount,omitempty"`
+	Currency         *string           `json:"currency,omitempty"`
+	BasisPoints      *int64            `json:"basis_points,omitempty"`
+	Products         []string          `json:"products,omitempty"`
 }
 
 func (d DiscountUpdate) MarshalJSON() ([]byte, error) {
@@ -233,18 +229,11 @@ func (d *DiscountUpdate) GetAmount() *int64 {
 	return d.Amount
 }
 
-func (d *DiscountUpdate) GetCurrency() *PresentmentCurrency {
+func (d *DiscountUpdate) GetCurrency() *string {
 	if d == nil {
 		return nil
 	}
 	return d.Currency
-}
-
-func (d *DiscountUpdate) GetAmounts() map[string]int64 {
-	if d == nil {
-		return nil
-	}
-	return d.Amounts
 }
 
 func (d *DiscountUpdate) GetBasisPoints() *int64 {

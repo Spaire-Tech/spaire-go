@@ -3,9 +3,6 @@
 package spairego
 
 import (
-	"bytes"
-	"context"
-	"fmt"
 	"app.spairehq.com/go/internal/config"
 	"app.spairehq.com/go/internal/hooks"
 	"app.spairehq.com/go/internal/utils"
@@ -13,6 +10,9 @@ import (
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/models/operations"
 	"app.spairehq.com/go/retry"
+	"bytes"
+	"context"
+	"fmt"
 	"github.com/spyzhov/ajson"
 	"net/http"
 	"net/url"

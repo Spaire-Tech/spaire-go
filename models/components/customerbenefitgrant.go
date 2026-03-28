@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type CustomerBenefitGrantType string
@@ -17,7 +17,6 @@ const (
 	CustomerBenefitGrantTypeCustomerBenefitGrantLicenseKeys      CustomerBenefitGrantType = "CustomerBenefitGrantLicenseKeys"
 	CustomerBenefitGrantTypeCustomerBenefitGrantCustom           CustomerBenefitGrantType = "CustomerBenefitGrantCustom"
 	CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit      CustomerBenefitGrantType = "CustomerBenefitGrantMeterCredit"
-	CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag      CustomerBenefitGrantType = "CustomerBenefitGrantFeatureFlag"
 )
 
 type CustomerBenefitGrant struct {
@@ -27,7 +26,6 @@ type CustomerBenefitGrant struct {
 	CustomerBenefitGrantLicenseKeys      *CustomerBenefitGrantLicenseKeys      `queryParam:"inline" union:"member"`
 	CustomerBenefitGrantCustom           *CustomerBenefitGrantCustom           `queryParam:"inline" union:"member"`
 	CustomerBenefitGrantMeterCredit      *CustomerBenefitGrantMeterCredit      `queryParam:"inline" union:"member"`
-	CustomerBenefitGrantFeatureFlag      *CustomerBenefitGrantFeatureFlag      `queryParam:"inline" union:"member"`
 
 	Type CustomerBenefitGrantType
 }
@@ -86,15 +84,6 @@ func CreateCustomerBenefitGrantCustomerBenefitGrantMeterCredit(customerBenefitGr
 	}
 }
 
-func CreateCustomerBenefitGrantCustomerBenefitGrantFeatureFlag(customerBenefitGrantFeatureFlag CustomerBenefitGrantFeatureFlag) CustomerBenefitGrant {
-	typ := CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag
-
-	return CustomerBenefitGrant{
-		CustomerBenefitGrantFeatureFlag: &customerBenefitGrantFeatureFlag,
-		Type:                            typ,
-	}
-}
-
 func (u *CustomerBenefitGrant) UnmarshalJSON(data []byte) error {
 
 	var customerBenefitGrantDiscord CustomerBenefitGrantDiscord = CustomerBenefitGrantDiscord{}
@@ -139,13 +128,6 @@ func (u *CustomerBenefitGrant) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var customerBenefitGrantFeatureFlag CustomerBenefitGrantFeatureFlag = CustomerBenefitGrantFeatureFlag{}
-	if err := utils.UnmarshalJSON(data, &customerBenefitGrantFeatureFlag, "", true, nil); err == nil {
-		u.CustomerBenefitGrantFeatureFlag = &customerBenefitGrantFeatureFlag
-		u.Type = CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag
-		return nil
-	}
-
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CustomerBenefitGrant", string(data))
 }
 
@@ -172,10 +154,6 @@ func (u CustomerBenefitGrant) MarshalJSON() ([]byte, error) {
 
 	if u.CustomerBenefitGrantMeterCredit != nil {
 		return utils.MarshalJSON(u.CustomerBenefitGrantMeterCredit, "", true)
-	}
-
-	if u.CustomerBenefitGrantFeatureFlag != nil {
-		return utils.MarshalJSON(u.CustomerBenefitGrantFeatureFlag, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CustomerBenefitGrant: all fields are null")

@@ -112,11 +112,11 @@ func main() {
     )
 
     res, err := s.Checkouts.Create(ctx, components.CheckoutCreate{
+        Locale: spairego.Pointer("en"),
         CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: spairego.Pointer("en"),
         Products: []string{
             "<value 1>",
             "<value 2>",
@@ -248,11 +248,11 @@ func main() {
     )
 
     res, err := s.Checkouts.Update(ctx, "<value>", components.CheckoutUpdate{
+        Locale: spairego.Pointer("en"),
         CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: spairego.Pointer("en"),
     })
     if err != nil {
         log.Fatal(err)
@@ -373,11 +373,11 @@ func main() {
     s := spairego.New()
 
     res, err := s.Checkouts.ClientUpdate(ctx, "<value>", components.CheckoutUpdatePublic{
+        Locale: spairego.Pointer("en"),
         CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: spairego.Pointer("en"),
     })
     if err != nil {
         log.Fatal(err)
@@ -445,11 +445,11 @@ func main() {
     )
 
     res, err := s.Checkouts.ClientConfirm(ctx, "<value>", components.CheckoutConfirmStripe{
+        Locale: spairego.Pointer("en"),
         CustomerName: spairego.Pointer("John Doe"),
         CustomerBillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: spairego.Pointer("en"),
     })
     if err != nil {
         log.Fatal(err)

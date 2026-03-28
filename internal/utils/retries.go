@@ -3,18 +3,20 @@
 package utils
 
 import (
+	"app.spairehq.com/go/retry"
 	"context"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/retry"
 	"io"
 	"math"
 	"math/rand"
+	"net"
 	"net/http"
 	"net/url"
 	"slices"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -97,12 +99,11 @@ func Retry(ctx context.Context, r Retries, operation func() (*http.Response, err
 					}
 				}
 
-				// syscall detection is not available on every platform, so
-				// fallback to best effort string detection.
-				isBrokenPipeError := strings.Contains(err.Error(), "broken pipe")
-				isConnectionResetError := strings.Contains(err.Error(), "connection reset")
+				var networkOperationError *net.OpError
+				isBrokenPipeOrConnectionReset := errors.As(err, &networkOperationError) &&
+					(errors.Is(err, syscall.EPIPE) || errors.Is(err, syscall.ECONNRESET))
 
-				if (isBrokenPipeError || isConnectionResetError) && isIdempotentHTTPMethod {
+				if isBrokenPipeOrConnectionReset && isIdempotentHTTPMethod {
 					return err
 				}
 

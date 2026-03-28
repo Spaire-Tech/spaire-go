@@ -3,9 +3,6 @@
 package spairego
 
 import (
-	"bytes"
-	"context"
-	"fmt"
 	"app.spairehq.com/go/internal/config"
 	"app.spairehq.com/go/internal/hooks"
 	"app.spairehq.com/go/internal/utils"
@@ -13,7 +10,9 @@ import (
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/models/operations"
 	"app.spairehq.com/go/retry"
-	"github.com/spyzhov/ajson"
+	"bytes"
+	"context"
+	"fmt"
 	"net/http"
 	"net/url"
 )
@@ -36,12 +35,7 @@ func newSpaireMembers(rootSDK *Spaire, sdkConfig config.SDKConfiguration, hooks 
 // List all members of the customer's team.
 //
 // Only available to owners and billing managers of team customers.
-func (s *SpaireMembers) ListMembers(ctx context.Context, page *int64, limit *int64, opts ...operations.Option) (*operations.CustomerPortalMembersListMembersResponse, error) {
-	request := operations.CustomerPortalMembersListMembersRequest{
-		Page:  page,
-		Limit: limit,
-	}
-
+func (s *SpaireMembers) ListMembers(ctx context.Context, opts ...operations.Option) (*operations.CustomerPortalMembersListMembersResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -92,10 +86,6 @@ func (s *SpaireMembers) ListMembers(ctx context.Context, page *int64, limit *int
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -181,7 +171,7 @@ func (s *SpaireMembers) ListMembers(ctx context.Context, page *int64, limit *int
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "422", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -202,67 +192,6 @@ func (s *SpaireMembers) ListMembers(ctx context.Context, page *int64, limit *int
 			Response: httpRes,
 		},
 	}
-	res.Next = func() (*operations.CustomerPortalMembersListMembersResponse, error) {
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
-		}
-		var p int64 = 1
-		if page != nil {
-			p = *page
-		}
-		nP := int64(p + 1)
-		nPs, err := ajson.Eval(b, "$.pagination.max_page")
-		if err != nil {
-			return nil, err
-		}
-		if !nPs.IsNumeric() {
-			return nil, nil
-		}
-
-		nPsVal, err := nPs.GetNumeric()
-		if err != nil {
-			return nil, err
-		}
-		// GetNumeric returns as float64
-		if int(nPsVal) <= int(p) {
-			return nil, nil
-		}
-		r, err := ajson.Eval(b, "$.items")
-		if err != nil {
-			return nil, err
-		}
-		if !r.IsArray() {
-			return nil, nil
-		}
-		arr, err := r.GetArray()
-		if err != nil {
-			return nil, err
-		}
-		if len(arr) == 0 {
-			return nil, nil
-		}
-
-		l := 0
-		if limit != nil {
-			l = int(*limit)
-		}
-		if len(arr) < l {
-			return nil, nil
-		}
-
-		return s.ListMembers(
-			ctx,
-			&nP,
-			limit,
-			opts...,
-		)
-	}
 
 	switch {
 	case httpRes.StatusCode == 200:
@@ -273,33 +202,12 @@ func (s *SpaireMembers) ListMembers(ctx context.Context, page *int64, limit *int
 				return nil, err
 			}
 
-			var out components.ListResourceCustomerPortalMember
+			var out []components.CustomerPortalMember
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ListResourceCustomerPortalMember = &out
-		default:
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-			return nil, apierrors.NewAPIError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
-		}
-	case httpRes.StatusCode == 422:
-		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			var out apierrors.HTTPValidationError
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			return nil, &out
+			res.ResponseCustomerPortalMembersListMembers = out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

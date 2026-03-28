@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type DiscountCreateType string
@@ -64,13 +64,6 @@ func CreateDiscountCreateDiscountPercentageRepeatDurationCreate(discountPercenta
 
 func (u *DiscountCreate) UnmarshalJSON(data []byte) error {
 
-	var discountPercentageRepeatDurationCreate DiscountPercentageRepeatDurationCreate = DiscountPercentageRepeatDurationCreate{}
-	if err := utils.UnmarshalJSON(data, &discountPercentageRepeatDurationCreate, "", true, nil); err == nil {
-		u.DiscountPercentageRepeatDurationCreate = &discountPercentageRepeatDurationCreate
-		u.Type = DiscountCreateTypeDiscountPercentageRepeatDurationCreate
-		return nil
-	}
-
 	var discountFixedRepeatDurationCreate DiscountFixedRepeatDurationCreate = DiscountFixedRepeatDurationCreate{}
 	if err := utils.UnmarshalJSON(data, &discountFixedRepeatDurationCreate, "", true, nil); err == nil {
 		u.DiscountFixedRepeatDurationCreate = &discountFixedRepeatDurationCreate
@@ -78,10 +71,10 @@ func (u *DiscountCreate) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var discountPercentageOnceForeverDurationCreate DiscountPercentageOnceForeverDurationCreate = DiscountPercentageOnceForeverDurationCreate{}
-	if err := utils.UnmarshalJSON(data, &discountPercentageOnceForeverDurationCreate, "", true, nil); err == nil {
-		u.DiscountPercentageOnceForeverDurationCreate = &discountPercentageOnceForeverDurationCreate
-		u.Type = DiscountCreateTypeDiscountPercentageOnceForeverDurationCreate
+	var discountPercentageRepeatDurationCreate DiscountPercentageRepeatDurationCreate = DiscountPercentageRepeatDurationCreate{}
+	if err := utils.UnmarshalJSON(data, &discountPercentageRepeatDurationCreate, "", true, nil); err == nil {
+		u.DiscountPercentageRepeatDurationCreate = &discountPercentageRepeatDurationCreate
+		u.Type = DiscountCreateTypeDiscountPercentageRepeatDurationCreate
 		return nil
 	}
 
@@ -89,6 +82,13 @@ func (u *DiscountCreate) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &discountFixedOnceForeverDurationCreate, "", true, nil); err == nil {
 		u.DiscountFixedOnceForeverDurationCreate = &discountFixedOnceForeverDurationCreate
 		u.Type = DiscountCreateTypeDiscountFixedOnceForeverDurationCreate
+		return nil
+	}
+
+	var discountPercentageOnceForeverDurationCreate DiscountPercentageOnceForeverDurationCreate = DiscountPercentageOnceForeverDurationCreate{}
+	if err := utils.UnmarshalJSON(data, &discountPercentageOnceForeverDurationCreate, "", true, nil); err == nil {
+		u.DiscountPercentageOnceForeverDurationCreate = &discountPercentageOnceForeverDurationCreate
+		u.Type = DiscountCreateTypeDiscountPercentageOnceForeverDurationCreate
 		return nil
 	}
 

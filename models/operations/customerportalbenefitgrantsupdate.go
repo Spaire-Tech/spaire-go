@@ -57,10 +57,6 @@ func (c *CustomerPortalBenefitGrantsUpdateRequest) GetCustomerBenefitGrantUpdate
 	return c.GetCustomerBenefitGrantUpdate().CustomerBenefitGrantDownloadablesUpdate
 }
 
-func (c *CustomerPortalBenefitGrantsUpdateRequest) GetCustomerBenefitGrantUpdateFeatureFlag() *components.CustomerBenefitGrantFeatureFlagUpdate {
-	return c.GetCustomerBenefitGrantUpdate().CustomerBenefitGrantFeatureFlagUpdate
-}
-
 func (c *CustomerPortalBenefitGrantsUpdateRequest) GetCustomerBenefitGrantUpdateGithubRepository() *components.CustomerBenefitGrantGitHubRepositoryUpdate {
 	return c.GetCustomerBenefitGrantUpdate().CustomerBenefitGrantGitHubRepositoryUpdate
 }

@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type UnitAmountType string
@@ -74,6 +74,7 @@ func (u UnitAmount) MarshalJSON() ([]byte, error) {
 
 // ProductPriceMeteredUnitCreate - Schema to create a metered price with a fixed unit price.
 type ProductPriceMeteredUnitCreate struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string               `const:"metered_unit" json:"amount_type"`
 	PriceCurrency *PresentmentCurrency `json:"price_currency,omitempty"`
 	// The ID of the meter associated to the price.

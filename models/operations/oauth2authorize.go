@@ -3,11 +3,11 @@
 package operations
 
 import (
+	"app.spairehq.com/go/internal/utils"
+	"app.spairehq.com/go/models/components"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
-	"app.spairehq.com/go/models/components"
 )
 
 type Oauth2AuthorizeResponseOauth2AuthorizeType string
@@ -123,3 +123,6 @@ func (o *Oauth2AuthorizeResponse) GetResponseOauth2AuthorizeOrganization() *comp
 	}
 	return nil
 }
+
+// #region class-body-oauth2authorizeresponse
+// #endregion class-body-oauth2authorizeresponse

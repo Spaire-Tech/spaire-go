@@ -21,12 +21,6 @@ customerBenefitGrantUpdate := components.CreateCustomerBenefitGrantUpdateDiscord
 customerBenefitGrantUpdate := components.CreateCustomerBenefitGrantUpdateDownloadables(components.CustomerBenefitGrantDownloadablesUpdate{/* values here */})
 ```
 
-### CustomerBenefitGrantFeatureFlagUpdate
-
-```go
-customerBenefitGrantUpdate := components.CreateCustomerBenefitGrantUpdateFeatureFlag(components.CustomerBenefitGrantFeatureFlagUpdate{/* values here */})
-```
-
 ### CustomerBenefitGrantGitHubRepositoryUpdate
 
 ```go
@@ -57,8 +51,6 @@ switch customerBenefitGrantUpdate.Type {
 		// customerBenefitGrantUpdate.CustomerBenefitGrantDiscordUpdate is populated
 	case components.CustomerBenefitGrantUpdateTypeDownloadables:
 		// customerBenefitGrantUpdate.CustomerBenefitGrantDownloadablesUpdate is populated
-	case components.CustomerBenefitGrantUpdateTypeFeatureFlag:
-		// customerBenefitGrantUpdate.CustomerBenefitGrantFeatureFlagUpdate is populated
 	case components.CustomerBenefitGrantUpdateTypeGithubRepository:
 		// customerBenefitGrantUpdate.CustomerBenefitGrantGitHubRepositoryUpdate is populated
 	case components.CustomerBenefitGrantUpdateTypeLicenseKeys:

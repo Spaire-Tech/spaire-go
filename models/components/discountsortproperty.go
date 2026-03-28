@@ -18,8 +18,6 @@ const (
 	DiscountSortPropertyMinusCode             DiscountSortProperty = "-code"
 	DiscountSortPropertyRedemptionsCount      DiscountSortProperty = "redemptions_count"
 	DiscountSortPropertyMinusRedemptionsCount DiscountSortProperty = "-redemptions_count"
-	DiscountSortPropertyEndsAt                DiscountSortProperty = "ends_at"
-	DiscountSortPropertyMinusEndsAt           DiscountSortProperty = "-ends_at"
 )
 
 func (e DiscountSortProperty) ToPointer() *DiscountSortProperty {
@@ -46,10 +44,6 @@ func (e *DiscountSortProperty) UnmarshalJSON(data []byte) error {
 	case "redemptions_count":
 		fallthrough
 	case "-redemptions_count":
-		fallthrough
-	case "ends_at":
-		fallthrough
-	case "-ends_at":
 		*e = DiscountSortProperty(v)
 		return nil
 	default:

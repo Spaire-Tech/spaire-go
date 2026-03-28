@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type BenefitGrantWebhookType string
@@ -17,7 +17,6 @@ const (
 	BenefitGrantWebhookTypeBenefitGrantDownloadablesWebhook    BenefitGrantWebhookType = "BenefitGrantDownloadablesWebhook"
 	BenefitGrantWebhookTypeBenefitGrantLicenseKeysWebhook      BenefitGrantWebhookType = "BenefitGrantLicenseKeysWebhook"
 	BenefitGrantWebhookTypeBenefitGrantMeterCreditWebhook      BenefitGrantWebhookType = "BenefitGrantMeterCreditWebhook"
-	BenefitGrantWebhookTypeBenefitGrantFeatureFlagWebhook      BenefitGrantWebhookType = "BenefitGrantFeatureFlagWebhook"
 )
 
 type BenefitGrantWebhook struct {
@@ -27,7 +26,6 @@ type BenefitGrantWebhook struct {
 	BenefitGrantDownloadablesWebhook    *BenefitGrantDownloadablesWebhook    `queryParam:"inline" union:"member"`
 	BenefitGrantLicenseKeysWebhook      *BenefitGrantLicenseKeysWebhook      `queryParam:"inline" union:"member"`
 	BenefitGrantMeterCreditWebhook      *BenefitGrantMeterCreditWebhook      `queryParam:"inline" union:"member"`
-	BenefitGrantFeatureFlagWebhook      *BenefitGrantFeatureFlagWebhook      `queryParam:"inline" union:"member"`
 
 	Type BenefitGrantWebhookType
 }
@@ -86,15 +84,6 @@ func CreateBenefitGrantWebhookBenefitGrantMeterCreditWebhook(benefitGrantMeterCr
 	}
 }
 
-func CreateBenefitGrantWebhookBenefitGrantFeatureFlagWebhook(benefitGrantFeatureFlagWebhook BenefitGrantFeatureFlagWebhook) BenefitGrantWebhook {
-	typ := BenefitGrantWebhookTypeBenefitGrantFeatureFlagWebhook
-
-	return BenefitGrantWebhook{
-		BenefitGrantFeatureFlagWebhook: &benefitGrantFeatureFlagWebhook,
-		Type:                           typ,
-	}
-}
-
 func (u *BenefitGrantWebhook) UnmarshalJSON(data []byte) error {
 
 	var benefitGrantDiscordWebhook BenefitGrantDiscordWebhook = BenefitGrantDiscordWebhook{}
@@ -139,13 +128,6 @@ func (u *BenefitGrantWebhook) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var benefitGrantFeatureFlagWebhook BenefitGrantFeatureFlagWebhook = BenefitGrantFeatureFlagWebhook{}
-	if err := utils.UnmarshalJSON(data, &benefitGrantFeatureFlagWebhook, "", true, nil); err == nil {
-		u.BenefitGrantFeatureFlagWebhook = &benefitGrantFeatureFlagWebhook
-		u.Type = BenefitGrantWebhookTypeBenefitGrantFeatureFlagWebhook
-		return nil
-	}
-
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BenefitGrantWebhook", string(data))
 }
 
@@ -172,10 +154,6 @@ func (u BenefitGrantWebhook) MarshalJSON() ([]byte, error) {
 
 	if u.BenefitGrantMeterCreditWebhook != nil {
 		return utils.MarshalJSON(u.BenefitGrantMeterCreditWebhook, "", true)
-	}
-
-	if u.BenefitGrantFeatureFlagWebhook != nil {
-		return utils.MarshalJSON(u.BenefitGrantFeatureFlagWebhook, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type BenefitGrantWebhook: all fields are null")

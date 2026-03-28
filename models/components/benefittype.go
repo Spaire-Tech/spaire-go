@@ -16,7 +16,6 @@ const (
 	BenefitTypeDownloadables    BenefitType = "downloadables"
 	BenefitTypeLicenseKeys      BenefitType = "license_keys"
 	BenefitTypeMeterCredit      BenefitType = "meter_credit"
-	BenefitTypeFeatureFlag      BenefitType = "feature_flag"
 )
 
 func (e BenefitType) ToPointer() *BenefitType {
@@ -39,8 +38,6 @@ func (e *BenefitType) UnmarshalJSON(data []byte) error {
 	case "license_keys":
 		fallthrough
 	case "meter_credit":
-		fallthrough
-	case "feature_flag":
 		*e = BenefitType(v)
 		return nil
 	default:

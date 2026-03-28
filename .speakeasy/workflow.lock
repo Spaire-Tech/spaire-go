@@ -1,9 +1,9 @@
-speakeasyVersion: 1.750.0
+speakeasyVersion: 1.759.3
 sources:
     Spaire-OAS:
         sourceNamespace: spaire-oas
-        sourceRevisionDigest: sha256:f3432f46f0dec190215a9684269e76599e6dbd4bf42015e0a4b1019a7482db6c
-        sourceBlobDigest: sha256:ce7f332530b851d7bdb41d9c1cfe4db4bc513a5d25c780c153c76a9aec2c6936
+        sourceRevisionDigest: sha256:f9d98b30d8a24c9afe33107a73107eba7c66f00dff3802a42ec0ae3f5ce5f20c
+        sourceBlobDigest: sha256:5cd0b8ddabc7d907421bf94235ba20f148d007bc553e15b397bae8fb9e70f404
         tags:
             - latest
             - 0.1.0
@@ -11,10 +11,10 @@ targets:
     spaire:
         source: Spaire-OAS
         sourceNamespace: spaire-oas
-        sourceRevisionDigest: sha256:f3432f46f0dec190215a9684269e76599e6dbd4bf42015e0a4b1019a7482db6c
-        sourceBlobDigest: sha256:ce7f332530b851d7bdb41d9c1cfe4db4bc513a5d25c780c153c76a9aec2c6936
-        codeSamplesNamespace: spaire-oas-code-samples-go
-        codeSamplesRevisionDigest: sha256:26e5daaab370a5d5111f3ce286ef1bd5779e6feaf20fdfd8b340eef0419d77ef
+        sourceRevisionDigest: sha256:f9d98b30d8a24c9afe33107a73107eba7c66f00dff3802a42ec0ae3f5ce5f20c
+        sourceBlobDigest: sha256:5cd0b8ddabc7d907421bf94235ba20f148d007bc553e15b397bae8fb9e70f404
+        codeSamplesNamespace: spaire-oas-go-code-samples
+        codeSamplesRevisionDigest: sha256:841b0e1002c82d009c6e7b71ee167c734f01cb42024a9f3fb1145410dcc4e500
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -23,14 +23,15 @@ workflow:
             inputs:
                 - location: https://api.spairehq.com/openapi.json
             overlays:
-                - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/security.yml
-                - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/type_parameter.yml
-                - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/read_only.yml
-                - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/event_discriminator.yml
-                - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/timezone_enum.yml
-                - location: https://raw.githubusercontent.com/Spaire-Tech/spaire/main/sdk/overlays/event_metadata.yml
+                - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/security.yml
+                - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/type_parameter.yml
+                - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/read_only.yml
+                - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/event_discriminator.yml
+                - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/timezone_enum.yml
+                - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/event_metadata.yml
+                - location: https://raw.githubusercontent.com/Spaire-Tech/polar/main/sdk/overlays/rebrand.yml
             registry:
-                location: registry.speakeasyapi.dev/spaire/spaire/spaire-oas
+                location: registry.speakeasyapi.dev/spaire/spaire-workspace/spaire-oas
     targets:
         spaire:
             target: go
@@ -38,6 +39,6 @@ workflow:
             codeSamples:
                 output: codeSamples.yaml
                 registry:
-                    location: registry.speakeasyapi.dev/spaire/spaire/spaire-oas-code-samples-go
+                    location: registry.speakeasyapi.dev/spaire/spaire-workspace/spaire-oas-go-code-samples
                 labelOverride:
                     fixedValue: Go (SDK)

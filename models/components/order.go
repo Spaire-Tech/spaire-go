@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -273,11 +273,13 @@ type Order struct {
 	// Platform fee amount in cents.
 	PlatformFeeAmount int64 `json:"platform_fee_amount"`
 	// Currency of the platform fee.
-	PlatformFeeCurrency *string            `json:"platform_fee_currency"`
-	Customer            OrderCustomer      `json:"customer"`
-	Product             *OrderProduct      `json:"product"`
-	Discount            *OrderDiscount     `json:"discount"`
-	Subscription        *OrderSubscription `json:"subscription"`
+	PlatformFeeCurrency *string       `json:"platform_fee_currency"`
+	Customer            OrderCustomer `json:"customer"`
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	UserID       string             `json:"user_id"`
+	Product      *OrderProduct      `json:"product"`
+	Discount     *OrderDiscount     `json:"discount"`
+	Subscription *OrderSubscription `json:"subscription"`
 	// Line items composing the order.
 	Items []OrderItemSchema `json:"items"`
 	// A summary description of the order.
@@ -510,6 +512,13 @@ func (o *Order) GetCustomer() OrderCustomer {
 		return OrderCustomer{}
 	}
 	return o.Customer
+}
+
+func (o *Order) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
 }
 
 func (o *Order) GetProduct() *OrderProduct {

@@ -3,9 +3,6 @@
 package spairego
 
 import (
-	"bytes"
-	"context"
-	"fmt"
 	"app.spairehq.com/go/internal/config"
 	"app.spairehq.com/go/internal/hooks"
 	"app.spairehq.com/go/internal/utils"
@@ -13,7 +10,9 @@ import (
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/models/operations"
 	"app.spairehq.com/go/retry"
-	"github.com/spyzhov/ajson"
+	"bytes"
+	"context"
+	"fmt"
 	"net/http"
 	"net/url"
 )
@@ -993,12 +992,7 @@ func (s *Seats) ResendInvitation(ctx context.Context, security operations.Custom
 // List all subscriptions where the authenticated customer has claimed a seat.
 //
 // **Scopes**: `customer_portal:read` `customer_portal:write`
-func (s *Seats) ListClaimedSubscriptions(ctx context.Context, security operations.CustomerPortalSeatsListClaimedSubscriptionsSecurity, page *int64, limit *int64, opts ...operations.Option) (*operations.CustomerPortalSeatsListClaimedSubscriptionsResponse, error) {
-	request := operations.CustomerPortalSeatsListClaimedSubscriptionsRequest{
-		Page:  page,
-		Limit: limit,
-	}
-
+func (s *Seats) ListClaimedSubscriptions(ctx context.Context, security operations.CustomerPortalSeatsListClaimedSubscriptionsSecurity, opts ...operations.Option) (*operations.CustomerPortalSeatsListClaimedSubscriptionsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1049,10 +1043,6 @@ func (s *Seats) ListClaimedSubscriptions(ctx context.Context, security operation
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, utils.AsSecuritySource(security)); err != nil {
 		return nil, err
@@ -1138,7 +1128,7 @@ func (s *Seats) ListClaimedSubscriptions(ctx context.Context, security operation
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "422", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1159,68 +1149,6 @@ func (s *Seats) ListClaimedSubscriptions(ctx context.Context, security operation
 			Response: httpRes,
 		},
 	}
-	res.Next = func() (*operations.CustomerPortalSeatsListClaimedSubscriptionsResponse, error) {
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
-		}
-		var p int64 = 1
-		if page != nil {
-			p = *page
-		}
-		nP := int64(p + 1)
-		nPs, err := ajson.Eval(b, "$.pagination.max_page")
-		if err != nil {
-			return nil, err
-		}
-		if !nPs.IsNumeric() {
-			return nil, nil
-		}
-
-		nPsVal, err := nPs.GetNumeric()
-		if err != nil {
-			return nil, err
-		}
-		// GetNumeric returns as float64
-		if int(nPsVal) <= int(p) {
-			return nil, nil
-		}
-		r, err := ajson.Eval(b, "$.items")
-		if err != nil {
-			return nil, err
-		}
-		if !r.IsArray() {
-			return nil, nil
-		}
-		arr, err := r.GetArray()
-		if err != nil {
-			return nil, err
-		}
-		if len(arr) == 0 {
-			return nil, nil
-		}
-
-		l := 0
-		if limit != nil {
-			l = int(*limit)
-		}
-		if len(arr) < l {
-			return nil, nil
-		}
-
-		return s.ListClaimedSubscriptions(
-			ctx,
-			security,
-			&nP,
-			limit,
-			opts...,
-		)
-	}
 
 	switch {
 	case httpRes.StatusCode == 200:
@@ -1231,33 +1159,12 @@ func (s *Seats) ListClaimedSubscriptions(ctx context.Context, security operation
 				return nil, err
 			}
 
-			var out components.ListResourceCustomerSubscription
+			var out []components.CustomerSubscription
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ListResourceCustomerSubscription = &out
-		default:
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-			return nil, apierrors.NewAPIError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
-		}
-	case httpRes.StatusCode == 422:
-		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			var out apierrors.HTTPValidationError
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			return nil, &out
+			res.ResponseCustomerPortalSeatsListClaimedSubscriptions = out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

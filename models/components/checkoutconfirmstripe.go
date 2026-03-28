@@ -3,10 +3,10 @@
 package components
 
 import (
-	"errors"
-	"fmt"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/types"
+	"errors"
+	"fmt"
 	"time"
 )
 
@@ -129,17 +129,19 @@ type CheckoutConfirmStripe struct {
 	ProductPriceID *string `json:"product_price_id,omitempty"`
 	Amount         *int64  `json:"amount,omitempty"`
 	// Number of seats for seat-based pricing.
-	Seats                  *int64        `json:"seats,omitempty"`
+	Seats *int64 `json:"seats,omitempty"`
+	// Locale of the customer, given as an IETF BCP 47 language tag. Used to localize the checkout page.
+	Locale                 *string       `json:"locale,omitempty"`
 	IsBusinessCustomer     *bool         `json:"is_business_customer,omitempty"`
 	CustomerName           *string       `json:"customer_name,omitempty"`
 	CustomerEmail          *string       `json:"customer_email,omitempty"`
 	CustomerBillingName    *string       `json:"customer_billing_name,omitempty"`
 	CustomerBillingAddress *AddressInput `json:"customer_billing_address,omitempty"`
 	CustomerTaxID          *string       `json:"customer_tax_id,omitempty"`
-	Locale                 *string       `json:"locale,omitempty"`
 	// Discount code to apply to the checkout.
 	DiscountCode *string `json:"discount_code,omitempty"`
 	// Disable the trial period for the checkout session. It's mainly useful when the trial is blocked because the customer already redeemed one.
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	allowTrial *bool `const:"false" json:"allow_trial,omitempty"`
 	// ID of the Stripe confirmation token. Required for fixed prices and custom prices.
 	ConfirmationTokenID *string `json:"confirmation_token_id,omitempty"`
@@ -191,6 +193,13 @@ func (c *CheckoutConfirmStripe) GetSeats() *int64 {
 	return c.Seats
 }
 
+func (c *CheckoutConfirmStripe) GetLocale() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Locale
+}
+
 func (c *CheckoutConfirmStripe) GetIsBusinessCustomer() *bool {
 	if c == nil {
 		return nil
@@ -231,13 +240,6 @@ func (c *CheckoutConfirmStripe) GetCustomerTaxID() *string {
 		return nil
 	}
 	return c.CustomerTaxID
-}
-
-func (c *CheckoutConfirmStripe) GetLocale() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Locale
 }
 
 func (c *CheckoutConfirmStripe) GetDiscountCode() *string {

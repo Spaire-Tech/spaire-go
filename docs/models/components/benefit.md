@@ -6,43 +6,37 @@
 ### BenefitCustom
 
 ```go
-benefit := components.CreateBenefitCustom(components.BenefitCustom{/* values here */})
+benefit := components.CreateBenefitBenefitCustom(components.BenefitCustom{/* values here */})
 ```
 
 ### BenefitDiscord
 
 ```go
-benefit := components.CreateBenefitDiscord(components.BenefitDiscord{/* values here */})
-```
-
-### BenefitDownloadables
-
-```go
-benefit := components.CreateBenefitDownloadables(components.BenefitDownloadables{/* values here */})
-```
-
-### BenefitFeatureFlag
-
-```go
-benefit := components.CreateBenefitFeatureFlag(components.BenefitFeatureFlag{/* values here */})
+benefit := components.CreateBenefitBenefitDiscord(components.BenefitDiscord{/* values here */})
 ```
 
 ### BenefitGitHubRepository
 
 ```go
-benefit := components.CreateBenefitGithubRepository(components.BenefitGitHubRepository{/* values here */})
+benefit := components.CreateBenefitBenefitGitHubRepository(components.BenefitGitHubRepository{/* values here */})
+```
+
+### BenefitDownloadables
+
+```go
+benefit := components.CreateBenefitBenefitDownloadables(components.BenefitDownloadables{/* values here */})
 ```
 
 ### BenefitLicenseKeys
 
 ```go
-benefit := components.CreateBenefitLicenseKeys(components.BenefitLicenseKeys{/* values here */})
+benefit := components.CreateBenefitBenefitLicenseKeys(components.BenefitLicenseKeys{/* values here */})
 ```
 
 ### BenefitMeterCredit
 
 ```go
-benefit := components.CreateBenefitMeterCredit(components.BenefitMeterCredit{/* values here */})
+benefit := components.CreateBenefitBenefitMeterCredit(components.BenefitMeterCredit{/* values here */})
 ```
 
 ## Union Discrimination
@@ -51,19 +45,17 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch benefit.Type {
-	case components.BenefitUnionTypeCustom:
+	case components.BenefitUnionTypeBenefitCustom:
 		// benefit.BenefitCustom is populated
-	case components.BenefitUnionTypeDiscord:
+	case components.BenefitUnionTypeBenefitDiscord:
 		// benefit.BenefitDiscord is populated
-	case components.BenefitUnionTypeDownloadables:
-		// benefit.BenefitDownloadables is populated
-	case components.BenefitUnionTypeFeatureFlag:
-		// benefit.BenefitFeatureFlag is populated
-	case components.BenefitUnionTypeGithubRepository:
+	case components.BenefitUnionTypeBenefitGitHubRepository:
 		// benefit.BenefitGitHubRepository is populated
-	case components.BenefitUnionTypeLicenseKeys:
+	case components.BenefitUnionTypeBenefitDownloadables:
+		// benefit.BenefitDownloadables is populated
+	case components.BenefitUnionTypeBenefitLicenseKeys:
 		// benefit.BenefitLicenseKeys is populated
-	case components.BenefitUnionTypeMeterCredit:
+	case components.BenefitUnionTypeBenefitMeterCredit:
 		// benefit.BenefitMeterCredit is populated
 }
 ```

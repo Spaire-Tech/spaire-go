@@ -31,9 +31,8 @@ type Organization struct {
 	Socials []OrganizationSocialLink `json:"socials"`
 	Status  OrganizationStatus       `json:"status"`
 	// When the business details were submitted.
-	DetailsSubmittedAt *time.Time `json:"details_submitted_at"`
-	// Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available.
-	DefaultPresentmentCurrency string `json:"default_presentment_currency"`
+	DetailsSubmittedAt         *time.Time          `json:"details_submitted_at"`
+	DefaultPresentmentCurrency PresentmentCurrency `json:"default_presentment_currency"`
 	// Organization feature settings
 	FeatureSettings        *OrganizationFeatureSettings       `json:"feature_settings"`
 	SubscriptionSettings   OrganizationSubscriptionSettings   `json:"subscription_settings"`
@@ -144,9 +143,9 @@ func (o *Organization) GetDetailsSubmittedAt() *time.Time {
 	return o.DetailsSubmittedAt
 }
 
-func (o *Organization) GetDefaultPresentmentCurrency() string {
+func (o *Organization) GetDefaultPresentmentCurrency() PresentmentCurrency {
 	if o == nil {
-		return ""
+		return PresentmentCurrency("")
 	}
 	return o.DefaultPresentmentCurrency
 }

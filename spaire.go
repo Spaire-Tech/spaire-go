@@ -2,16 +2,16 @@
 
 package spairego
 
-// Generated from OpenAPI doc version 0.1.0 and generator version 2.856.1
+// Generated from OpenAPI doc version 0.1.0 and generator version 2.869.25
 
 import (
-	"context"
-	"fmt"
 	"app.spairehq.com/go/internal/config"
 	"app.spairehq.com/go/internal/hooks"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/retry"
+	"context"
+	"fmt"
 	"net/http"
 	"time"
 )
@@ -19,14 +19,11 @@ import (
 const (
 	// Production environment
 	ServerProduction string = "production"
-	// Sandbox environment
-	ServerSandbox string = "sandbox"
 )
 
 // ServerList contains the list of servers available to the SDK
 var ServerList = map[string]string{
 	ServerProduction: "https://api.spairehq.com",
-	ServerSandbox:    "https://sandbox-api.spairehq.com",
 }
 
 // HTTPClient provides an interface for supplying the SDK with a custom HTTP client
@@ -56,7 +53,7 @@ func Float64(f float64) *float64 { return &f }
 func Pointer[T any](v T) *T { return &v }
 
 // Spaire API: Spaire HTTP and Webhooks API
-// Read the docs at https://spairehq.com/docs/api-reference
+// Read the docs at https://docs.spairehq.com/api-reference
 type Spaire struct {
 	SDKVersion               string
 	Organizations            *Organizations
@@ -67,6 +64,7 @@ type Spaire struct {
 	Webhooks                 *Webhooks
 	Products                 *Products
 	Orders                   *Orders
+	ClientInvoices           *ClientInvoices
 	Refunds                  *Refunds
 	Disputes                 *Disputes
 	Checkouts                *Checkouts
@@ -81,6 +79,7 @@ type Spaire struct {
 	CustomerPortal           *CustomerPortal
 	CustomerSeats            *CustomerSeats
 	CustomerSessions         *CustomerSessions
+	MemberSessions           *MemberSessions
 	Events                   *Events
 	EventTypes               *EventTypes
 	Meters                   *Meters
@@ -164,9 +163,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Spaire {
 	sdk := &Spaire{
-		SDKVersion: "0.15.0",
+		SDKVersion: "0.16.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.15.0 2.856.1 0.1.0 app.spairehq.com/go",
+			UserAgent:  "speakeasy-sdk/go 0.16.0 2.869.25 0.1.0 app.spairehq.com/go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -202,6 +201,7 @@ func New(opts ...SDKOption) *Spaire {
 	sdk.Webhooks = newWebhooks(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Products = newProducts(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Orders = newOrders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ClientInvoices = newClientInvoices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Refunds = newRefunds(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Disputes = newDisputes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Checkouts = newCheckouts(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -216,6 +216,7 @@ func New(opts ...SDKOption) *Spaire {
 	sdk.CustomerPortal = newCustomerPortal(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CustomerSeats = newCustomerSeats(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CustomerSessions = newCustomerSessions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.MemberSessions = newMemberSessions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Events = newEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventTypes = newEventTypes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)

@@ -39,12 +39,6 @@ customerBenefitGrant := components.CreateCustomerBenefitGrantCustomerBenefitGran
 customerBenefitGrant := components.CreateCustomerBenefitGrantCustomerBenefitGrantMeterCredit(components.CustomerBenefitGrantMeterCredit{/* values here */})
 ```
 
-### CustomerBenefitGrantFeatureFlag
-
-```go
-customerBenefitGrant := components.CreateCustomerBenefitGrantCustomerBenefitGrantFeatureFlag(components.CustomerBenefitGrantFeatureFlag{/* values here */})
-```
-
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -63,7 +57,5 @@ switch customerBenefitGrant.Type {
 		// customerBenefitGrant.CustomerBenefitGrantCustom is populated
 	case components.CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit:
 		// customerBenefitGrant.CustomerBenefitGrantMeterCredit is populated
-	case components.CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag:
-		// customerBenefitGrant.CustomerBenefitGrantFeatureFlag is populated
 }
 ```

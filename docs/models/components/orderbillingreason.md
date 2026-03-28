@@ -19,3 +19,4 @@ value := components.OrderBillingReasonPurchase
 | `OrderBillingReasonSubscriptionCreate` | subscription_create                    |
 | `OrderBillingReasonSubscriptionCycle`  | subscription_cycle                     |
 | `OrderBillingReasonSubscriptionUpdate` | subscription_update                    |
+| `OrderBillingReasonClientInvoice`      | client_invoice                         |

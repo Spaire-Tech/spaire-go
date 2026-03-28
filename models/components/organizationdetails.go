@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"encoding/json"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type SwitchingFrom string
@@ -45,15 +45,15 @@ func (e *SwitchingFrom) UnmarshalJSON(data []byte) error {
 
 type OrganizationDetails struct {
 	// Brief information about you and your business.
-	About string `json:"about"`
+	About *string `default:"" json:"about"`
 	// Description of digital products being sold.
 	ProductDescription string `json:"product_description"`
 	// How the organization will integrate and use Spaire.
-	IntendedUse string `json:"intended_use"`
+	IntendedUse *string `default:"" json:"intended_use"`
 	// Main customer acquisition channels.
-	CustomerAcquisition []string `json:"customer_acquisition"`
+	CustomerAcquisition []string `json:"customer_acquisition,omitempty"`
 	// Estimated revenue in the next 12 months
-	FutureAnnualRevenue int64 `json:"future_annual_revenue"`
+	FutureAnnualRevenue *int64 `default:"0" json:"future_annual_revenue"`
 	// Switching from another platform?
 	Switching *bool `default:"true" json:"switching"`
 	// Which platform the organization is migrating from.
@@ -73,9 +73,9 @@ func (o *OrganizationDetails) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *OrganizationDetails) GetAbout() string {
+func (o *OrganizationDetails) GetAbout() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.About
 }
@@ -87,23 +87,23 @@ func (o *OrganizationDetails) GetProductDescription() string {
 	return o.ProductDescription
 }
 
-func (o *OrganizationDetails) GetIntendedUse() string {
+func (o *OrganizationDetails) GetIntendedUse() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.IntendedUse
 }
 
 func (o *OrganizationDetails) GetCustomerAcquisition() []string {
 	if o == nil {
-		return []string{}
+		return nil
 	}
 	return o.CustomerAcquisition
 }
 
-func (o *OrganizationDetails) GetFutureAnnualRevenue() int64 {
+func (o *OrganizationDetails) GetFutureAnnualRevenue() *int64 {
 	if o == nil {
-		return 0
+		return nil
 	}
 	return o.FutureAnnualRevenue
 }

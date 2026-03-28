@@ -21,4 +21,3 @@ value := components.BenefitTypeCustom
 | `BenefitTypeDownloadables`    | downloadables                 |
 | `BenefitTypeLicenseKeys`      | license_keys                  |
 | `BenefitTypeMeterCredit`      | meter_credit                  |
-| `BenefitTypeFeatureFlag`      | feature_flag                  |

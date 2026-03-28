@@ -39,15 +39,15 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch productPrice.Type {
-	case components.ProductPriceTypeCustom:
+	case components.ProductPriceUnionTypeCustom:
 		// productPrice.ProductPriceCustom is populated
-	case components.ProductPriceTypeFixed:
+	case components.ProductPriceUnionTypeFixed:
 		// productPrice.ProductPriceFixed is populated
-	case components.ProductPriceTypeFree:
+	case components.ProductPriceUnionTypeFree:
 		// productPrice.ProductPriceFree is populated
-	case components.ProductPriceTypeMeteredUnit:
+	case components.ProductPriceUnionTypeMeteredUnit:
 		// productPrice.ProductPriceMeteredUnit is populated
-	case components.ProductPriceTypeSeatBased:
+	case components.ProductPriceUnionTypeSeatBased:
 		// productPrice.ProductPriceSeatBased is populated
 }
 ```
