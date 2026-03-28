@@ -3,8 +3,8 @@
 package apierrors
 
 import (
-	"encoding/json"
 	"app.spairehq.com/go/models/components"
+	"encoding/json"
 )
 
 type HTTPValidationError struct {

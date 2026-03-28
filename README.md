@@ -14,13 +14,13 @@ Developer-friendly & type-safe Go SDK specifically catered to leverage *app.spai
 
 Spaire API: Spaire HTTP and Webhooks API
 
-Read the docs at https://spairehq.com/docs/api-reference
+Read the docs at https://docs.spairehq.com/api-reference
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [app.spairehq.com/go](#githubcomSpaire-Techspaire-go)
+* [app.spairehq.com/go](#appspairehqcomgo)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
@@ -55,8 +55,8 @@ go get app.spairehq.com/go
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
+	"context"
 	"log"
 	"os"
 )
@@ -99,8 +99,8 @@ func main() {
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type | Scheme      | Environment Variable |
-| ------------- | ---- | ----------- | -------------------- |
+| Name          | Type | Scheme      | Environment Variable  |
+| ------------- | ---- | ----------- | --------------------- |
 | `AccessToken` | http | HTTP Bearer | `SPAIRE_ACCESS_TOKEN` |
 
 You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
@@ -108,8 +108,8 @@ You can configure it using the `WithSecurity` option when initializing the SDK c
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
+	"context"
 	"log"
 	"os"
 )
@@ -151,9 +151,9 @@ Some operations in this SDK require the security scheme to be specified at the r
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
 	"app.spairehq.com/go/models/operations"
+	"context"
 	"log"
 )
 
@@ -222,6 +222,18 @@ func main() {
 * [ClientGet](docs/sdks/checkouts/README.md#clientget) - Get Checkout Session from Client
 * [ClientUpdate](docs/sdks/checkouts/README.md#clientupdate) - Update Checkout Session from Client
 * [ClientConfirm](docs/sdks/checkouts/README.md#clientconfirm) - Confirm Checkout Session from Client
+
+### [ClientInvoices](docs/sdks/clientinvoices/README.md)
+
+* [ListClientInvoices](docs/sdks/clientinvoices/README.md#listclientinvoices) - List Client Invoices
+* [CreateClientInvoice](docs/sdks/clientinvoices/README.md#createclientinvoice) - Create Client Invoice
+* [PreviewClientInvoicePdf](docs/sdks/clientinvoices/README.md#previewclientinvoicepdf) - Preview Client Invoice PDF
+* [GetClientInvoice](docs/sdks/clientinvoices/README.md#getclientinvoice) - Get Client Invoice
+* [DownloadClientInvoicePdf](docs/sdks/clientinvoices/README.md#downloadclientinvoicepdf) - Download Client Invoice PDF
+* [FinalizeClientInvoice](docs/sdks/clientinvoices/README.md#finalizeclientinvoice) - Finalize Client Invoice
+* [SendClientInvoice](docs/sdks/clientinvoices/README.md#sendclientinvoice) - Send Client Invoice
+* [MarkClientInvoicePaid](docs/sdks/clientinvoices/README.md#markclientinvoicepaid) - Mark Client Invoice as Paid
+* [VoidClientInvoice](docs/sdks/clientinvoices/README.md#voidclientinvoice) - Void Client Invoice
 
 ### [CustomFields](docs/sdks/customfields/README.md)
 
@@ -384,6 +396,10 @@ func main() {
 * [Activate](docs/sdks/licensekeys/README.md#activate) - Activate License Key
 * [Deactivate](docs/sdks/licensekeys/README.md#deactivate) - Deactivate License Key
 
+### [MemberSessions](docs/sdks/membersessions/README.md)
+
+* [Create](docs/sdks/membersessions/README.md#create) - Create Member Session
+
 ### [Members](docs/sdks/members/README.md)
 
 * [ListMembers](docs/sdks/members/README.md#listmembers) - List Members
@@ -423,7 +439,7 @@ func main() {
 ### [Orders](docs/sdks/orders/README.md)
 
 * [List](docs/sdks/orders/README.md#list) - List Orders
-* [Export](docs/sdks/orders/README.md#export) - Export Orders
+* [Export](docs/sdks/orders/README.md#export) - Export Subscriptions
 * [Get](docs/sdks/orders/README.md#get) - Get Order
 * [Update](docs/sdks/orders/README.md#update) - Update Order
 * [Invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
@@ -455,6 +471,10 @@ func main() {
 * [Get](docs/sdks/products/README.md#get) - Get Product
 * [Update](docs/sdks/products/README.md#update) - Update Product
 * [UpdateBenefits](docs/sdks/products/README.md#updatebenefits) - Update Product Benefits
+
+#### [Products.Products](docs/sdks/spaireproducts/README.md)
+
+* [PreviewTax](docs/sdks/spaireproducts/README.md#previewtax) - Preview Tax
 
 ### [Refunds](docs/sdks/refunds/README.md)
 
@@ -496,8 +516,8 @@ Here's an example of one such pagination call:
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
+	"context"
 	"log"
 	"os"
 )
@@ -543,9 +563,9 @@ To change the default retry strategy for a single API call, simply provide a `re
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
 	"app.spairehq.com/go/retry"
+	"context"
 	"log"
 	"models/operations"
 	"os"
@@ -596,9 +616,9 @@ If you'd like to override the default retry strategy for all operations that sup
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
 	"app.spairehq.com/go/retry"
+	"context"
 	"log"
 	"os"
 )
@@ -665,10 +685,10 @@ For example, the `List` function may return the following errors:
 package main
 
 import (
-	"context"
-	"errors"
 	spairego "app.spairehq.com/go"
 	"app.spairehq.com/go/models/apierrors"
+	"context"
+	"errors"
 	"log"
 	"os"
 )
@@ -707,10 +727,9 @@ func main() {
 
 You can override the default server globally using the `WithServer(server string)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name         | Server                         | Description            |
-| ------------ | ------------------------------ | ---------------------- |
-| `production` | `https://api.spairehq.com`         | Production environment |
-| `sandbox`    | `https://sandbox-api.spairehq.com` | Sandbox environment    |
+| Name         | Server                     | Description            |
+| ------------ | -------------------------- | ---------------------- |
+| `production` | `https://api.spairehq.com` | Production environment |
 
 #### Example
 
@@ -718,8 +737,8 @@ You can override the default server globally using the `WithServer(server string
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
+	"context"
 	"log"
 	"os"
 )
@@ -762,8 +781,8 @@ The default server can also be overridden globally using the `WithServerURL(serv
 package main
 
 import (
-	"context"
 	spairego "app.spairehq.com/go"
+	"context"
 	"log"
 	"os"
 )

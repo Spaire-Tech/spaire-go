@@ -14,6 +14,7 @@ const (
 	OrderBillingReasonSubscriptionCreate OrderBillingReason = "subscription_create"
 	OrderBillingReasonSubscriptionCycle  OrderBillingReason = "subscription_cycle"
 	OrderBillingReasonSubscriptionUpdate OrderBillingReason = "subscription_update"
+	OrderBillingReasonClientInvoice      OrderBillingReason = "client_invoice"
 )
 
 func (e OrderBillingReason) ToPointer() *OrderBillingReason {
@@ -32,6 +33,8 @@ func (e *OrderBillingReason) UnmarshalJSON(data []byte) error {
 	case "subscription_cycle":
 		fallthrough
 	case "subscription_update":
+		fallthrough
+	case "client_invoice":
 		*e = OrderBillingReason(v)
 		return nil
 	default:

@@ -8,6 +8,7 @@ import (
 
 // ProductPriceSeatBasedCreate - Schema to create a seat-based price with volume-based tiers.
 type ProductPriceSeatBasedCreate struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string               `const:"seat_based" json:"amount_type"`
 	PriceCurrency *PresentmentCurrency `json:"price_currency,omitempty"`
 	// List of pricing tiers for seat-based pricing.

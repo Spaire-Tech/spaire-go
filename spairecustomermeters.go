@@ -3,9 +3,6 @@
 package spairego
 
 import (
-	"bytes"
-	"context"
-	"fmt"
 	"app.spairehq.com/go/internal/config"
 	"app.spairehq.com/go/internal/hooks"
 	"app.spairehq.com/go/internal/utils"
@@ -13,6 +10,9 @@ import (
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/models/operations"
 	"app.spairehq.com/go/retry"
+	"bytes"
+	"context"
+	"fmt"
 	"github.com/spyzhov/ajson"
 	"net/http"
 	"net/url"
@@ -250,16 +250,11 @@ func (s *SpaireCustomerMeters) List(ctx context.Context, request operations.Cust
 		if len(arr) < l {
 			return nil, nil
 		}
+		request.Page = &nP
 
 		return s.List(
 			ctx,
-			operations.CustomerPortalCustomerMetersListRequest{
-				MeterID: request.MeterID,
-				Query:   request.Query,
-				Page:    &nP,
-				Limit:   request.Limit,
-				Sorting: request.Sorting,
-			},
+			request,
 			security,
 			opts...,
 		)

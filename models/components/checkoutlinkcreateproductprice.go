@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type CheckoutLinkCreateProductPriceMetadataType string
@@ -136,6 +136,7 @@ type CheckoutLinkCreateProductPrice struct {
 	// The number of interval units for the trial period.
 	TrialIntervalCount *int64 `json:"trial_interval_count,omitempty"`
 	// Payment processor to use. Currently only Stripe is supported.
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	paymentProcessor string `const:"stripe" json:"payment_processor"`
 	// Optional label to distinguish links internally
 	Label *string `json:"label,omitempty"`
@@ -146,9 +147,7 @@ type CheckoutLinkCreateProductPrice struct {
 	// ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored.
 	DiscountID *string `json:"discount_id,omitempty"`
 	// URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id.
-	SuccessURL *string `json:"success_url,omitempty"`
-	// When set, a back button will be shown in the checkout to return to this URL.
-	ReturnURL      *string `json:"return_url,omitempty"`
+	SuccessURL     *string `json:"success_url,omitempty"`
 	ProductPriceID string  `json:"product_price_id"`
 }
 
@@ -221,13 +220,6 @@ func (c *CheckoutLinkCreateProductPrice) GetSuccessURL() *string {
 		return nil
 	}
 	return c.SuccessURL
-}
-
-func (c *CheckoutLinkCreateProductPrice) GetReturnURL() *string {
-	if c == nil {
-		return nil
-	}
-	return c.ReturnURL
 }
 
 func (c *CheckoutLinkCreateProductPrice) GetProductPriceID() string {

@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"encoding/json"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type CountryAlpha2 string

@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -342,14 +342,15 @@ type CheckoutUpdate struct {
 	ProductPriceID *string `json:"product_price_id,omitempty"`
 	Amount         *int64  `json:"amount,omitempty"`
 	// Number of seats for seat-based pricing.
-	Seats                  *int64        `json:"seats,omitempty"`
+	Seats *int64 `json:"seats,omitempty"`
+	// Locale of the customer, given as an IETF BCP 47 language tag. Used to localize the checkout page.
+	Locale                 *string       `json:"locale,omitempty"`
 	IsBusinessCustomer     *bool         `json:"is_business_customer,omitempty"`
 	CustomerName           *string       `json:"customer_name,omitempty"`
 	CustomerEmail          *string       `json:"customer_email,omitempty"`
 	CustomerBillingName    *string       `json:"customer_billing_name,omitempty"`
 	CustomerBillingAddress *AddressInput `json:"customer_billing_address,omitempty"`
 	CustomerTaxID          *string       `json:"customer_tax_id,omitempty"`
-	Locale                 *string       `json:"locale,omitempty"`
 	// The interval unit for the trial period.
 	TrialInterval *TrialInterval `json:"trial_interval,omitempty"`
 	// The number of interval units for the trial period.
@@ -431,6 +432,13 @@ func (c *CheckoutUpdate) GetSeats() *int64 {
 	return c.Seats
 }
 
+func (c *CheckoutUpdate) GetLocale() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Locale
+}
+
 func (c *CheckoutUpdate) GetIsBusinessCustomer() *bool {
 	if c == nil {
 		return nil
@@ -471,13 +479,6 @@ func (c *CheckoutUpdate) GetCustomerTaxID() *string {
 		return nil
 	}
 	return c.CustomerTaxID
-}
-
-func (c *CheckoutUpdate) GetLocale() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Locale
 }
 
 func (c *CheckoutUpdate) GetTrialInterval() *TrialInterval {

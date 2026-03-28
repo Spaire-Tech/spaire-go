@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -126,12 +126,10 @@ type DiscountFixedRepeatDurationCreate struct {
 	// For example, to apply the discount for 2 years, set this to 24.
 	DurationInMonths int64        `json:"duration_in_months"`
 	Type             DiscountType `json:"type"`
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Amount *int64 `json:"amount,omitempty"`
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Currency *PresentmentCurrency `json:"currency,omitempty"`
-	// Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies.
-	Amounts map[string]int64 `json:"amounts,omitempty"`
+	// Fixed amount to discount from the invoice total.
+	Amount int64 `json:"amount"`
+	// The currency. Currently, only `usd` is supported.
+	Currency *string `default:"usd" json:"currency"`
 	// Key-value object allowing you to store additional information.
 	//
 	// The key must be a string with a maximum length of **40 characters**.
@@ -164,7 +162,7 @@ func (d DiscountFixedRepeatDurationCreate) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DiscountFixedRepeatDurationCreate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"duration", "duration_in_months", "type", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"duration", "duration_in_months", "type", "amount", "name"}); err != nil {
 		return err
 	}
 	return nil
@@ -191,25 +189,18 @@ func (d *DiscountFixedRepeatDurationCreate) GetType() DiscountType {
 	return d.Type
 }
 
-func (d *DiscountFixedRepeatDurationCreate) GetAmount() *int64 {
+func (d *DiscountFixedRepeatDurationCreate) GetAmount() int64 {
 	if d == nil {
-		return nil
+		return 0
 	}
 	return d.Amount
 }
 
-func (d *DiscountFixedRepeatDurationCreate) GetCurrency() *PresentmentCurrency {
+func (d *DiscountFixedRepeatDurationCreate) GetCurrency() *string {
 	if d == nil {
 		return nil
 	}
 	return d.Currency
-}
-
-func (d *DiscountFixedRepeatDurationCreate) GetAmounts() map[string]int64 {
-	if d == nil {
-		return nil
-	}
-	return d.Amounts
 }
 
 func (d *DiscountFixedRepeatDurationCreate) GetMetadata() map[string]DiscountFixedRepeatDurationCreateMetadata {

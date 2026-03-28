@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -363,7 +363,8 @@ type CheckoutPublicConfirmed struct {
 	// Key-value object storing custom field values.
 	CustomFieldData  map[string]*CheckoutPublicConfirmedCustomFieldData `json:"custom_field_data,omitempty"`
 	PaymentProcessor PaymentProcessor                                   `json:"payment_processor"`
-	status           string                                             `const:"confirmed" json:"status"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	status string `const:"confirmed" json:"status"`
 	// Client secret used to update and complete the checkout session from the client.
 	ClientSecret string `json:"client_secret"`
 	// URL where the customer can access the checkout session.
@@ -376,14 +377,12 @@ type CheckoutPublicConfirmed struct {
 	ReturnURL *string `json:"return_url"`
 	// When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page.
 	EmbedOrigin *string `json:"embed_origin"`
+	// Locale of the customer, given as an IETF BCP 47 language tag. Used to localize the checkout page.
+	Locale *string `json:"locale,omitempty"`
 	// Amount in cents, before discounts and taxes.
 	Amount int64 `json:"amount"`
-	// Predefined number of seats (works with seat-based pricing only)
+	// Number of seats for seat-based pricing.
 	Seats *int64 `json:"seats,omitempty"`
-	// Minimum number of seats (works with seat-based pricing only)
-	MinSeats *int64 `json:"min_seats,omitempty"`
-	// Maximum number of seats (works with seat-based pricing only)
-	MaxSeats *int64 `json:"max_seats,omitempty"`
 	// Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing.
 	PricePerSeat *int64 `json:"price_per_seat,omitempty"`
 	// Discount amount in cents.
@@ -439,7 +438,6 @@ type CheckoutPublicConfirmed struct {
 	CustomerBillingName      *string                      `json:"customer_billing_name"`
 	CustomerBillingAddress   *Address                     `json:"customer_billing_address"`
 	CustomerTaxID            *string                      `json:"customer_tax_id"`
-	Locale                   *string                      `json:"locale,omitempty"`
 	PaymentProcessorMetadata map[string]string            `json:"payment_processor_metadata"`
 	BillingAddressFields     CheckoutBillingAddressFields `json:"billing_address_fields"`
 	// List of products available to select.
@@ -455,7 +453,7 @@ type CheckoutPublicConfirmed struct {
 	Discount             *CheckoutPublicConfirmedDiscount           `json:"discount"`
 	Organization         CheckoutOrganization                       `json:"organization"`
 	AttachedCustomFields []AttachedCustomField                      `json:"attached_custom_fields"`
-	CustomerSessionToken *string                                    `json:"customer_session_token"`
+	CustomerSessionToken string                                     `json:"customer_session_token"`
 }
 
 func (c CheckoutPublicConfirmed) MarshalJSON() ([]byte, error) {
@@ -550,6 +548,13 @@ func (c *CheckoutPublicConfirmed) GetEmbedOrigin() *string {
 	return c.EmbedOrigin
 }
 
+func (c *CheckoutPublicConfirmed) GetLocale() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Locale
+}
+
 func (c *CheckoutPublicConfirmed) GetAmount() int64 {
 	if c == nil {
 		return 0
@@ -562,20 +567,6 @@ func (c *CheckoutPublicConfirmed) GetSeats() *int64 {
 		return nil
 	}
 	return c.Seats
-}
-
-func (c *CheckoutPublicConfirmed) GetMinSeats() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.MinSeats
-}
-
-func (c *CheckoutPublicConfirmed) GetMaxSeats() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.MaxSeats
 }
 
 func (c *CheckoutPublicConfirmed) GetPricePerSeat() *int64 {
@@ -781,13 +772,6 @@ func (c *CheckoutPublicConfirmed) GetCustomerTaxID() *string {
 	return c.CustomerTaxID
 }
 
-func (c *CheckoutPublicConfirmed) GetLocale() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Locale
-}
-
 func (c *CheckoutPublicConfirmed) GetPaymentProcessorMetadata() map[string]string {
 	if c == nil {
 		return map[string]string{}
@@ -851,9 +835,9 @@ func (c *CheckoutPublicConfirmed) GetAttachedCustomFields() []AttachedCustomFiel
 	return c.AttachedCustomFields
 }
 
-func (c *CheckoutPublicConfirmed) GetCustomerSessionToken() *string {
+func (c *CheckoutPublicConfirmed) GetCustomerSessionToken() string {
 	if c == nil {
-		return nil
+		return ""
 	}
 	return c.CustomerSessionToken
 }

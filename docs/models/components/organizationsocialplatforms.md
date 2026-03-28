@@ -22,6 +22,4 @@ value := components.OrganizationSocialPlatformsX
 | `OrganizationSocialPlatformsYoutube`   | youtube                                |
 | `OrganizationSocialPlatformsTiktok`    | tiktok                                 |
 | `OrganizationSocialPlatformsLinkedin`  | linkedin                               |
-| `OrganizationSocialPlatformsThreads`   | threads                                |
-| `OrganizationSocialPlatformsDiscord`   | discord                                |
 | `OrganizationSocialPlatformsOther`     | other                                  |

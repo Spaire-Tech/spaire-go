@@ -3,48 +3,13 @@
 package operations
 
 import (
-	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
 )
-
-type CustomerPortalMembersListMembersRequest struct {
-	// Page number, defaults to 1.
-	Page *int64 `default:"1" queryParam:"style=form,explode=true,name=page"`
-	// Size of a page, defaults to 10. Maximum is 100.
-	Limit *int64 `default:"10" queryParam:"style=form,explode=true,name=limit"`
-}
-
-func (c CustomerPortalMembersListMembersRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CustomerPortalMembersListMembersRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c *CustomerPortalMembersListMembersRequest) GetPage() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.Page
-}
-
-func (c *CustomerPortalMembersListMembersRequest) GetLimit() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.Limit
-}
 
 type CustomerPortalMembersListMembersResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful Response
-	ListResourceCustomerPortalMember *components.ListResourceCustomerPortalMember
-
-	Next func() (*CustomerPortalMembersListMembersResponse, error)
+	ResponseCustomerPortalMembersListMembers []components.CustomerPortalMember
 }
 
 func (c *CustomerPortalMembersListMembersResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -54,9 +19,9 @@ func (c *CustomerPortalMembersListMembersResponse) GetHTTPMeta() components.HTTP
 	return c.HTTPMeta
 }
 
-func (c *CustomerPortalMembersListMembersResponse) GetListResourceCustomerPortalMember() *components.ListResourceCustomerPortalMember {
+func (c *CustomerPortalMembersListMembersResponse) GetResponseCustomerPortalMembersListMembers() []components.CustomerPortalMember {
 	if c == nil {
 		return nil
 	}
-	return c.ListResourceCustomerPortalMember
+	return c.ResponseCustomerPortalMembersListMembers
 }

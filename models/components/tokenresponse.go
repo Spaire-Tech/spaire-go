@@ -7,12 +7,13 @@ import (
 )
 
 type TokenResponse struct {
-	AccessToken  string  `json:"access_token"`
+	AccessToken string `json:"access_token"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	tokenType    string  `const:"Bearer" json:"token_type"`
 	ExpiresIn    int64   `json:"expires_in"`
-	RefreshToken *string `json:"refresh_token,omitempty"`
+	RefreshToken *string `json:"refresh_token"`
 	Scope        string  `json:"scope"`
-	IDToken      *string `json:"id_token,omitempty"`
+	IDToken      string  `json:"id_token"`
 }
 
 func (t TokenResponse) MarshalJSON() ([]byte, error) {
@@ -58,9 +59,9 @@ func (t *TokenResponse) GetScope() string {
 	return t.Scope
 }
 
-func (t *TokenResponse) GetIDToken() *string {
+func (t *TokenResponse) GetIDToken() string {
 	if t == nil {
-		return nil
+		return ""
 	}
 	return t.IDToken
 }

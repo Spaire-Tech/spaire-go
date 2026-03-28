@@ -3,11 +3,11 @@
 package operations
 
 import (
+	"app.spairehq.com/go/internal/utils"
+	"app.spairehq.com/go/models/components"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
-	"app.spairehq.com/go/models/components"
 )
 
 type FilesUploadedRequest struct {

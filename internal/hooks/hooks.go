@@ -3,9 +3,9 @@
 package hooks
 
 import (
+	"app.spairehq.com/go/internal/config"
 	"context"
 	"errors"
-	"app.spairehq.com/go/internal/config"
 	"net/http"
 )
 

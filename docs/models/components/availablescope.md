@@ -60,6 +60,8 @@ value := components.AvailableScopeOpenid
 | `AvailableScopeCustomerSeatsWrite`            | customer_seats:write                          |
 | `AvailableScopeOrdersRead`                    | orders:read                                   |
 | `AvailableScopeOrdersWrite`                   | orders:write                                  |
+| `AvailableScopeClientInvoicesRead`            | client_invoices:read                          |
+| `AvailableScopeClientInvoicesWrite`           | client_invoices:write                         |
 | `AvailableScopeRefundsRead`                   | refunds:read                                  |
 | `AvailableScopeRefundsWrite`                  | refunds:write                                 |
 | `AvailableScopePaymentsRead`                  | payments:read                                 |

@@ -7,22 +7,21 @@ import (
 )
 
 type BalanceRefundMetadata struct {
-	TransactionID       string   `json:"transaction_id"`
-	RefundID            string   `json:"refund_id"`
-	OrderID             *string  `json:"order_id,omitempty"`
-	OrderCreatedAt      *string  `json:"order_created_at,omitempty"`
-	ProductID           *string  `json:"product_id,omitempty"`
-	SubscriptionID      *string  `json:"subscription_id,omitempty"`
-	Amount              int64    `json:"amount"`
-	Currency            string   `json:"currency"`
-	PresentmentAmount   int64    `json:"presentment_amount"`
-	PresentmentCurrency string   `json:"presentment_currency"`
-	RefundableAmount    *int64   `json:"refundable_amount,omitempty"`
-	TaxAmount           int64    `json:"tax_amount"`
-	TaxState            *string  `json:"tax_state,omitempty"`
-	TaxCountry          *string  `json:"tax_country,omitempty"`
-	Fee                 int64    `json:"fee"`
-	ExchangeRate        *float64 `json:"exchange_rate,omitempty"`
+	TransactionID       string  `json:"transaction_id"`
+	RefundID            string  `json:"refund_id"`
+	OrderID             *string `json:"order_id,omitempty"`
+	OrderCreatedAt      *string `json:"order_created_at,omitempty"`
+	ProductID           *string `json:"product_id,omitempty"`
+	SubscriptionID      *string `json:"subscription_id,omitempty"`
+	Amount              int64   `json:"amount"`
+	Currency            string  `json:"currency"`
+	PresentmentAmount   int64   `json:"presentment_amount"`
+	PresentmentCurrency string  `json:"presentment_currency"`
+	RefundableAmount    *int64  `json:"refundable_amount,omitempty"`
+	TaxAmount           int64   `json:"tax_amount"`
+	TaxState            *string `json:"tax_state,omitempty"`
+	TaxCountry          *string `json:"tax_country,omitempty"`
+	Fee                 int64   `json:"fee"`
 }
 
 func (b BalanceRefundMetadata) MarshalJSON() ([]byte, error) {
@@ -139,11 +138,4 @@ func (b *BalanceRefundMetadata) GetFee() int64 {
 		return 0
 	}
 	return b.Fee
-}
-
-func (b *BalanceRefundMetadata) GetExchangeRate() *float64 {
-	if b == nil {
-		return nil
-	}
-	return b.ExchangeRate
 }

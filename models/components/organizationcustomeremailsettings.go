@@ -3,15 +3,14 @@
 package components
 
 type OrganizationCustomerEmailSettings struct {
-	OrderConfirmation            bool `json:"order_confirmation"`
-	SubscriptionCancellation     bool `json:"subscription_cancellation"`
-	SubscriptionConfirmation     bool `json:"subscription_confirmation"`
-	SubscriptionCycled           bool `json:"subscription_cycled"`
-	SubscriptionCycledAfterTrial bool `json:"subscription_cycled_after_trial"`
-	SubscriptionPastDue          bool `json:"subscription_past_due"`
-	SubscriptionRevoked          bool `json:"subscription_revoked"`
-	SubscriptionUncanceled       bool `json:"subscription_uncanceled"`
-	SubscriptionUpdated          bool `json:"subscription_updated"`
+	OrderConfirmation        bool `json:"order_confirmation"`
+	SubscriptionCancellation bool `json:"subscription_cancellation"`
+	SubscriptionConfirmation bool `json:"subscription_confirmation"`
+	SubscriptionCycled       bool `json:"subscription_cycled"`
+	SubscriptionPastDue      bool `json:"subscription_past_due"`
+	SubscriptionRevoked      bool `json:"subscription_revoked"`
+	SubscriptionUncanceled   bool `json:"subscription_uncanceled"`
+	SubscriptionUpdated      bool `json:"subscription_updated"`
 }
 
 func (o *OrganizationCustomerEmailSettings) GetOrderConfirmation() bool {
@@ -40,13 +39,6 @@ func (o *OrganizationCustomerEmailSettings) GetSubscriptionCycled() bool {
 		return false
 	}
 	return o.SubscriptionCycled
-}
-
-func (o *OrganizationCustomerEmailSettings) GetSubscriptionCycledAfterTrial() bool {
-	if o == nil {
-		return false
-	}
-	return o.SubscriptionCycledAfterTrial
 }
 
 func (o *OrganizationCustomerEmailSettings) GetSubscriptionPastDue() bool {

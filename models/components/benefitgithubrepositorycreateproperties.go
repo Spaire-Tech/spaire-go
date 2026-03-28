@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"encoding/json"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 // BenefitGitHubRepositoryCreatePropertiesPermission - The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role).

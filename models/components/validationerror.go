@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type LocType string
@@ -71,15 +71,10 @@ func (u Loc) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Loc: all fields are null")
 }
 
-type Context struct {
-}
-
 type ValidationError struct {
-	Loc   []Loc    `json:"loc"`
-	Msg   string   `json:"msg"`
-	Type  string   `json:"type"`
-	Input any      `json:"input,omitempty"`
-	Ctx   *Context `json:"ctx,omitempty"`
+	Loc  []Loc  `json:"loc"`
+	Msg  string `json:"msg"`
+	Type string `json:"type"`
 }
 
 func (v *ValidationError) GetLoc() []Loc {
@@ -101,18 +96,4 @@ func (v *ValidationError) GetType() string {
 		return ""
 	}
 	return v.Type
-}
-
-func (v *ValidationError) GetInput() any {
-	if v == nil {
-		return nil
-	}
-	return v.Input
-}
-
-func (v *ValidationError) GetCtx() *Context {
-	if v == nil {
-		return nil
-	}
-	return v.Ctx
 }

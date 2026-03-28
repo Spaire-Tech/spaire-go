@@ -3,10 +3,10 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
+	"errors"
+	"fmt"
 )
 
 type CustomersListQueryParamOrganizationIDFilterType string
@@ -153,7 +153,7 @@ func (c *CustomersListRequest) GetMetadata() map[string]components.MetadataQuery
 type CustomersListResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful Response
-	ListResourceCustomer *components.ListResourceCustomer
+	ListResourceCustomerWithMembers *components.ListResourceCustomerWithMembers
 
 	Next func() (*CustomersListResponse, error)
 }
@@ -165,9 +165,9 @@ func (c *CustomersListResponse) GetHTTPMeta() components.HTTPMetadata {
 	return c.HTTPMeta
 }
 
-func (c *CustomersListResponse) GetListResourceCustomer() *components.ListResourceCustomer {
+func (c *CustomersListResponse) GetListResourceCustomerWithMembers() *components.ListResourceCustomerWithMembers {
 	if c == nil {
 		return nil
 	}
-	return c.ListResourceCustomer
+	return c.ListResourceCustomerWithMembers
 }

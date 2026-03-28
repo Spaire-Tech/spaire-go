@@ -3,10 +3,10 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
+	"errors"
+	"fmt"
 )
 
 type Oauth2UserinfoResponseOauth2UserinfoType string
@@ -92,3 +92,6 @@ func (o *Oauth2UserinfoResponse) GetResponseOauth2Userinfo() *Oauth2UserinfoResp
 	}
 	return o.ResponseOauth2Userinfo
 }
+
+// #region class-body-oauth2userinforesponse
+// #endregion class-body-oauth2userinforesponse

@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -458,14 +458,12 @@ type Checkout struct {
 	ReturnURL *string `json:"return_url"`
 	// When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page.
 	EmbedOrigin *string `json:"embed_origin"`
+	// Locale of the customer, given as an IETF BCP 47 language tag. Used to localize the checkout page.
+	Locale *string `json:"locale,omitempty"`
 	// Amount in cents, before discounts and taxes.
 	Amount int64 `json:"amount"`
-	// Predefined number of seats (works with seat-based pricing only)
+	// Number of seats for seat-based pricing.
 	Seats *int64 `json:"seats,omitempty"`
-	// Minimum number of seats (works with seat-based pricing only)
-	MinSeats *int64 `json:"min_seats,omitempty"`
-	// Maximum number of seats (works with seat-based pricing only)
-	MaxSeats *int64 `json:"max_seats,omitempty"`
 	// Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing.
 	PricePerSeat *int64 `json:"price_per_seat,omitempty"`
 	// Discount amount in cents.
@@ -521,7 +519,6 @@ type Checkout struct {
 	CustomerBillingName      *string                      `json:"customer_billing_name"`
 	CustomerBillingAddress   *Address                     `json:"customer_billing_address"`
 	CustomerTaxID            *string                      `json:"customer_tax_id"`
-	Locale                   *string                      `json:"locale,omitempty"`
 	PaymentProcessorMetadata map[string]string            `json:"payment_processor_metadata"`
 	BillingAddressFields     CheckoutBillingAddressFields `json:"billing_address_fields"`
 	// The interval unit for the trial period.
@@ -531,6 +528,8 @@ type Checkout struct {
 	Metadata           map[string]MetadataOutputType `json:"metadata"`
 	// ID of the customer in your system. If a matching customer exists on Spaire, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set.
 	ExternalCustomerID *string `json:"external_customer_id"`
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	CustomerExternalID *string `json:"customer_external_id"`
 	// List of products available to select.
 	Products []CheckoutProduct `json:"products"`
 	// Product selected to checkout.
@@ -642,6 +641,13 @@ func (c *Checkout) GetEmbedOrigin() *string {
 	return c.EmbedOrigin
 }
 
+func (c *Checkout) GetLocale() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Locale
+}
+
 func (c *Checkout) GetAmount() int64 {
 	if c == nil {
 		return 0
@@ -654,20 +660,6 @@ func (c *Checkout) GetSeats() *int64 {
 		return nil
 	}
 	return c.Seats
-}
-
-func (c *Checkout) GetMinSeats() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.MinSeats
-}
-
-func (c *Checkout) GetMaxSeats() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.MaxSeats
 }
 
 func (c *Checkout) GetPricePerSeat() *int64 {
@@ -873,13 +865,6 @@ func (c *Checkout) GetCustomerTaxID() *string {
 	return c.CustomerTaxID
 }
 
-func (c *Checkout) GetLocale() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Locale
-}
-
 func (c *Checkout) GetPaymentProcessorMetadata() map[string]string {
 	if c == nil {
 		return map[string]string{}
@@ -920,6 +905,13 @@ func (c *Checkout) GetExternalCustomerID() *string {
 		return nil
 	}
 	return c.ExternalCustomerID
+}
+
+func (c *Checkout) GetCustomerExternalID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.CustomerExternalID
 }
 
 func (c *Checkout) GetProducts() []CheckoutProduct {

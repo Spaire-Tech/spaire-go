@@ -23,5 +23,3 @@ value := components.DiscountSortPropertyCreatedAt
 | `DiscountSortPropertyMinusCode`             | -code                                       |
 | `DiscountSortPropertyRedemptionsCount`      | redemptions_count                           |
 | `DiscountSortPropertyMinusRedemptionsCount` | -redemptions_count                          |
-| `DiscountSortPropertyEndsAt`                | ends_at                                     |
-| `DiscountSortPropertyMinusEndsAt`           | -ends_at                                    |

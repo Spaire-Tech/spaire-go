@@ -10,12 +10,8 @@ import (
 type CheckoutDiscountFixedOnceForeverDuration struct {
 	Duration DiscountDuration `json:"duration"`
 	Type     DiscountType     `json:"type"`
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Amount int64 `json:"amount"`
-	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Currency string `json:"currency"`
-	// Map of currency to fixed amount to discount from the total.
-	Amounts map[string]int64 `json:"amounts"`
+	Amount   int64            `json:"amount"`
+	Currency string           `json:"currency"`
 	// The ID of the object.
 	ID   string  `json:"id"`
 	Name string  `json:"name"`
@@ -27,7 +23,7 @@ func (c CheckoutDiscountFixedOnceForeverDuration) MarshalJSON() ([]byte, error) 
 }
 
 func (c *CheckoutDiscountFixedOnceForeverDuration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"duration", "type", "amount", "currency", "amounts", "id", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"duration", "type", "amount", "currency", "id", "name"}); err != nil {
 		return err
 	}
 	return nil
@@ -59,13 +55,6 @@ func (c *CheckoutDiscountFixedOnceForeverDuration) GetCurrency() string {
 		return ""
 	}
 	return c.Currency
-}
-
-func (c *CheckoutDiscountFixedOnceForeverDuration) GetAmounts() map[string]int64 {
-	if c == nil {
-		return map[string]int64{}
-	}
-	return c.Amounts
 }
 
 func (c *CheckoutDiscountFixedOnceForeverDuration) GetID() string {

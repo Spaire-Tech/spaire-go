@@ -51,7 +51,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.ListResourceCustomer != nil {
+    if res.ListResourceCustomerWithMembers != nil {
         for {
             // handle items
 
@@ -122,7 +122,14 @@ func main() {
         BillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: spairego.Pointer("en"),
+        TaxID: []*components.CustomerCreateTaxID{
+            spairego.Pointer(components.CreateCustomerCreateTaxIDStr(
+                "911144442",
+            )),
+            spairego.Pointer(components.CreateCustomerCreateTaxIDStr(
+                "us_ein",
+            )),
+        },
         Type: components.CustomerTypeIndividual.ToPointer(),
         OrganizationID: spairego.Pointer("1dbfc517-0bbf-4301-9ba8-555ca42b9737"),
         Owner: &components.OwnerCreate{
@@ -134,7 +141,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Customer != nil {
+    if res.CustomerWithMembers != nil {
         // handle response
     }
 }
@@ -247,7 +254,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Customer != nil {
+    if res.CustomerWithMembers != nil {
         // handle response
     }
 }
@@ -377,14 +384,21 @@ func main() {
         BillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: spairego.Pointer("en"),
+        TaxID: []*components.CustomerUpdateTaxID{
+            spairego.Pointer(components.CreateCustomerUpdateTaxIDStr(
+                "911144442",
+            )),
+            spairego.Pointer(components.CreateCustomerUpdateTaxIDStr(
+                "us_ein",
+            )),
+        },
         ExternalID: spairego.Pointer("usr_1337"),
         Type: components.CustomerTypeIndividual.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
     }
-    if res.Customer != nil {
+    if res.CustomerWithMembers != nil {
         // handle response
     }
 }
@@ -441,7 +455,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Customer != nil {
+    if res.CustomerWithMembers != nil {
         // handle response
     }
 }
@@ -561,12 +575,19 @@ func main() {
         BillingAddress: &components.AddressInput{
             Country: components.CountryAlpha2InputUs,
         },
-        Locale: spairego.Pointer("en"),
+        TaxID: []*components.CustomerUpdateExternalIDTaxID{
+            spairego.Pointer(components.CreateCustomerUpdateExternalIDTaxIDStr(
+                "911144442",
+            )),
+            spairego.Pointer(components.CreateCustomerUpdateExternalIDTaxIDStr(
+                "us_ein",
+            )),
+        },
     })
     if err != nil {
         log.Fatal(err)
     }
-    if res.Customer != nil {
+    if res.CustomerWithMembers != nil {
         // handle response
     }
 }

@@ -3,9 +3,6 @@
 package spairego
 
 import (
-	"bytes"
-	"context"
-	"fmt"
 	"app.spairehq.com/go/internal/config"
 	"app.spairehq.com/go/internal/hooks"
 	"app.spairehq.com/go/internal/utils"
@@ -13,6 +10,9 @@ import (
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/models/operations"
 	"app.spairehq.com/go/retry"
+	"bytes"
+	"context"
+	"fmt"
 	"github.com/spyzhov/ajson"
 	"net/http"
 	"net/url"
@@ -250,18 +250,11 @@ func (s *Customers) List(ctx context.Context, request operations.CustomersListRe
 		if len(arr) < l {
 			return nil, nil
 		}
+		request.Page = &nP
 
 		return s.List(
 			ctx,
-			operations.CustomersListRequest{
-				OrganizationID: request.OrganizationID,
-				Email:          request.Email,
-				Query:          request.Query,
-				Page:           &nP,
-				Limit:          request.Limit,
-				Sorting:        request.Sorting,
-				Metadata:       request.Metadata,
-			},
+			request,
 			opts...,
 		)
 	}
@@ -275,12 +268,12 @@ func (s *Customers) List(ctx context.Context, request operations.CustomersListRe
 				return nil, err
 			}
 
-			var out components.ListResourceCustomer
+			var out components.ListResourceCustomerWithMembers
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ListResourceCustomer = &out
+			res.ListResourceCustomerWithMembers = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -511,12 +504,12 @@ func (s *Customers) Create(ctx context.Context, request components.CustomerCreat
 				return nil, err
 			}
 
-			var out components.Customer
+			var out components.CustomerWithMembers
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Customer = &out
+			res.CustomerWithMembers = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -582,7 +575,6 @@ func (s *Customers) Export(ctx context.Context, organizationID *operations.Custo
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
-		operations.SupportedOptionAcceptHeaderOverride,
 	}
 
 	for _, opt := range opts {
@@ -627,12 +619,7 @@ func (s *Customers) Export(ctx context.Context, organizationID *operations.Custo
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	if o.AcceptHeaderOverride != nil {
-		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
-	} else {
-		req.Header.Set("Accept", "application/json;q=1, text/csv;q=0")
-	}
-
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
@@ -760,14 +747,6 @@ func (s *Customers) Export(ctx context.Context, organizationID *operations.Custo
 			}
 
 			res.Any = out
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `text/csv`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			out := string(rawBody)
-			res.Res = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -995,12 +974,12 @@ func (s *Customers) Get(ctx context.Context, id string, opts ...operations.Optio
 				return nil, err
 			}
 
-			var out components.Customer
+			var out components.CustomerWithMembers
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Customer = &out
+			res.CustomerWithMembers = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -1511,12 +1490,12 @@ func (s *Customers) Update(ctx context.Context, id string, customerUpdate compon
 				return nil, err
 			}
 
-			var out components.Customer
+			var out components.CustomerWithMembers
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Customer = &out
+			res.CustomerWithMembers = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -1765,12 +1744,12 @@ func (s *Customers) GetExternal(ctx context.Context, externalID string, opts ...
 				return nil, err
 			}
 
-			var out components.Customer
+			var out components.CustomerWithMembers
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Customer = &out
+			res.CustomerWithMembers = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -2271,12 +2250,12 @@ func (s *Customers) UpdateExternal(ctx context.Context, externalID string, custo
 				return nil, err
 			}
 
-			var out components.Customer
+			var out components.CustomerWithMembers
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Customer = &out
+			res.CustomerWithMembers = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

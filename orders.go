@@ -3,9 +3,6 @@
 package spairego
 
 import (
-	"bytes"
-	"context"
-	"fmt"
 	"app.spairehq.com/go/internal/config"
 	"app.spairehq.com/go/internal/hooks"
 	"app.spairehq.com/go/internal/utils"
@@ -13,6 +10,9 @@ import (
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/models/operations"
 	"app.spairehq.com/go/retry"
+	"bytes"
+	"context"
+	"fmt"
 	"github.com/spyzhov/ajson"
 	"net/http"
 	"net/url"
@@ -250,22 +250,11 @@ func (s *Orders) List(ctx context.Context, request operations.OrdersListRequest,
 		if len(arr) < l {
 			return nil, nil
 		}
+		request.Page = &nP
 
 		return s.List(
 			ctx,
-			operations.OrdersListRequest{
-				OrganizationID:     request.OrganizationID,
-				ProductID:          request.ProductID,
-				ProductBillingType: request.ProductBillingType,
-				DiscountID:         request.DiscountID,
-				CustomerID:         request.CustomerID,
-				ExternalCustomerID: request.ExternalCustomerID,
-				CheckoutID:         request.CheckoutID,
-				Page:               &nP,
-				Limit:              request.Limit,
-				Sorting:            request.Sorting,
-				Metadata:           request.Metadata,
-			},
+			request,
 			opts...,
 		)
 	}
@@ -337,7 +326,7 @@ func (s *Orders) List(ctx context.Context, request operations.OrdersListRequest,
 
 }
 
-// Export Orders
+// Export Subscriptions
 // Export orders as a CSV file.
 //
 // **Scopes**: `orders:read`
@@ -351,7 +340,6 @@ func (s *Orders) Export(ctx context.Context, organizationID *operations.OrdersEx
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
-		operations.SupportedOptionAcceptHeaderOverride,
 	}
 
 	for _, opt := range opts {
@@ -396,12 +384,7 @@ func (s *Orders) Export(ctx context.Context, organizationID *operations.OrdersEx
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	if o.AcceptHeaderOverride != nil {
-		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
-	} else {
-		req.Header.Set("Accept", "application/json;q=1, text/csv;q=0")
-	}
-
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
@@ -529,14 +512,6 @@ func (s *Orders) Export(ctx context.Context, organizationID *operations.OrdersEx
 			}
 
 			res.Any = out
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `text/csv`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			out := string(rawBody)
-			res.Res = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

@@ -3,9 +3,9 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -134,8 +134,6 @@ type CheckoutLink struct {
 	ClientSecret string `json:"client_secret"`
 	// URL where the customer will be redirected after a successful payment.
 	SuccessURL *string `json:"success_url"`
-	// When set, a back button will be shown in the checkout to return to this URL.
-	ReturnURL *string `json:"return_url"`
 	// Optional label to distinguish links internally
 	Label *string `json:"label"`
 	// Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it.
@@ -223,13 +221,6 @@ func (c *CheckoutLink) GetSuccessURL() *string {
 		return nil
 	}
 	return c.SuccessURL
-}
-
-func (c *CheckoutLink) GetReturnURL() *string {
-	if c == nil {
-		return nil
-	}
-	return c.ReturnURL
 }
 
 func (c *CheckoutLink) GetLabel() *string {

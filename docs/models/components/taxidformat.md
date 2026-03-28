@@ -64,7 +64,6 @@ value := components.TaxIDFormatAdNrt
 | `TaxIDFormatKrBrn`    | kr_brn                |
 | `TaxIDFormatKzBin`    | kz_bin                |
 | `TaxIDFormatLiUID`    | li_uid                |
-| `TaxIDFormatMkVat`    | mk_vat                |
 | `TaxIDFormatMxRfc`    | mx_rfc                |
 | `TaxIDFormatMyFrp`    | my_frp                |
 | `TaxIDFormatMyItn`    | my_itn                |

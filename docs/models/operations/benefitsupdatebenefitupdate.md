@@ -39,12 +39,6 @@ benefitsUpdateBenefitUpdate := operations.CreateBenefitsUpdateBenefitUpdateBenef
 benefitsUpdateBenefitUpdate := operations.CreateBenefitsUpdateBenefitUpdateBenefitMeterCreditUpdate(components.BenefitMeterCreditUpdate{/* values here */})
 ```
 
-### BenefitFeatureFlagUpdate
-
-```go
-benefitsUpdateBenefitUpdate := operations.CreateBenefitsUpdateBenefitUpdateBenefitFeatureFlagUpdate(components.BenefitFeatureFlagUpdate{/* values here */})
-```
-
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -63,7 +57,5 @@ switch benefitsUpdateBenefitUpdate.Type {
 		// benefitsUpdateBenefitUpdate.BenefitLicenseKeysUpdate is populated
 	case operations.BenefitsUpdateBenefitUpdateTypeBenefitMeterCreditUpdate:
 		// benefitsUpdateBenefitUpdate.BenefitMeterCreditUpdate is populated
-	case operations.BenefitsUpdateBenefitUpdateTypeBenefitFeatureFlagUpdate:
-		// benefitsUpdateBenefitUpdate.BenefitFeatureFlagUpdate is populated
 }
 ```

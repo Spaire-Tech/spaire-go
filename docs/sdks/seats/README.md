@@ -259,24 +259,12 @@ func main() {
 
     res, err := s.CustomerPortal.Seats.ListClaimedSubscriptions(ctx, operations.CustomerPortalSeatsListClaimedSubscriptionsSecurity{
         CustomerSession: spairego.Pointer(os.Getenv("SPAIRE_CUSTOMER_SESSION")),
-    }, spairego.Pointer[int64](1), spairego.Pointer[int64](10))
+    })
     if err != nil {
         log.Fatal(err)
     }
-    if res.ListResourceCustomerSubscription != nil {
-        for {
-            // handle items
-
-            res, err = res.Next()
-
-            if err != nil {
-                // handle error
-            }
-
-            if res == nil {
-                break
-            }
-        }
+    if res.ResponseCustomerPortalSeatsListClaimedSubscriptions != nil {
+        // handle response
     }
 }
 ```
@@ -287,8 +275,6 @@ func main() {
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                                            | :heavy_check_mark:                                                                                                                               | The context to use for the request.                                                                                                              |
 | `security`                                                                                                                                       | [operations.CustomerPortalSeatsListClaimedSubscriptionsSecurity](../../models/operations/customerportalseatslistclaimedsubscriptionssecurity.md) | :heavy_check_mark:                                                                                                                               | The security requirements to use for the request.                                                                                                |
-| `page`                                                                                                                                           | `*int64`                                                                                                                                         | :heavy_minus_sign:                                                                                                                               | Page number, defaults to 1.                                                                                                                      |
-| `limit`                                                                                                                                          | `*int64`                                                                                                                                         | :heavy_minus_sign:                                                                                                                               | Size of a page, defaults to 10. Maximum is 100.                                                                                                  |
 | `opts`                                                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                                                         | :heavy_minus_sign:                                                                                                                               | The options for this request.                                                                                                                    |
 
 ### Response
@@ -297,7 +283,6 @@ func main() {
 
 ### Errors
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| apierrors.HTTPValidationError | 422                           | application/json              |
-| apierrors.APIError            | 4XX, 5XX                      | \*/\*                         |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| apierrors.APIError | 4XX, 5XX           | \*/\*              |

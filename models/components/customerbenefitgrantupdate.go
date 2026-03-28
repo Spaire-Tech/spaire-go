@@ -3,10 +3,10 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 )
 
 type CustomerBenefitGrantUpdateType string
@@ -15,7 +15,6 @@ const (
 	CustomerBenefitGrantUpdateTypeCustom           CustomerBenefitGrantUpdateType = "custom"
 	CustomerBenefitGrantUpdateTypeDiscord          CustomerBenefitGrantUpdateType = "discord"
 	CustomerBenefitGrantUpdateTypeDownloadables    CustomerBenefitGrantUpdateType = "downloadables"
-	CustomerBenefitGrantUpdateTypeFeatureFlag      CustomerBenefitGrantUpdateType = "feature_flag"
 	CustomerBenefitGrantUpdateTypeGithubRepository CustomerBenefitGrantUpdateType = "github_repository"
 	CustomerBenefitGrantUpdateTypeLicenseKeys      CustomerBenefitGrantUpdateType = "license_keys"
 	CustomerBenefitGrantUpdateTypeMeterCredit      CustomerBenefitGrantUpdateType = "meter_credit"
@@ -28,7 +27,6 @@ type CustomerBenefitGrantUpdate struct {
 	CustomerBenefitGrantLicenseKeysUpdate      *CustomerBenefitGrantLicenseKeysUpdate      `queryParam:"inline" union:"member"`
 	CustomerBenefitGrantCustomUpdate           *CustomerBenefitGrantCustomUpdate           `queryParam:"inline" union:"member"`
 	CustomerBenefitGrantMeterCreditUpdate      *CustomerBenefitGrantMeterCreditUpdate      `queryParam:"inline" union:"member"`
-	CustomerBenefitGrantFeatureFlagUpdate      *CustomerBenefitGrantFeatureFlagUpdate      `queryParam:"inline" union:"member"`
 
 	Type CustomerBenefitGrantUpdateType
 }
@@ -57,15 +55,6 @@ func CreateCustomerBenefitGrantUpdateDownloadables(downloadables CustomerBenefit
 	return CustomerBenefitGrantUpdate{
 		CustomerBenefitGrantDownloadablesUpdate: &downloadables,
 		Type:                                    typ,
-	}
-}
-
-func CreateCustomerBenefitGrantUpdateFeatureFlag(featureFlag CustomerBenefitGrantFeatureFlagUpdate) CustomerBenefitGrantUpdate {
-	typ := CustomerBenefitGrantUpdateTypeFeatureFlag
-
-	return CustomerBenefitGrantUpdate{
-		CustomerBenefitGrantFeatureFlagUpdate: &featureFlag,
-		Type:                                  typ,
 	}
 }
 
@@ -135,15 +124,6 @@ func (u *CustomerBenefitGrantUpdate) UnmarshalJSON(data []byte) error {
 		u.CustomerBenefitGrantDownloadablesUpdate = customerBenefitGrantDownloadablesUpdate
 		u.Type = CustomerBenefitGrantUpdateTypeDownloadables
 		return nil
-	case "feature_flag":
-		customerBenefitGrantFeatureFlagUpdate := new(CustomerBenefitGrantFeatureFlagUpdate)
-		if err := utils.UnmarshalJSON(data, &customerBenefitGrantFeatureFlagUpdate, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (BenefitType == feature_flag) type CustomerBenefitGrantFeatureFlagUpdate within CustomerBenefitGrantUpdate: %w", string(data), err)
-		}
-
-		u.CustomerBenefitGrantFeatureFlagUpdate = customerBenefitGrantFeatureFlagUpdate
-		u.Type = CustomerBenefitGrantUpdateTypeFeatureFlag
-		return nil
 	case "github_repository":
 		customerBenefitGrantGitHubRepositoryUpdate := new(CustomerBenefitGrantGitHubRepositoryUpdate)
 		if err := utils.UnmarshalJSON(data, &customerBenefitGrantGitHubRepositoryUpdate, "", true, nil); err != nil {
@@ -199,10 +179,6 @@ func (u CustomerBenefitGrantUpdate) MarshalJSON() ([]byte, error) {
 
 	if u.CustomerBenefitGrantMeterCreditUpdate != nil {
 		return utils.MarshalJSON(u.CustomerBenefitGrantMeterCreditUpdate, "", true)
-	}
-
-	if u.CustomerBenefitGrantFeatureFlagUpdate != nil {
-		return utils.MarshalJSON(u.CustomerBenefitGrantFeatureFlagUpdate, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CustomerBenefitGrantUpdate: all fields are null")

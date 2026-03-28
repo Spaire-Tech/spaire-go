@@ -5,7 +5,7 @@
 ### Available Operations
 
 * [List](#list) - List Orders
-* [Export](#export) - Export Orders
+* [Export](#export) - Export Subscriptions
 * [Get](#get) - Get Order
 * [Update](#update) - Update Order
 * [Invoice](#invoice) - Get Order Invoice

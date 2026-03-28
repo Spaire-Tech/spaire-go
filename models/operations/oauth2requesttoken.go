@@ -3,10 +3,10 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
+	"errors"
+	"fmt"
 )
 
 type Oauth2RequestTokenRequestBodyType string
@@ -113,3 +113,6 @@ func (o *Oauth2RequestTokenResponse) GetTokenResponse() *components.TokenRespons
 	}
 	return o.TokenResponse
 }
+
+// #region class-body-oauth2requesttokenresponse
+// #endregion class-body-oauth2requesttokenresponse

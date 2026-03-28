@@ -16,9 +16,7 @@ type WebhookEndpoint struct {
 	// The ID of the object.
 	ID string `json:"id"`
 	// The URL where the webhook events will be sent.
-	URL string `json:"url"`
-	// An optional name for the webhook endpoint to help organize and identify it.
-	Name   *string       `json:"name,omitempty"`
+	URL    string        `json:"url"`
 	Format WebhookFormat `json:"format"`
 	// The secret used to sign the webhook events.
 	Secret string `json:"secret"`
@@ -67,13 +65,6 @@ func (w *WebhookEndpoint) GetURL() string {
 		return ""
 	}
 	return w.URL
-}
-
-func (w *WebhookEndpoint) GetName() *string {
-	if w == nil {
-		return nil
-	}
-	return w.Name
 }
 
 func (w *WebhookEndpoint) GetFormat() WebhookFormat {

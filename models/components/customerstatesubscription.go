@@ -3,10 +3,10 @@
 package components
 
 import (
+	"app.spairehq.com/go/internal/utils"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"app.spairehq.com/go/internal/utils"
 	"time"
 )
 
@@ -163,7 +163,7 @@ type CustomerStateSubscription struct {
 	// The start timestamp of the current billing period.
 	CurrentPeriodStart time.Time `json:"current_period_start"`
 	// The end timestamp of the current billing period.
-	CurrentPeriodEnd time.Time `json:"current_period_end"`
+	CurrentPeriodEnd *time.Time `json:"current_period_end"`
 	// The start timestamp of the trial period, if any.
 	TrialStart *time.Time `json:"trial_start"`
 	// The end timestamp of the trial period, if any.
@@ -265,9 +265,9 @@ func (c *CustomerStateSubscription) GetCurrentPeriodStart() time.Time {
 	return c.CurrentPeriodStart
 }
 
-func (c *CustomerStateSubscription) GetCurrentPeriodEnd() time.Time {
+func (c *CustomerStateSubscription) GetCurrentPeriodEnd() *time.Time {
 	if c == nil {
-		return time.Time{}
+		return nil
 	}
 	return c.CurrentPeriodEnd
 }

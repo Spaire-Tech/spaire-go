@@ -3,10 +3,10 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
+	"errors"
+	"fmt"
 )
 
 type CustomersExportQueryParamOrganizationIDType string
@@ -89,8 +89,6 @@ type CustomersExportResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful Response
 	Any any
-	// Successful Response
-	Res *string
 }
 
 func (c *CustomersExportResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -105,11 +103,4 @@ func (c *CustomersExportResponse) GetAny() any {
 		return nil
 	}
 	return c.Any
-}
-
-func (c *CustomersExportResponse) GetRes() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Res
 }

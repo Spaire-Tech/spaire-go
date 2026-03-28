@@ -3,10 +3,10 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
+	"errors"
+	"fmt"
 )
 
 type BenefitsUpdateBenefitUpdateType string
@@ -18,7 +18,6 @@ const (
 	BenefitsUpdateBenefitUpdateTypeBenefitDownloadablesUpdate    BenefitsUpdateBenefitUpdateType = "BenefitDownloadablesUpdate"
 	BenefitsUpdateBenefitUpdateTypeBenefitLicenseKeysUpdate      BenefitsUpdateBenefitUpdateType = "BenefitLicenseKeysUpdate"
 	BenefitsUpdateBenefitUpdateTypeBenefitMeterCreditUpdate      BenefitsUpdateBenefitUpdateType = "BenefitMeterCreditUpdate"
-	BenefitsUpdateBenefitUpdateTypeBenefitFeatureFlagUpdate      BenefitsUpdateBenefitUpdateType = "BenefitFeatureFlagUpdate"
 )
 
 type BenefitsUpdateBenefitUpdate struct {
@@ -28,7 +27,6 @@ type BenefitsUpdateBenefitUpdate struct {
 	BenefitDownloadablesUpdate    *components.BenefitDownloadablesUpdate    `queryParam:"inline" union:"member"`
 	BenefitLicenseKeysUpdate      *components.BenefitLicenseKeysUpdate      `queryParam:"inline" union:"member"`
 	BenefitMeterCreditUpdate      *components.BenefitMeterCreditUpdate      `queryParam:"inline" union:"member"`
-	BenefitFeatureFlagUpdate      *components.BenefitFeatureFlagUpdate      `queryParam:"inline" union:"member"`
 
 	Type BenefitsUpdateBenefitUpdateType
 }
@@ -87,15 +85,6 @@ func CreateBenefitsUpdateBenefitUpdateBenefitMeterCreditUpdate(benefitMeterCredi
 	}
 }
 
-func CreateBenefitsUpdateBenefitUpdateBenefitFeatureFlagUpdate(benefitFeatureFlagUpdate components.BenefitFeatureFlagUpdate) BenefitsUpdateBenefitUpdate {
-	typ := BenefitsUpdateBenefitUpdateTypeBenefitFeatureFlagUpdate
-
-	return BenefitsUpdateBenefitUpdate{
-		BenefitFeatureFlagUpdate: &benefitFeatureFlagUpdate,
-		Type:                     typ,
-	}
-}
-
 func (u *BenefitsUpdateBenefitUpdate) UnmarshalJSON(data []byte) error {
 
 	var benefitCustomUpdate components.BenefitCustomUpdate = components.BenefitCustomUpdate{}
@@ -140,13 +129,6 @@ func (u *BenefitsUpdateBenefitUpdate) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var benefitFeatureFlagUpdate components.BenefitFeatureFlagUpdate = components.BenefitFeatureFlagUpdate{}
-	if err := utils.UnmarshalJSON(data, &benefitFeatureFlagUpdate, "", true, nil); err == nil {
-		u.BenefitFeatureFlagUpdate = &benefitFeatureFlagUpdate
-		u.Type = BenefitsUpdateBenefitUpdateTypeBenefitFeatureFlagUpdate
-		return nil
-	}
-
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BenefitsUpdateBenefitUpdate", string(data))
 }
 
@@ -173,10 +155,6 @@ func (u BenefitsUpdateBenefitUpdate) MarshalJSON() ([]byte, error) {
 
 	if u.BenefitMeterCreditUpdate != nil {
 		return utils.MarshalJSON(u.BenefitMeterCreditUpdate, "", true)
-	}
-
-	if u.BenefitFeatureFlagUpdate != nil {
-		return utils.MarshalJSON(u.BenefitFeatureFlagUpdate, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type BenefitsUpdateBenefitUpdate: all fields are null")
@@ -219,53 +197,4 @@ func (b *BenefitsUpdateResponse) GetBenefit() *components.Benefit {
 		return nil
 	}
 	return b.Benefit
-}
-
-func (b *BenefitsUpdateResponse) GetBenefitCustom() *components.BenefitCustom {
-	if v := b.GetBenefit(); v != nil {
-		return v.BenefitCustom
-	}
-	return nil
-}
-
-func (b *BenefitsUpdateResponse) GetBenefitDiscord() *components.BenefitDiscord {
-	if v := b.GetBenefit(); v != nil {
-		return v.BenefitDiscord
-	}
-	return nil
-}
-
-func (b *BenefitsUpdateResponse) GetBenefitDownloadables() *components.BenefitDownloadables {
-	if v := b.GetBenefit(); v != nil {
-		return v.BenefitDownloadables
-	}
-	return nil
-}
-
-func (b *BenefitsUpdateResponse) GetBenefitFeatureFlag() *components.BenefitFeatureFlag {
-	if v := b.GetBenefit(); v != nil {
-		return v.BenefitFeatureFlag
-	}
-	return nil
-}
-
-func (b *BenefitsUpdateResponse) GetBenefitGithubRepository() *components.BenefitGitHubRepository {
-	if v := b.GetBenefit(); v != nil {
-		return v.BenefitGitHubRepository
-	}
-	return nil
-}
-
-func (b *BenefitsUpdateResponse) GetBenefitLicenseKeys() *components.BenefitLicenseKeys {
-	if v := b.GetBenefit(); v != nil {
-		return v.BenefitLicenseKeys
-	}
-	return nil
-}
-
-func (b *BenefitsUpdateResponse) GetBenefitMeterCredit() *components.BenefitMeterCredit {
-	if v := b.GetBenefit(); v != nil {
-		return v.BenefitMeterCredit
-	}
-	return nil
 }

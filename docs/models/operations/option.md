@@ -145,11 +145,3 @@ WithURLOverride allows overriding the default URL for an operation.
 ```go
 operations.WithURLOverride("/custom/path")
 ```
-
-### WithAcceptHeaderOverride
-
-WithAcceptHeaderOverride allows overriding the `Accept` header for operations that support multiple response content types.
-
-```go
-operations.WithAcceptHeaderOverride(operations.AcceptHeaderEnumApplicationJson)
-```

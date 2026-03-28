@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
 	"app.spairehq.com/go/internal/utils"
 	"app.spairehq.com/go/models/components"
 	"app.spairehq.com/go/types"
+	"errors"
+	"fmt"
 )
 
 type MetricsGetQueryParamOrganizationIDFilterType string

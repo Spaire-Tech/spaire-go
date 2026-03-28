@@ -16,19 +16,21 @@ type LegacyRecurringProductPriceFree struct {
 	// Last modification timestamp of the object.
 	ModifiedAt *time.Time `json:"modified_at"`
 	// The ID of the price.
-	ID         string             `json:"id"`
-	Source     ProductPriceSource `json:"source"`
-	amountType string             `const:"free" json:"amount_type"`
-	// The currency in which the customer will be charged.
-	PriceCurrency string `json:"price_currency"`
+	ID     string             `json:"id"`
+	Source ProductPriceSource `json:"source"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	amountType    string              `const:"free" json:"amount_type"`
+	PriceCurrency PresentmentCurrency `json:"price_currency"`
 	// Whether the price is archived and no longer available.
 	IsArchived bool `json:"is_archived"`
 	// The ID of the product owning the price.
 	ProductID string `json:"product_id"`
 	// The type of the price.
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_             string                        `const:"recurring" json:"type"`
 	RecurringInterval SubscriptionRecurringInterval `json:"recurring_interval"`
-	legacy            bool                          `const:"true" json:"legacy"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	legacy bool `const:"true" json:"legacy"`
 }
 
 func (l LegacyRecurringProductPriceFree) MarshalJSON() ([]byte, error) {
@@ -74,9 +76,9 @@ func (l *LegacyRecurringProductPriceFree) GetAmountType() string {
 	return "free"
 }
 
-func (l *LegacyRecurringProductPriceFree) GetPriceCurrency() string {
+func (l *LegacyRecurringProductPriceFree) GetPriceCurrency() PresentmentCurrency {
 	if l == nil {
-		return ""
+		return PresentmentCurrency("")
 	}
 	return l.PriceCurrency
 }
