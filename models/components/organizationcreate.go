@@ -14,11 +14,13 @@ type OrganizationCreate struct {
 	Socials []OrganizationSocialLink `json:"socials,omitempty"`
 	// Additional, private, business details Spaire needs about active organizations for compliance (KYC).
 	Details                *OrganizationDetails                `json:"details,omitempty"`
+	DefaultTaxBehavior     *TaxBehaviorOption                  `json:"default_tax_behavior,omitempty"`
 	FeatureSettings        *OrganizationFeatureSettings        `json:"feature_settings,omitempty"`
 	SubscriptionSettings   *OrganizationSubscriptionSettings   `json:"subscription_settings,omitempty"`
 	NotificationSettings   *OrganizationNotificationSettings   `json:"notification_settings,omitempty"`
 	CustomerEmailSettings  *OrganizationCustomerEmailSettings  `json:"customer_email_settings,omitempty"`
 	CustomerPortalSettings *OrganizationCustomerPortalSettings `json:"customer_portal_settings,omitempty"`
+	StorefrontSettings     *OrganizationStorefrontSettings     `json:"storefront_settings,omitempty"`
 }
 
 func (o *OrganizationCreate) GetName() string {
@@ -70,6 +72,13 @@ func (o *OrganizationCreate) GetDetails() *OrganizationDetails {
 	return o.Details
 }
 
+func (o *OrganizationCreate) GetDefaultTaxBehavior() *TaxBehaviorOption {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultTaxBehavior
+}
+
 func (o *OrganizationCreate) GetFeatureSettings() *OrganizationFeatureSettings {
 	if o == nil {
 		return nil
@@ -103,4 +112,11 @@ func (o *OrganizationCreate) GetCustomerPortalSettings() *OrganizationCustomerPo
 		return nil
 	}
 	return o.CustomerPortalSettings
+}
+
+func (o *OrganizationCreate) GetStorefrontSettings() *OrganizationStorefrontSettings {
+	if o == nil {
+		return nil
+	}
+	return o.StorefrontSettings
 }

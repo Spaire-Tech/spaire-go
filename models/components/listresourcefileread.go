@@ -15,12 +15,14 @@ const (
 	FileReadTypeDownloadable       FileReadType = "downloadable"
 	FileReadTypeOrganizationAvatar FileReadType = "organization_avatar"
 	FileReadTypeProductMedia       FileReadType = "product_media"
+	FileReadTypeStorefrontHeader   FileReadType = "storefront_header"
 )
 
 type FileRead struct {
 	DownloadableFileRead       *DownloadableFileRead       `queryParam:"inline" union:"member"`
 	ProductMediaFileRead       *ProductMediaFileRead       `queryParam:"inline" union:"member"`
 	OrganizationAvatarFileRead *OrganizationAvatarFileRead `queryParam:"inline" union:"member"`
+	StorefrontHeaderFileRead   *StorefrontHeaderFileRead   `queryParam:"inline" union:"member"`
 
 	Type FileReadType
 }
@@ -49,6 +51,15 @@ func CreateFileReadProductMedia(productMedia ProductMediaFileRead) FileRead {
 	return FileRead{
 		ProductMediaFileRead: &productMedia,
 		Type:                 typ,
+	}
+}
+
+func CreateFileReadStorefrontHeader(storefrontHeader StorefrontHeaderFileRead) FileRead {
+	typ := FileReadTypeStorefrontHeader
+
+	return FileRead{
+		StorefrontHeaderFileRead: &storefrontHeader,
+		Type:                     typ,
 	}
 }
 
@@ -91,6 +102,15 @@ func (u *FileRead) UnmarshalJSON(data []byte) error {
 		u.ProductMediaFileRead = productMediaFileRead
 		u.Type = FileReadTypeProductMedia
 		return nil
+	case "storefront_header":
+		storefrontHeaderFileRead := new(StorefrontHeaderFileRead)
+		if err := utils.UnmarshalJSON(data, &storefrontHeaderFileRead, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Service == storefront_header) type StorefrontHeaderFileRead within FileRead: %w", string(data), err)
+		}
+
+		u.StorefrontHeaderFileRead = storefrontHeaderFileRead
+		u.Type = FileReadTypeStorefrontHeader
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FileRead", string(data))
@@ -107,6 +127,10 @@ func (u FileRead) MarshalJSON() ([]byte, error) {
 
 	if u.OrganizationAvatarFileRead != nil {
 		return utils.MarshalJSON(u.OrganizationAvatarFileRead, "", true)
+	}
+
+	if u.StorefrontHeaderFileRead != nil {
+		return utils.MarshalJSON(u.StorefrontHeaderFileRead, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type FileRead: all fields are null")

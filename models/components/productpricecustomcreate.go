@@ -11,6 +11,8 @@ type ProductPriceCustomCreate struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string               `const:"custom" json:"amount_type"`
 	PriceCurrency *PresentmentCurrency `json:"price_currency,omitempty"`
+	// The tax behavior of the price. If not set, it will default to the organization's default tax behavior.
+	TaxBehavior *TaxBehaviorOption `json:"tax_behavior,omitempty"`
 	// The minimum amount the customer can pay. If set to 0, the price is 'free or pay what you want' and $0 is accepted. If set to a value between 1-49, it will be rejected. Defaults to 50 cents.
 	MinimumAmount *int64 `default:"50" json:"minimum_amount"`
 	// The maximum amount the customer can pay.
@@ -39,6 +41,13 @@ func (p *ProductPriceCustomCreate) GetPriceCurrency() *PresentmentCurrency {
 		return nil
 	}
 	return p.PriceCurrency
+}
+
+func (p *ProductPriceCustomCreate) GetTaxBehavior() *TaxBehaviorOption {
+	if p == nil {
+		return nil
+	}
+	return p.TaxBehavior
 }
 
 func (p *ProductPriceCustomCreate) GetMinimumAmount() *int64 {

@@ -14,12 +14,15 @@ type OrganizationUpdate struct {
 	// Additional, private, business details Spaire needs about active organizations for compliance (KYC).
 	Details *OrganizationDetails `json:"details,omitempty"`
 	// Default presentment currency for products and checkout.
-	DefaultPresentmentCurrency *PresentmentCurrency                `json:"default_presentment_currency,omitempty"`
-	FeatureSettings            *OrganizationFeatureSettings        `json:"feature_settings,omitempty"`
-	SubscriptionSettings       *OrganizationSubscriptionSettings   `json:"subscription_settings,omitempty"`
-	NotificationSettings       *OrganizationNotificationSettings   `json:"notification_settings,omitempty"`
-	CustomerEmailSettings      *OrganizationCustomerEmailSettings  `json:"customer_email_settings,omitempty"`
-	CustomerPortalSettings     *OrganizationCustomerPortalSettings `json:"customer_portal_settings,omitempty"`
+	DefaultPresentmentCurrency *PresentmentCurrency `json:"default_presentment_currency,omitempty"`
+	// Default tax behavior applied on products.
+	DefaultTaxBehavior     *TaxBehaviorOption                  `json:"default_tax_behavior,omitempty"`
+	FeatureSettings        *OrganizationFeatureSettings        `json:"feature_settings,omitempty"`
+	SubscriptionSettings   *OrganizationSubscriptionSettings   `json:"subscription_settings,omitempty"`
+	NotificationSettings   *OrganizationNotificationSettings   `json:"notification_settings,omitempty"`
+	CustomerEmailSettings  *OrganizationCustomerEmailSettings  `json:"customer_email_settings,omitempty"`
+	CustomerPortalSettings *OrganizationCustomerPortalSettings `json:"customer_portal_settings,omitempty"`
+	StorefrontSettings     *OrganizationStorefrontSettings     `json:"storefront_settings,omitempty"`
 }
 
 func (o *OrganizationUpdate) GetName() *string {
@@ -71,6 +74,13 @@ func (o *OrganizationUpdate) GetDefaultPresentmentCurrency() *PresentmentCurrenc
 	return o.DefaultPresentmentCurrency
 }
 
+func (o *OrganizationUpdate) GetDefaultTaxBehavior() *TaxBehaviorOption {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultTaxBehavior
+}
+
 func (o *OrganizationUpdate) GetFeatureSettings() *OrganizationFeatureSettings {
 	if o == nil {
 		return nil
@@ -104,4 +114,11 @@ func (o *OrganizationUpdate) GetCustomerPortalSettings() *OrganizationCustomerPo
 		return nil
 	}
 	return o.CustomerPortalSettings
+}
+
+func (o *OrganizationUpdate) GetStorefrontSettings() *OrganizationStorefrontSettings {
+	if o == nil {
+		return nil
+	}
+	return o.StorefrontSettings
 }

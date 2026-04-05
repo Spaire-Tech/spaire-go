@@ -36,6 +36,7 @@ const (
 	FilesUploadedResponseFilesUploadedTypeDownloadable       FilesUploadedResponseFilesUploadedType = "downloadable"
 	FilesUploadedResponseFilesUploadedTypeProductMedia       FilesUploadedResponseFilesUploadedType = "product_media"
 	FilesUploadedResponseFilesUploadedTypeOrganizationAvatar FilesUploadedResponseFilesUploadedType = "organization_avatar"
+	FilesUploadedResponseFilesUploadedTypeStorefrontHeader   FilesUploadedResponseFilesUploadedType = "storefront_header"
 )
 
 // FilesUploadedResponseFilesUploaded - File upload completed.
@@ -43,6 +44,7 @@ type FilesUploadedResponseFilesUploaded struct {
 	DownloadableFileRead       *components.DownloadableFileRead       `queryParam:"inline" union:"member"`
 	ProductMediaFileRead       *components.ProductMediaFileRead       `queryParam:"inline" union:"member"`
 	OrganizationAvatarFileRead *components.OrganizationAvatarFileRead `queryParam:"inline" union:"member"`
+	StorefrontHeaderFileRead   *components.StorefrontHeaderFileRead   `queryParam:"inline" union:"member"`
 
 	Type FilesUploadedResponseFilesUploadedType
 }
@@ -71,6 +73,15 @@ func CreateFilesUploadedResponseFilesUploadedOrganizationAvatar(organizationAvat
 	return FilesUploadedResponseFilesUploaded{
 		OrganizationAvatarFileRead: &organizationAvatar,
 		Type:                       typ,
+	}
+}
+
+func CreateFilesUploadedResponseFilesUploadedStorefrontHeader(storefrontHeader components.StorefrontHeaderFileRead) FilesUploadedResponseFilesUploaded {
+	typ := FilesUploadedResponseFilesUploadedTypeStorefrontHeader
+
+	return FilesUploadedResponseFilesUploaded{
+		StorefrontHeaderFileRead: &storefrontHeader,
+		Type:                     typ,
 	}
 }
 
@@ -113,6 +124,15 @@ func (u *FilesUploadedResponseFilesUploaded) UnmarshalJSON(data []byte) error {
 		u.OrganizationAvatarFileRead = organizationAvatarFileRead
 		u.Type = FilesUploadedResponseFilesUploadedTypeOrganizationAvatar
 		return nil
+	case "storefront_header":
+		storefrontHeaderFileRead := new(components.StorefrontHeaderFileRead)
+		if err := utils.UnmarshalJSON(data, &storefrontHeaderFileRead, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Service == storefront_header) type components.StorefrontHeaderFileRead within FilesUploadedResponseFilesUploaded: %w", string(data), err)
+		}
+
+		u.StorefrontHeaderFileRead = storefrontHeaderFileRead
+		u.Type = FilesUploadedResponseFilesUploadedTypeStorefrontHeader
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FilesUploadedResponseFilesUploaded", string(data))
@@ -129,6 +149,10 @@ func (u FilesUploadedResponseFilesUploaded) MarshalJSON() ([]byte, error) {
 
 	if u.OrganizationAvatarFileRead != nil {
 		return utils.MarshalJSON(u.OrganizationAvatarFileRead, "", true)
+	}
+
+	if u.StorefrontHeaderFileRead != nil {
+		return utils.MarshalJSON(u.StorefrontHeaderFileRead, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type FilesUploadedResponseFilesUploaded: all fields are null")
@@ -171,6 +195,13 @@ func (f *FilesUploadedResponse) GetResponseFilesUploadedProductMedia() *componen
 func (f *FilesUploadedResponse) GetResponseFilesUploadedOrganizationAvatar() *components.OrganizationAvatarFileRead {
 	if v := f.GetResponseFilesUploaded(); v != nil {
 		return v.OrganizationAvatarFileRead
+	}
+	return nil
+}
+
+func (f *FilesUploadedResponse) GetResponseFilesUploadedStorefrontHeader() *components.StorefrontHeaderFileRead {
+	if v := f.GetResponseFilesUploaded(); v != nil {
+		return v.StorefrontHeaderFileRead
 	}
 	return nil
 }

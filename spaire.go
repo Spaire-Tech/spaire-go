@@ -2,7 +2,7 @@
 
 package spairego
 
-// Generated from OpenAPI doc version 0.1.0 and generator version 2.869.25
+// Generated from OpenAPI doc version 0.1.0 and generator version 2.879.6
 
 import (
 	"app.spairehq.com/go/internal/config"
@@ -163,9 +163,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Spaire {
 	sdk := &Spaire{
-		SDKVersion: "0.16.0",
+		SDKVersion: "0.16.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.16.0 2.869.25 0.1.0 app.spairehq.com/go",
+			UserAgent:  "speakeasy-sdk/go 0.16.1 2.879.6 0.1.0 app.spairehq.com/go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),

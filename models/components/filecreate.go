@@ -15,12 +15,14 @@ const (
 	FileCreateTypeDownloadable       FileCreateType = "downloadable"
 	FileCreateTypeOrganizationAvatar FileCreateType = "organization_avatar"
 	FileCreateTypeProductMedia       FileCreateType = "product_media"
+	FileCreateTypeStorefrontHeader   FileCreateType = "storefront_header"
 )
 
 type FileCreate struct {
 	DownloadableFileCreate       *DownloadableFileCreate       `queryParam:"inline" union:"member"`
 	ProductMediaFileCreate       *ProductMediaFileCreate       `queryParam:"inline" union:"member"`
 	OrganizationAvatarFileCreate *OrganizationAvatarFileCreate `queryParam:"inline" union:"member"`
+	StorefrontHeaderFileCreate   *StorefrontHeaderFileCreate   `queryParam:"inline" union:"member"`
 
 	Type FileCreateType
 }
@@ -49,6 +51,15 @@ func CreateFileCreateProductMedia(productMedia ProductMediaFileCreate) FileCreat
 	return FileCreate{
 		ProductMediaFileCreate: &productMedia,
 		Type:                   typ,
+	}
+}
+
+func CreateFileCreateStorefrontHeader(storefrontHeader StorefrontHeaderFileCreate) FileCreate {
+	typ := FileCreateTypeStorefrontHeader
+
+	return FileCreate{
+		StorefrontHeaderFileCreate: &storefrontHeader,
+		Type:                       typ,
 	}
 }
 
@@ -91,6 +102,15 @@ func (u *FileCreate) UnmarshalJSON(data []byte) error {
 		u.ProductMediaFileCreate = productMediaFileCreate
 		u.Type = FileCreateTypeProductMedia
 		return nil
+	case "storefront_header":
+		storefrontHeaderFileCreate := new(StorefrontHeaderFileCreate)
+		if err := utils.UnmarshalJSON(data, &storefrontHeaderFileCreate, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Service == storefront_header) type StorefrontHeaderFileCreate within FileCreate: %w", string(data), err)
+		}
+
+		u.StorefrontHeaderFileCreate = storefrontHeaderFileCreate
+		u.Type = FileCreateTypeStorefrontHeader
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FileCreate", string(data))
@@ -107,6 +127,10 @@ func (u FileCreate) MarshalJSON() ([]byte, error) {
 
 	if u.OrganizationAvatarFileCreate != nil {
 		return utils.MarshalJSON(u.OrganizationAvatarFileCreate, "", true)
+	}
+
+	if u.StorefrontHeaderFileCreate != nil {
+		return utils.MarshalJSON(u.StorefrontHeaderFileCreate, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type FileCreate: all fields are null")

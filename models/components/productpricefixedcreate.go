@@ -11,6 +11,8 @@ type ProductPriceFixedCreate struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string               `const:"fixed" json:"amount_type"`
 	PriceCurrency *PresentmentCurrency `json:"price_currency,omitempty"`
+	// The tax behavior of the price. If not set, it will default to the organization's default tax behavior.
+	TaxBehavior *TaxBehaviorOption `json:"tax_behavior,omitempty"`
 	// The price in cents.
 	PriceAmount int64 `json:"price_amount"`
 }
@@ -35,6 +37,13 @@ func (p *ProductPriceFixedCreate) GetPriceCurrency() *PresentmentCurrency {
 		return nil
 	}
 	return p.PriceCurrency
+}
+
+func (p *ProductPriceFixedCreate) GetTaxBehavior() *TaxBehaviorOption {
+	if p == nil {
+		return nil
+	}
+	return p.TaxBehavior
 }
 
 func (p *ProductPriceFixedCreate) GetPriceAmount() int64 {

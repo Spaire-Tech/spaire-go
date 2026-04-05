@@ -21,6 +21,8 @@ type LegacyRecurringProductPriceCustom struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string              `const:"custom" json:"amount_type"`
 	PriceCurrency PresentmentCurrency `json:"price_currency"`
+	// The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
+	TaxBehavior *TaxBehaviorOption `json:"tax_behavior"`
 	// Whether the price is archived and no longer available.
 	IsArchived bool `json:"is_archived"`
 	// The ID of the product owning the price.
@@ -87,6 +89,13 @@ func (l *LegacyRecurringProductPriceCustom) GetPriceCurrency() PresentmentCurren
 		return PresentmentCurrency("")
 	}
 	return l.PriceCurrency
+}
+
+func (l *LegacyRecurringProductPriceCustom) GetTaxBehavior() *TaxBehaviorOption {
+	if l == nil {
+		return nil
+	}
+	return l.TaxBehavior
 }
 
 func (l *LegacyRecurringProductPriceCustom) GetIsArchived() bool {

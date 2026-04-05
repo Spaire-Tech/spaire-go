@@ -19,6 +19,8 @@ type ProductPriceSeatBased struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	amountType    string              `const:"seat_based" json:"amount_type"`
 	PriceCurrency PresentmentCurrency `json:"price_currency"`
+	// The tax behavior of the price. If null, it defaults to the organization's default tax behavior.
+	TaxBehavior *TaxBehaviorOption `json:"tax_behavior"`
 	// Whether the price is archived and no longer available.
 	IsArchived bool `json:"is_archived"`
 	// The ID of the product owning the price.
@@ -82,6 +84,13 @@ func (p *ProductPriceSeatBased) GetPriceCurrency() PresentmentCurrency {
 		return PresentmentCurrency("")
 	}
 	return p.PriceCurrency
+}
+
+func (p *ProductPriceSeatBased) GetTaxBehavior() *TaxBehaviorOption {
+	if p == nil {
+		return nil
+	}
+	return p.TaxBehavior
 }
 
 func (p *ProductPriceSeatBased) GetIsArchived() bool {

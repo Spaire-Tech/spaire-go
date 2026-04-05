@@ -599,3 +599,13 @@ Based on:
 - [go v0.16.0] .
 ### Releases
 - [Go v0.16.0] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.16.0 - .
+
+## 2026-04-05 02:04:00
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.761.1 (2.879.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.16.1] .
+### Releases
+- [Go v0.16.1] https://github.com/Spaire-Tech/spaire-go/releases/tag/v0.16.1 - .

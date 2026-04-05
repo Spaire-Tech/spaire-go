@@ -18,3 +18,4 @@ value := components.FileServiceTypesDownloadable
 | `FileServiceTypesDownloadable`       | downloadable                         |
 | `FileServiceTypesProductMedia`       | product_media                        |
 | `FileServiceTypesOrganizationAvatar` | organization_avatar                  |
+| `FileServiceTypesStorefrontHeader`   | storefront_header                    |

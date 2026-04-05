@@ -1,9 +1,9 @@
-speakeasyVersion: 1.759.3
+speakeasyVersion: 1.761.1
 sources:
     Spaire-OAS:
         sourceNamespace: spaire-oas
-        sourceRevisionDigest: sha256:f9d98b30d8a24c9afe33107a73107eba7c66f00dff3802a42ec0ae3f5ce5f20c
-        sourceBlobDigest: sha256:5cd0b8ddabc7d907421bf94235ba20f148d007bc553e15b397bae8fb9e70f404
+        sourceRevisionDigest: sha256:64bf2c3be273697342ab3604377a128b564260ee33a3c134805b89044e74d280
+        sourceBlobDigest: sha256:9361567aa95210027251eb4c893b0e793bd5076765634cd7b10a4bc3942b0f6e
         tags:
             - latest
             - 0.1.0
@@ -11,10 +11,10 @@ targets:
     spaire:
         source: Spaire-OAS
         sourceNamespace: spaire-oas
-        sourceRevisionDigest: sha256:f9d98b30d8a24c9afe33107a73107eba7c66f00dff3802a42ec0ae3f5ce5f20c
-        sourceBlobDigest: sha256:5cd0b8ddabc7d907421bf94235ba20f148d007bc553e15b397bae8fb9e70f404
+        sourceRevisionDigest: sha256:64bf2c3be273697342ab3604377a128b564260ee33a3c134805b89044e74d280
+        sourceBlobDigest: sha256:9361567aa95210027251eb4c893b0e793bd5076765634cd7b10a4bc3942b0f6e
         codeSamplesNamespace: spaire-oas-go-code-samples
-        codeSamplesRevisionDigest: sha256:841b0e1002c82d009c6e7b71ee167c734f01cb42024a9f3fb1145410dcc4e500
+        codeSamplesRevisionDigest: sha256:d2cb937e02897b66a590ebb3b7be289f4ef22d4692e2d9d45afc5a8178b11898
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

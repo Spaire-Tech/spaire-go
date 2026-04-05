@@ -33,12 +33,15 @@ type Organization struct {
 	// When the business details were submitted.
 	DetailsSubmittedAt         *time.Time          `json:"details_submitted_at"`
 	DefaultPresentmentCurrency PresentmentCurrency `json:"default_presentment_currency"`
+	DefaultTaxBehavior         TaxBehaviorOption   `json:"default_tax_behavior"`
 	// Organization feature settings
 	FeatureSettings        *OrganizationFeatureSettings       `json:"feature_settings"`
 	SubscriptionSettings   OrganizationSubscriptionSettings   `json:"subscription_settings"`
 	NotificationSettings   OrganizationNotificationSettings   `json:"notification_settings"`
 	CustomerEmailSettings  OrganizationCustomerEmailSettings  `json:"customer_email_settings"`
 	CustomerPortalSettings OrganizationCustomerPortalSettings `json:"customer_portal_settings"`
+	// Storefront settings
+	StorefrontSettings *OrganizationStorefrontSettings `json:"storefront_settings,omitempty"`
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
@@ -150,6 +153,13 @@ func (o *Organization) GetDefaultPresentmentCurrency() PresentmentCurrency {
 	return o.DefaultPresentmentCurrency
 }
 
+func (o *Organization) GetDefaultTaxBehavior() TaxBehaviorOption {
+	if o == nil {
+		return TaxBehaviorOption("")
+	}
+	return o.DefaultTaxBehavior
+}
+
 func (o *Organization) GetFeatureSettings() *OrganizationFeatureSettings {
 	if o == nil {
 		return nil
@@ -183,4 +193,11 @@ func (o *Organization) GetCustomerPortalSettings() OrganizationCustomerPortalSet
 		return OrganizationCustomerPortalSettings{}
 	}
 	return o.CustomerPortalSettings
+}
+
+func (o *Organization) GetStorefrontSettings() *OrganizationStorefrontSettings {
+	if o == nil {
+		return nil
+	}
+	return o.StorefrontSettings
 }

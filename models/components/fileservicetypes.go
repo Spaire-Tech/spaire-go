@@ -13,6 +13,7 @@ const (
 	FileServiceTypesDownloadable       FileServiceTypes = "downloadable"
 	FileServiceTypesProductMedia       FileServiceTypes = "product_media"
 	FileServiceTypesOrganizationAvatar FileServiceTypes = "organization_avatar"
+	FileServiceTypesStorefrontHeader   FileServiceTypes = "storefront_header"
 )
 
 func (e FileServiceTypes) ToPointer() *FileServiceTypes {
@@ -29,6 +30,8 @@ func (e *FileServiceTypes) UnmarshalJSON(data []byte) error {
 	case "product_media":
 		fallthrough
 	case "organization_avatar":
+		fallthrough
+	case "storefront_header":
 		*e = FileServiceTypes(v)
 		return nil
 	default:

@@ -209,6 +209,8 @@ func main() {
                 // res.ResponseFilesUploaded.ProductMediaFileRead is populated
             case operations.FilesUploadedResponseFilesUploadedTypeOrganizationAvatar:
                 // res.ResponseFilesUploaded.OrganizationAvatarFileRead is populated
+            case operations.FilesUploadedResponseFilesUploadedTypeStorefrontHeader:
+                // res.ResponseFilesUploaded.StorefrontHeaderFileRead is populated
         }
 
     }
@@ -334,6 +336,8 @@ func main() {
                 // res.ResponseFilesUpdate.ProductMediaFileRead is populated
             case operations.FilesUpdateResponseFilesUpdateTypeOrganizationAvatar:
                 // res.ResponseFilesUpdate.OrganizationAvatarFileRead is populated
+            case operations.FilesUpdateResponseFilesUpdateTypeStorefrontHeader:
+                // res.ResponseFilesUpdate.StorefrontHeaderFileRead is populated
         }
 
     }

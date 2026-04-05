@@ -23,6 +23,12 @@ filesUpdateResponseFilesUpdate := operations.CreateFilesUpdateResponseFilesUpdat
 filesUpdateResponseFilesUpdate := operations.CreateFilesUpdateResponseFilesUpdateOrganizationAvatar(components.OrganizationAvatarFileRead{/* values here */})
 ```
 
+### StorefrontHeaderFileRead
+
+```go
+filesUpdateResponseFilesUpdate := operations.CreateFilesUpdateResponseFilesUpdateStorefrontHeader(components.StorefrontHeaderFileRead{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -35,5 +41,7 @@ switch filesUpdateResponseFilesUpdate.Type {
 		// filesUpdateResponseFilesUpdate.ProductMediaFileRead is populated
 	case operations.FilesUpdateResponseFilesUpdateTypeOrganizationAvatar:
 		// filesUpdateResponseFilesUpdate.OrganizationAvatarFileRead is populated
+	case operations.FilesUpdateResponseFilesUpdateTypeStorefrontHeader:
+		// filesUpdateResponseFilesUpdate.StorefrontHeaderFileRead is populated
 }
 ```
